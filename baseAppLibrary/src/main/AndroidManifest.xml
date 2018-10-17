@@ -1,2 +1,3 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.micropole.baseapplibrary" />
+    package="com.micropole.baseapplibrary" >
+</manifest>

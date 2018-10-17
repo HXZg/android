@@ -31,8 +31,8 @@ object Constants {
     /**
      * 存入经纬信息
      */
-    fun putLocation(latitude: Double, longitude: Double, city: String) {
-        SPUtils.getInstance().put(KEY_LOCATION, latitude.toString() + "," + longitude + "," + city)
+    fun putLocation(latitude: Double, longitude: Double, address: String) {
+        SPUtils.getInstance().put(KEY_LOCATION, latitude.toString() + "," + longitude + "," + address)
     }
 
     /**

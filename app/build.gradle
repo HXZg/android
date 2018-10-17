@@ -15,6 +15,11 @@ android {
         versionCode version_code
         versionName version_name
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [
+                qqappid      : "1106602798",//腾讯开放平台Appid替换
+                GAODE_AMAPKEY: "a4d4d58a6987477f9e953a1836a833e6",//高德地图 keybc1bdfc95d5e0753c2d11c47982412ee
+        ]
     }
     buildTypes {
         release {

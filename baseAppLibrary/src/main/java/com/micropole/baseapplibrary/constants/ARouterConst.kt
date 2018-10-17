@@ -18,6 +18,11 @@ object ARouterConst {
         const val REGISTER_ACTIVITY = "$LOGIN/register_activity"
     }
 
+    const val MAIN = "/main"
+    object Main{
+        const val MAIN_PAY_CENTER = "$MAIN/pay_center_activity"
+    }
+
     const val HOME = "/home"
     object Home{
         const val HOME_FRAGMENT = "$HOME/home_fragment"

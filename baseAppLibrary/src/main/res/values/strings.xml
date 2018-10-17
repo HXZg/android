@@ -3,4 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="take_photo">拍照</string>
+    <string name="choose_from_lib">从相册选择</string>
 </resources>

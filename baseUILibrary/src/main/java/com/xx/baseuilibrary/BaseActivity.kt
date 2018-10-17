@@ -65,9 +65,9 @@ abstract class BaseActivity : AppCompatActivity() {
         val id = XxResourceUtil.getId(mContext, "tv_title")
         val title = findViewById<TextView>(id)
         if (!TextUtils.isEmpty(tit)){
-            title.text = tit
+            title?.text = tit
         }else if (res != 0){
-            title.setText(res)
+            title?.setText(res)
         }
     }
 

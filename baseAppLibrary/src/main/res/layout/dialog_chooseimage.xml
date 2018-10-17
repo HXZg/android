@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:drawablePadding="15dp"
+        android:gravity="center"
+        android:minHeight="75dp"
+        android:paddingLeft="13dp"
+        android:paddingRight="13dp"
+        android:text="@string/take_photo"
+        android:textColor="#222"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorGray" />
+
+    <Button
+        android:id="@+id/btn_album"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:drawablePadding="15dp"
+        android:gravity="center"
+        android:minHeight="75dp"
+        android:paddingLeft="13dp"
+        android:paddingRight="13dp"
+        android:text="@string/choose_from_lib"
+        android:textColor="#222"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/colorGray" />
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:minHeight="60dp"
+        android:text="取  消"
+        android:textColor="#333333"
+        android:textSize="14sp" />
+
+</LinearLayout>
