@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:id="@+id/tv_store_list_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="定位详情"
+            android:textColor="@color/colorWhite"
+            android:textSize="17sp" />
+
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="@dimen/titlebar_height"
+            android:layout_height="match_parent"
+            android:background="?selectableItemBackground"
+            android:src="@drawable/ic_back"
+            android:tint="@color/colorWhite" />
+    </FrameLayout>
+
+    <com.amap.api.maps2d.MapView
+        android:id="@+id/location_map_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </com.amap.api.maps2d.MapView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="bottom"
+        android:layout_gravity="bottom"
+        android:background="@color/colorWhite">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv__my_location"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的位置"
+                android:textColor="#222"
+                android:textSize="17sp"
+                />
+
+            <TextView
+                android:id="@+id/tv_location"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text=""
+                android:textColor="#888"
+                android:textSize="14sp"
+                />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_location_sure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="确定"
+            android:textColor="#fff"
+            android:textSize="@dimen/text_dimen_first"
+            android:background="@drawable/shape_blue_r3"
+            android:layout_marginRight="8dp"/>
+    </LinearLayout>
+
+</LinearLayout>

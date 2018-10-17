@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="title_height">48dp</dimen>
+
+    <dimen name="text_dimen_first">17sp</dimen>
+    <dimen name="text_dimen_second">15sp</dimen>
+    <dimen name="text_dimen_third">14sp</dimen>
+    <dimen name="text_dimen_fourth">12sp</dimen>
+    <dimen name="text_dimen_fitth">11sp</dimen>
+
+    <dimen name="dp_14">14dp</dimen>
+    <dimen name="dp_30">30dp</dimen>
+</resources>

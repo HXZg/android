@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FD212E</color>
+    <color name="colorPrimaryDark">#FD212E</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorText">#333333</color>
+    <color name="color_edit_hint">#999999</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="line_color">#dddddd</color>
+    <color name="app_color_bg">#EEEEEE</color>
+    <color name="color_login_bg">#F8F8F8</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorWhite">#fff</color>
+    <color name="colorDivler">#e7e7e7</color>
+    <color name="colorTextGray">#71778f</color>
+    <color name="colorGray">#e4e4e4</color>
+    <color name="colorThinGray">#fafafa</color>
+    <color name="colorDeepGray">#cfcfcf</color>
+    <color name="colorDuskiness">#484848</color>
+
+</resources>
