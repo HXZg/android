@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">HomeModule</string>
+
+    <string name="home_yd">立即预订</string>
+    <string name="home_location">定位</string>
+    <string name="home_settled">入驻</string>
+    <string name="home_leave">离店</string>
+    <string name="settled_num">入驻人数</string>
+    <string name="search_txt">搜索</string>
+    
+    <string name="recommended_for_you">为您推荐</string>
 </resources>

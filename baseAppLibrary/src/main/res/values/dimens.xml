@@ -5,4 +5,9 @@
     <dimen name="activity_bottom_height">50dp</dimen>
 
     <dimen name="titlebar_height">48dp</dimen>
+
+    <dimen name="title_sp">22sp</dimen>
+    <dimen name="text_first">20sp</dimen>
+    <dimen name="text_second">16sp</dimen>
+    <dimen name="text_third">13sp</dimen>
 </resources>

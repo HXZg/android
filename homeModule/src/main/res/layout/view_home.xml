@@ -12,9 +12,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintDimensionRatio="H,16:9"
-        android:background="@color/colorPrimary" />
+        android:background="@color/colorAccent" />
 
     <include
+        android:id="@+id/view_home_yd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/cb_home"
@@ -23,6 +24,27 @@
         android:layout_marginRight="@dimen/dp_14"
         layout="@layout/view_home_yd"/>
 
+    <TextView
+        android:id="@+id/tv_recommend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/view_home_yd"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_14"
+        android:text="@string/recommended_for_you"
+        android:textSize="@dimen/text_first"
+        android:textColor="@color/text_one"/>
 
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_home_house"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_recommend"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:paddingLeft="@dimen/dp_14"
+        android:paddingRight="@dimen/dp_14"
+        android:layout_marginTop="@dimen/dp_10"
+        />
 </android.support.constraint.ConstraintLayout>

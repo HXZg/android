@@ -1,7 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    app:cardUseCompatPadding="true"
+    app:cardPreventCornerOverlap="false">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iv_house_img"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintDimensionRatio="H,1:1"
+            android:background="@color/colorAccent" />
+        <TextView
+            android:id="@+id/tv_house_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_14"
+            android:paddingRight="@dimen/dp_14"
+            android:layout_marginTop="@dimen/dp_10"
+            app:layout_constraintTop_toBottomOf="@id/iv_house_img"
+            android:textSize="@dimen/text_second"
+            android:textColor="@color/text_one"
+            android:text="【琶洲会展】近珠江新城/太古汇北欧风三居"
+            />
+        <TextView
+            android:id="@+id/tv_house_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            app:layout_constraintTop_toBottomOf="@id/tv_house_name"
+            app:layout_constraintLeft_toLeftOf="@id/tv_house_name"
+            android:textSize="@dimen/text_second"
+            android:textColor="@color/text_two"
+            android:text="广州市天河区珠江新城华夏路16号"/>
+        <TextView
+            android:id="@+id/tv_house_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_house_address"
+            app:layout_constraintLeft_toLeftOf="@id/tv_house_address"
+            android:layout_marginTop="@dimen/dp_10"
+            android:textSize="@dimen/text_second"
+            android:textColor="@color/text_two"
+            android:text="距离100米  一房一厅  北欧风格"/>
+
+        <TextView
+            android:id="@+id/tv_house_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="20dp"
+            android:textSize="@dimen/text_first"
+            android:textColor="@color/price_color"
+            app:layout_constraintLeft_toLeftOf="@id/tv_house_des"
+            app:layout_constraintTop_toBottomOf="@id/tv_house_des"
+            android:text="365元/天"/>
+        <com.coorchice.library.SuperTextView
+            android:id="@+id/stv_house_deposit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/tv_house_price"
+            app:layout_constraintLeft_toRightOf="@id/tv_house_price"
+            android:layout_marginLeft="@dimen/dp_14"
+            android:textSize="@dimen/text_third"
+            android:textColor="#fff"
+            app:solid="#FFD529"
+            app:corner="5dp"
+            android:text="免押金"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="8dp"
+            />
+        <TextView
+            android:id="@+id/tv_house_recommend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_second"
+            android:textColor="@color/price_color"
+            android:layout_marginRight="@dimen/dp_14"
+            android:text="值得推荐"
+            app:layout_constraintBottom_toBottomOf="@id/tv_house_price"
+            android:paddingBottom="20dp"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+        <TextView
+            android:id="@+id/tv_house_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/tv_house_recommend"
+            app:layout_constraintRight_toRightOf="@id/tv_house_recommend"
+            app:layout_constraintLeft_toLeftOf="@id/tv_house_recommend"
+            android:layout_marginBottom="5dp"
+            android:textColor="#FFAC00"
+            android:textSize="50sp"
+            android:text="5"
+            />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>

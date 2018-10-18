@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#FFD529</color>
+    <color name="colorPrimaryDark">#FFD529</color>
     <color name="colorAccent">#FF4081</color>
+    
+    <color name="text_one">#6B6B74</color>
+    <color name="hint_color">#C0BFBF</color>
+    <color name="text_two">#9A9AA6</color>
+    <color name="price_color">#FFAC00</color>
+    <color name="btn_bg">#FECB00</color>
+
+    <color name="put_bg_color">#F7F7F7</color>
+    <color name="put_stroke_color">#B7B7B7</color>
 </resources>

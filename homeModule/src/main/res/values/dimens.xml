@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="home_margin">8dp</dimen>
+
+    <dimen name="home_yd_margin">10dp</dimen>
 </resources>

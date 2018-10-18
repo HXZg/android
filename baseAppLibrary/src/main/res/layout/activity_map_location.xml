@@ -81,7 +81,7 @@
             android:layout_gravity="center"
             android:text="确定"
             android:textColor="#fff"
-            android:textSize="@dimen/text_dimen_first"
+            android:textSize="17sp"
             android:background="@drawable/shape_blue_r3"
             android:layout_marginRight="8dp"/>
     </LinearLayout>

@@ -1,9 +1,12 @@
 package com.micropole.homemodule
 
+import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.micropole.baseapplibrary.constants.ARouterConst
+import com.micropole.homemodule.adapter.HomeHouseAdapter
 import com.xx.baseuilibrary.mvp.BaseMvpViewFragment
+import kotlinx.android.synthetic.main.view_home.*
 
 /**
  * @ClassName       HomeFragment
@@ -24,5 +27,7 @@ class HomeFragment  : BaseMvpViewFragment(){
     }
 
     override fun initData() {
+        rv_home_house.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
+        rv_home_house.adapter = HomeHouseAdapter(arrayListOf(Any(), Any(),Any()))
     }
 }
