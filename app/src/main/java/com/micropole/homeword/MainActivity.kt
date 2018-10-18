@@ -1,21 +1,59 @@
 package com.micropole.homeword
 
 import android.content.Intent
+import android.graphics.Color
 import android.support.v4.app.Fragment
 import android.view.KeyEvent
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.ActivityUtils
+import com.micropole.baseapplibrary.R
 import com.micropole.baseapplibrary.activity.BaseNavigationActivity
 import com.micropole.baseapplibrary.constants.ARouterConst
 import com.micropole.baseapplibrary.constants.Constants
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ClipPagerTitleView
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.CommonPagerTitleView
 
 class MainActivity : BaseNavigationActivity() {
 
     override fun getDataSize(): Int = 3
 
     override fun getPagerTitleView(index: Int): net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView {
-        return  ClipPagerTitleView(this)
+        val commonPagerTitleView = CommonPagerTitleView(this)
+        // load custom layout
+        val customLayout = LayoutInflater.from(this).inflate(R.layout.simple_pager_title_layout, null)
+        val titleImg = customLayout.findViewById<View>(R.id.title_img) as ImageView
+        val titleText = customLayout.findViewById<View>(R.id.title_text) as TextView
+        titleImg.setImageResource(R.mipmap.ic_launcher)
+        titleText.text = "title$index"
+        commonPagerTitleView.setContentView(customLayout)
+
+        commonPagerTitleView.onPagerTitleChangeListener = object : CommonPagerTitleView.OnPagerTitleChangeListener {
+
+            override fun onSelected(index: Int, totalCount: Int) {
+                titleImg.isSelected = true
+                titleText.setTextColor(Color.BLACK)
+            }
+
+            override fun onDeselected(index: Int, totalCount: Int) {
+                titleImg.isSelected = false
+                titleText.setTextColor(Color.GRAY)
+            }
+
+            override fun onLeave(index: Int, totalCount: Int, leavePercent: Float, leftToRight: Boolean) {
+            }
+
+            override fun onEnter(index: Int, totalCount: Int, enterPercent: Float, leftToRight: Boolean) {
+            }
+        }
+
+        commonPagerTitleView.setOnClickListener {
+            checkItem(index)
+        }
+
+        return commonPagerTitleView
     }
 
     override fun getFragments(): List<Fragment> {
@@ -26,12 +64,12 @@ class MainActivity : BaseNavigationActivity() {
         return mFragments
     }
 
+
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent) //重新启动 main activity
         val index = intent?.getIntExtra(Constants.MAIN_INDEX_ARG, 0)
         if (index != null) checkItem(index)
     }
-
 
     /**
      * 双击退出APP
