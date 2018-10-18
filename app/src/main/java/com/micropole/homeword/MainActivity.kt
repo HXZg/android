@@ -23,23 +23,23 @@ class MainActivity : BaseNavigationActivity() {
     override fun getPagerTitleView(index: Int): net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView {
         val commonPagerTitleView = CommonPagerTitleView(this)
         // load custom layout
+        val mBottomDrawable = arrayListOf(R.drawable.ic_homepage_n,R.drawable.ic_placeanorder_n,R.drawable.ic_my_n)
+        val mBottomTitle = arrayListOf("首页","订单","个人中心")
         val customLayout = LayoutInflater.from(this).inflate(R.layout.simple_pager_title_layout, null)
         val titleImg = customLayout.findViewById<View>(R.id.title_img) as ImageView
         val titleText = customLayout.findViewById<View>(R.id.title_text) as TextView
-        titleImg.setImageResource(R.mipmap.ic_launcher)
-        titleText.text = "title$index"
+        titleImg.setImageResource(mBottomDrawable[index])
+        titleText.text = mBottomTitle[index]
         commonPagerTitleView.setContentView(customLayout)
 
         commonPagerTitleView.onPagerTitleChangeListener = object : CommonPagerTitleView.OnPagerTitleChangeListener {
 
             override fun onSelected(index: Int, totalCount: Int) {
                 titleImg.isSelected = true
-                titleText.setTextColor(Color.BLACK)
             }
 
             override fun onDeselected(index: Int, totalCount: Int) {
                 titleImg.isSelected = false
-                titleText.setTextColor(Color.GRAY)
             }
 
             override fun onLeave(index: Int, totalCount: Int, leavePercent: Float, leftToRight: Boolean) {

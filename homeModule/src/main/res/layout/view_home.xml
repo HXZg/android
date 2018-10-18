@@ -32,6 +32,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="@dimen/dp_10"
         android:layout_marginLeft="@dimen/dp_14"
+        android:drawableLeft="@drawable/ic_recommend_n"
         android:text="@string/recommended_for_you"
         android:textSize="@dimen/text_first"
         android:textColor="@color/text_one"/>
