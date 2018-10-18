@@ -3,7 +3,17 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:paddingLeft="50dp"
+    android:paddingRight="50dp">
+
+    <com.coorchice.library.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_14"
+        android:text="选择支付方式"
+        android:background="@color/colorPrimary"
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/tv_pay_wx"
@@ -11,12 +21,28 @@
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:padding="@dimen/dp_14"
-        android:text="111"/>
+        android:text="微信支付" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_color"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:padding="@dimen/dp_14"
-        android:text="22"/>
+        android:text="支付宝支付" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_color"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:padding="@dimen/dp_14"
+        android:text="取消" />
 
 </LinearLayout>

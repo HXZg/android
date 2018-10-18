@@ -53,7 +53,7 @@ abstract class BaseNavigationActivity : BaseMvpViewActivity() {
         commonNavigator.isAdjustMode = true
         commonNavigator.adapter = object : CommonNavigatorAdapter() {
             override fun getTitleView(p0: Context?, p1: Int): IPagerTitleView? {
-                return getDefaultPagerTitleView(p1)
+                return getPagerTitleView(index = p1)
             }
 
             override fun getCount(): Int {

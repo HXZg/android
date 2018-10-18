@@ -1,5 +1,6 @@
 package com.micropole.minemodule
 
+import android.util.Log
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.micropole.baseapplibrary.constants.ARouterConst
@@ -21,6 +22,10 @@ class MineFragment : BaseMvpViewFragment() {
     }
 
     override fun initEvent(view: View?) {
+        Log.i("ss","dd")
+
+
+
     }
 
     override fun initData() {
