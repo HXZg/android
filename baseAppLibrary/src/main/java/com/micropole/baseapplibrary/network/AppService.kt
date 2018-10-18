@@ -9,4 +9,5 @@ package com.micropole.baseapplibrary.network
  * @Copyright       Guangzhou micro pole mobile Internet Technology Co., Ltd.
  */
 object AppService {
+
 }
