@@ -5,18 +5,41 @@
     android:layout_height="wrap_content"
     android:gravity="center_horizontal">
 
+    <com.coorchice.library.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_14"
+        android:text="选择支付方式"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"/>
+
     <TextView
         android:id="@+id/tv_pay_wx"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:padding="@dimen/dp_14"
-        android:text="111"/>
+        android:text="111"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:padding="@dimen/dp_14"
-        android:text="22"/>
+        android:text="22"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:padding="@dimen/dp_14"
+        android:text="取消"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"/>
 
 </LinearLayout>
