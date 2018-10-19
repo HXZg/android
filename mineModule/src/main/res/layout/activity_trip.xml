@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.TripActivity"
+    android:orientation="vertical">
+    <include layout="@layout/bar_title"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_yellowa">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="剩余"
+            android:textSize="15sp"
+            android:textColor="@color/title_color"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥"
+                android:textSize="20sp"
+                android:textColor="@color/title_color"
+               />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="300"
+                android:textSize="54sp"
+                android:textColor="@color/title_color"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="42dp"
+        android:layout_gravity="center_horizontal">
+        <TextView
+            android:id="@+id/tv_ming"
+            android:layout_width="132dp"
+            android:layout_height="47dp"
+            android:text="查看明细"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/bg_trip_ming"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/tv_invite"
+            android:layout_width="132dp"
+            android:layout_height="47dp"
+            android:text="邀请好友"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/bg_trip_invite"
+            android:gravity="center"
+            android:layout_marginLeft="32dp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

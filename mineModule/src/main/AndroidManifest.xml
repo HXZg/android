@@ -3,6 +3,16 @@
     package="com.micropole.minemodule">
 
     <application>
+        <activity android:name=".activity.TripActivity" />
+        <activity android:name=".activity.TripIntraActivity" />
+        <activity android:name=".activity.InviteActivity" />
+        <activity android:name=".activity.HouseOwnerActivity" />
+        <activity android:name=".activity.NoteActivity" />
+        <activity android:name=".activity.ZhimaActivity" />
+        <activity android:name=".activity.CrediSuccessfulActivity" />
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.SettingPhoneActivity"></activity>
+        <activity android:name=".activity.SettingPWActivity"></activity>
     </application>
 
 </manifest>

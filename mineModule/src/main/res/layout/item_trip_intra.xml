@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="65dp">
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/back_707070"
+        android:text="邀请好友奖励"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="15dp"/>
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/back_707070"
+        android:layout_below="@+id/tv_name"
+        android:text="2018-10-12 12:11"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="15dp"/>
+    <TextView
+        android:id="@+id/tv_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/red_FF4E2B"
+        android:layout_alignParentRight="true"
+        android:text="+20元"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="15dp"
+        android:layout_centerVertical="true"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="#eeeeee"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"/>
+
+</RelativeLayout>

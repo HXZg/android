@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.NoteActivity"
+    android:orientation="vertical">
+    <include layout="@layout/bar_title"/>
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="340dp"
+        app:cardCornerRadius="8dp"
+        android:layout_margin="15dp">
+        <TextView
+            android:id="@+id/tv_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="19dp"
+            android:text="这里是富文本"
+            android:textColor="#6B6B74"
+            android:textSize="@dimen/sp_16"/>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
