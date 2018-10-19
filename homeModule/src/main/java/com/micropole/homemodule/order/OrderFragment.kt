@@ -1,10 +1,12 @@
 package com.micropole.homemodule.order
 
+import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.micropole.baseapplibrary.constants.ARouterConst
 import com.micropole.homemodule.R
+import com.micropole.homemodule.adapter.OrderItemAdapter
 import com.xx.baseuilibrary.mvp.BaseMvpViewFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_order.*
@@ -32,6 +34,8 @@ class OrderFragment  : BaseMvpViewFragment(){
     }
 
     override fun initData() {
-
+        tv_order_all.isSelected = true
+        rv_order.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
+        rv_order.adapter = OrderItemAdapter(arrayListOf(Any(), Any(), Any(), Any(), Any()))
     }
 }

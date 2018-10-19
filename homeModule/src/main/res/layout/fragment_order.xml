@@ -1,18 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="order!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:background="@color/colorPrimary">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="@dimen/title_sp"
+            android:textColor="@color/title_color"
+            android:text="订单"/>
+    </FrameLayout>
 
-</android.support.constraint.ConstraintLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/view_error"/>
+        <include layout="@layout/view_loading"/>
+        <include layout="@layout/view_check_net"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:paddingHorizontal="@dimen/dp_14"
+            android:paddingTop="@dimen/dp_14"
+            android:background="#FFD529">
+
+            <TextView
+                android:id="@+id/tv_order_all"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="@dimen/order_txt_size"
+                android:textColor="@color/select_white_black_txt"
+                android:text="@string/order_all_txt"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="@dimen/order_txt_size"
+                android:textColor="@color/select_white_black_txt"
+                android:text="@string/order_confirm_txt"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="@dimen/order_txt_size"
+                android:textColor="@color/select_white_black_txt"
+                android:text="@string/order_reservation_txt"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="@dimen/order_txt_size"
+                android:textColor="@color/select_white_black_txt"
+                android:text="@string/order_evaluation_txt"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="@dimen/order_txt_size"
+                android:textColor="@color/select_white_black_txt"
+                android:text="@string/order_cancel_txt"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="@dimen/order_txt_size"
+                android:textColor="@color/select_white_black_txt"
+                android:text="@string/order_refund_txt"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="@dimen/order_txt_size"
+                android:textColor="@color/select_white_black_txt"
+                android:text="@string/order_complete_txt"/>
+        </LinearLayout>
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_40">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_order"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/dp_14"
+                android:paddingRight="@dimen/dp_14"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

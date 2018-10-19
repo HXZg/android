@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f7f7f7"
+    android:padding="@dimen/dp_14">
+
+    <TextView
+        android:id="@+id/tv_landlord_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_first"
+        android:textColor="@color/text_one"
+        android:drawableLeft="@drawable/ic_message_n"
+        android:text="房东寄语"
+        android:drawablePadding="@dimen/dp_4"/>
+
+    <ImageView
+        android:id="@+id/iv_landlord_img"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_landlord_title"
+        app:layout_constraintRight_toLeftOf="@id/tv_landlord_name"
+        app:layout_constraintLeft_toRightOf="@id/tv_landlord_title"
+        android:layout_marginTop="@dimen/dp_14"
+        android:src="@color/colorAccent"/>
+    <TextView
+        android:id="@+id/tv_landlord_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/iv_landlord_img"
+        app:layout_constraintLeft_toRightOf="@id/iv_landlord_img"
+        android:textSize="@dimen/text_second"
+        android:textColor="@color/text_black"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="贝克汉姆"/>
+    <TextView
+        android:id="@+id/tv_landlord_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/iv_landlord_img"
+        app:layout_constraintLeft_toLeftOf="@id/tv_landlord_name"
+        android:textSize="@dimen/order_txt_size"
+        android:textColor="@color/text_black"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:text="17665000000"/>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardUseCompatPadding="true"
+        app:cardPreventCornerOverlap="false"
+        android:background="#fff"
+        app:layout_constraintTop_toBottomOf="@id/iv_landlord_img"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_10">
+        <TextView
+            android:id="@+id/tv_landlord_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/order_txt_size"
+            android:textColor="@color/text_one"
+            android:text="“大家好！我是大卫，希望大家喜欢我的房子”"
+            android:padding="@dimen/dp_14"/>
+    </android.support.v7.widget.CardView>
+
+
+</android.support.constraint.ConstraintLayout>

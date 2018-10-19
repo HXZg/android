@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    app:cardUseCompatPadding="true"
+    app:cardPreventCornerOverlap="false">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_14"
+        android:background="#fff">
+        <TextView
+            android:id="@+id/tv_detail_ev_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_first"
+            android:textColor="@color/text_one"
+            android:text="住客评价"
+            android:drawableLeft="@drawable/ic_evaluate_n"
+            android:drawablePadding="@dimen/dp_4"
+            />
+        <TextView
+            android:id="@+id/tv_detail_ev_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            android:drawableRight="@drawable/home_rightn_n"
+            android:drawablePadding="@dimen/dp_10"
+            android:textColor="@color/price_color"
+            android:textSize="@dimen/text_second"
+            android:text="120条评论"/>
+        <TextView
+            android:id="@+id/tv_detail_ev_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_detail_ev_title"
+            android:textColor="@color/price_color"
+            android:textSize="50sp"
+            android:text="5.0"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_detail_ev_score"
+            app:layout_constraintLeft_toRightOf="@id/tv_detail_ev_score"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:textColor="@color/price_color"
+            android:textSize="@dimen/text_second"
+            android:text="值得推荐"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_detail_ev_score"
+            android:textSize="@dimen/text_second"
+            android:textColor="@color/text_two"
+            android:paddingBottom="@dimen/dp_10"
+            android:text="服务5.0  设施5.0 位置5.0 卫生5.0"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.v7.widget.CardView>

@@ -30,7 +30,7 @@ open class BaseApplication : MultiDexApplication() {
         Stetho.initializeWithDefaults(this)
         LocationManagerUtil.getInstance().init(this)
 
-        UMInit()
+//        UMInit()
     }
 
     private fun UMInit() {

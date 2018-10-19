@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.bigkoo.convenientbanner.ConvenientBanner
@@ -19,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/cb_home"
-        android:layout_marginTop="@dimen/dp_14"
+        android:layout_marginTop="@dimen/dp_10"
         android:layout_marginLeft="@dimen/dp_14"
         android:layout_marginRight="@dimen/dp_14"
         layout="@layout/view_home_yd"/>
@@ -33,6 +34,7 @@
         android:layout_marginTop="@dimen/dp_10"
         android:layout_marginLeft="@dimen/dp_14"
         android:drawableLeft="@drawable/ic_recommend_n"
+        android:drawablePadding="5dp"
         android:text="@string/recommended_for_you"
         android:textSize="@dimen/text_first"
         android:textColor="@color/text_one"/>

@@ -21,9 +21,31 @@ android {
                 GAODE_AMAPKEY: "a4d4d58a6987477f9e953a1836a833e6",//高德地图 keybc1bdfc95d5e0753c2d11c47982412ee
         ]
     }
+    signingConfigs {
+        release {
+            keyAlias 'micro pole td'
+            keyPassword 'android'
+            storeFile file('MicroPoleTD.jks')
+            storePassword 'android'
+        }
+        debug  {
+            keyAlias 'micro pole td'
+            keyPassword 'android'
+            storeFile file('MicroPoleTD.jks')
+            storePassword 'android'
+        }
+    }
+
+
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

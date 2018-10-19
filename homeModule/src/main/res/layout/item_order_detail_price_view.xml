@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="@dimen/dp_10">
+        <TextView
+            android:id="@+id/tv_price_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/text_three"
+            android:textSize="@dimen/txt_15sp"
+            android:text="房费"/>
+        <com.coorchice.library.SuperTextView
+            android:id="@+id/stv_zmm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:solid="#FFD529"
+            app:corner="5dp"
+            android:textSize="@dimen/text_third"
+            android:textColor="@color/colorWhite"
+            android:text="芝麻信用免押金"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/tv_price_t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_three"
+            android:textSize="@dimen/txt_15sp"
+            android:text="280元"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_gravity="center_vertical"/>
+        <ImageView
+            android:id="@+id/iv_slide_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/select_slide_btn"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_color" />
+
+</LinearLayout>

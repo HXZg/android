@@ -24,6 +24,7 @@ class MainActivity : BaseNavigationActivity() {
         val commonPagerTitleView = CommonPagerTitleView(this)
         // load custom layout
         val mBottomDrawable = arrayListOf(R.drawable.ic_homepage_n,R.drawable.ic_placeanorder_n,R.drawable.ic_my_n)
+        val mBottomDrawables = arrayListOf(R.drawable.ic_homepage_s,R.drawable.ic_placeanorder_s,R.drawable.ic_my_s)
         val mBottomTitle = arrayListOf("首页","订单","个人中心")
         val customLayout = LayoutInflater.from(this).inflate(R.layout.simple_pager_title_layout, null)
         val titleImg = customLayout.findViewById<View>(R.id.title_img) as ImageView
@@ -35,11 +36,11 @@ class MainActivity : BaseNavigationActivity() {
         commonPagerTitleView.onPagerTitleChangeListener = object : CommonPagerTitleView.OnPagerTitleChangeListener {
 
             override fun onSelected(index: Int, totalCount: Int) {
-                titleImg.isSelected = true
+                titleImg.setImageResource(mBottomDrawables[index])
             }
 
             override fun onDeselected(index: Int, totalCount: Int) {
-                titleImg.isSelected = false
+                titleImg.setImageResource(mBottomDrawable[index])
             }
 
             override fun onLeave(index: Int, totalCount: Int, leavePercent: Float, leftToRight: Boolean) {

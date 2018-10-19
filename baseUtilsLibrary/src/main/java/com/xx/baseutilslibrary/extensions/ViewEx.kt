@@ -22,7 +22,7 @@ import com.xx.baseutilslibrary.network.retrofit.Retrofit2Manager
 /**
  * 加载图片
  */
-fun ImageView.loadImag( url: String, tran: BitmapTransformation? = null, plach: Int = 0, error: Int = 0) {
+fun ImageView.loadImag( url: String, tran: BitmapTransformation? = null, plach: Int = 0, error: Int = 0,isCircle : Boolean = false,radio : Int = 0) {
     var urltemp=url
     if (url.length>1&&url[0].equals('/')) {
         urltemp=Retrofit2Manager.instance.apiConfigProvider?.debugHost+url
@@ -31,6 +31,8 @@ fun ImageView.loadImag( url: String, tran: BitmapTransformation? = null, plach: 
         if (tran != null) it.transform(tran)
         if (plach != 0) it.placeholder(plach)
         if (error != 0) it.error(error)
+        if (isCircle) it.circleCrop()
+//        if (radio != 0) it.transform()
     }
     Glide.with(this.context).applyDefaultRequestOptions(options).load(urltemp).into(this)
     /*Glide.with(this.context).load(urltemp).also {

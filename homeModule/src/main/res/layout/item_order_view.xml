@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    app:cardUseCompatPadding="true"
+    app:cardPreventCornerOverlap="false"
+    android:layout_marginTop="@dimen/dp_10">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/dp_14"
+        android:paddingLeft="@dimen/dp_14"
+        android:paddingRight="@dimen/dp_10">
+
+        <ImageView
+            android:id="@+id/iv_order_img"
+            android:layout_width="91dp"
+            android:layout_height="91dp"
+            android:background="@color/colorAccent"/>
+
+        <TextView
+            android:id="@+id/tv_order_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="@dimen/dp_10"
+            app:layout_constraintLeft_toRightOf="@id/iv_order_img"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textSize="@dimen/order_txt_size"
+            android:textColor="@color/text_one"
+            android:text="【琶洲会展】近珠江新城/太古汇北欧风三居"
+            />
+        <TextView
+            android:id="@+id/tv_evaluation_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@id/tv_order_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_name"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="10月10日 - 10月11日 共 1 晚"
+            android:textSize="@dimen/order_txt_size"
+            android:textColor="@color/text_two"
+            />
+        <TextView
+            android:id="@+id/tv_order_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/iv_order_img"
+            app:layout_constraintLeft_toLeftOf="@id/tv_order_name"
+            android:textColor="@color/price_color"
+            android:textSize="@dimen/order_txt_size"
+            android:text="¥365"/>
+        <TextView
+            android:id="@+id/tv_order_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/iv_order_img"
+            app:layout_constraintRight_toRightOf="@id/tv_order_name"
+            android:textSize="@dimen/order_txt_size"
+            android:textColor="@color/price_color"
+            android:text="待确认"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>

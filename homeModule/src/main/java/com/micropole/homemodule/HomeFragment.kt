@@ -29,5 +29,6 @@ class HomeFragment  : BaseMvpViewFragment(){
     override fun initData() {
         rv_home_house.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
         rv_home_house.adapter = HomeHouseAdapter(arrayListOf(Any(), Any(),Any()))
+        rv_home_house.isNestedScrollingEnabled = false
     }
 }

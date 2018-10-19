@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/colorPrimary">
+        <ImageView
+            android:id="@+id/ib_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home_left_n"
+            android:layout_gravity="center_vertical"
+            android:padding="@dimen/dp_10"/>
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/title_sp"
+            android:textColor="@color/title_color"
+            android:layout_gravity="center"
+            android:text="订单详情"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/view_loading"/>
+        <include layout="@layout/view_check_net"/>
+        <include layout="@layout/view_error"/>
+        <LinearLayout
+            android:id="@+id/view_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#f7f7f7">
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="@dimen/dp_14"
+                    android:paddingVertical="@dimen/dp_14">
+                    <ImageView
+                        android:id="@+id/iv_evaluation_img"
+                        android:layout_width="91dp"
+                        android:layout_height="91dp"
+                        android:background="@color/colorAccent"/>
+                    <TextView
+                        android:id="@+id/tv_evaluation_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:maxLines="2"
+                        android:layout_marginTop="@dimen/dp_14"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        app:layout_constraintLeft_toRightOf="@id/iv_evaluation_img"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:textSize="@dimen/order_txt_size"
+                        android:textColor="@color/text_one"
+                        android:text="【琶洲会展】近珠江新城/太古汇北欧风三居"
+                        />
+                    <TextView
+                        android:id="@+id/tv_evaluation_time"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_evaluation_name"
+                        app:layout_constraintTop_toBottomOf="@id/tv_evaluation_name"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:text="10月10日 - 10月11日 共 1 晚"
+                        android:textSize="@dimen/order_txt_size"
+                        android:textColor="@color/text_two"
+                        />
+
+                    <include
+                        android:id="@+id/view_order_msg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/iv_evaluation_img"
+                        android:layout_marginTop="@dimen/dp_10"
+                        layout="@layout/view_order_msg"/>
+
+                    <include
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/view_order_msg"
+                        android:layout_marginTop="@dimen/dp_10"
+                        layout="@layout/view_order_detail_priced"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.v4.widget.NestedScrollView>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/activity_bottom_height"
+                android:background="@color/colorWhite">
+                <TextView
+                    android:id="@+id/tv_order_detail_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/red_price_color"
+                    android:textSize="@dimen/text_first"
+                    android:text="合计 ¥ 365"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dp_14"/>
+                <com.coorchice.library.SuperTextView
+                    android:id="@+id/stv_order_detail_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center_vertical"
+                    android:textSize="@dimen/text_second"
+                    android:textColor="@color/text_black"
+                    app:solid="@color/btn_bg"
+                    app:corner="19dp"
+                    android:text="提交订单"
+                    android:paddingVertical="@dimen/dp_10"
+                    android:paddingHorizontal="20dp"
+                    android:layout_marginRight="@dimen/dp_14"/>
+            </FrameLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

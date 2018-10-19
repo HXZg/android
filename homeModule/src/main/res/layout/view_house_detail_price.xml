@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    app:cardUseCompatPadding="true"
+    app:cardPreventCornerOverlap="false"
+    android:background="#fff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_14">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_first"
+            android:textColor="@color/text_one"
+            android:drawableLeft="@drawable/ic_price_n"
+            android:text="其他价格"
+            android:drawablePadding="@dimen/dp_4"/>
+        <TextView
+            android:id="@+id/tv_detail_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:textSize="@dimen/order_txt_size"
+            android:textColor="@color/text_one"
+            android:text="清洁费：50元\n额外房客：每 1 位增加 100 元"
+            android:lineSpacingExtra="@dimen/dp_4"
+            android:paddingBottom="@dimen/dp_10"/>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

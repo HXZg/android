@@ -17,7 +17,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintDimensionRatio="H,2:1"
             android:background="@color/colorAccent" />
         <TextView
             android:id="@+id/tv_house_name"
@@ -30,7 +30,7 @@
             android:textSize="@dimen/text_second"
             android:textColor="@color/text_one"
             android:text="【琶洲会展】近珠江新城/太古汇北欧风三居"
-            />
+        />
         <TextView
             android:id="@+id/tv_house_address"
             android:layout_width="wrap_content"

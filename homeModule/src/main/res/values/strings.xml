@@ -9,4 +9,15 @@
     <string name="search_txt">搜索</string>
     
     <string name="recommended_for_you">为您推荐</string>
+    
+    <!--订单-->
+    <string name="order_all_txt">全部</string>
+    <string name="order_confirm_txt">待确认</string>
+    <string name="order_reservation_txt">已预订</string>
+    <string name="order_evaluation_txt">待评价</string>
+    <string name="order_cancel_txt">已取消</string>
+    <string name="order_refund_txt">退款中</string>
+    <string name="order_complete_txt">已完成</string>
+
+
 </resources>
