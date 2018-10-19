@@ -5,4 +5,10 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="title_color">#37373D</color>
+
+     <color name="back_707070">#707070</color>
+    <color name="back_B7B7B7">#B7B7B7</color>
+   <color name="red_FF4E2B">#FF4E2B</color>
+
+
 </resources>
