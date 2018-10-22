@@ -7,6 +7,8 @@ import com.facebook.stetho.Stetho
 import com.micropole.baseapplibrary.util.LocationManagerUtil
 import com.umeng.commonsdk.UMConfigure
 import com.umeng.socialize.PlatformConfig
+import com.xx.baseutilslibrary.network.provider.XxApiConfigProvider
+import com.xx.baseutilslibrary.network.retrofit.Retrofit2Manager
 
 //import com.alibaba.android.arouter.launcher.ARouter
 
@@ -31,6 +33,16 @@ open class BaseApplication : MultiDexApplication() {
         LocationManagerUtil.getInstance().init(this)
 
 //        UMInit()
+
+        Retrofit2Manager.instance.apiConfigProvider = object : XxApiConfigProvider {
+            override fun getReleaseHost(): String = BuildConfig.RELEASE_DOMAIN
+
+            override fun getDebugHost(): String = BuildConfig.DEV_DOMAIN
+
+            override fun getApiRelativePath(): String = "/api/"
+
+            override fun isDebug(): Boolean = false
+        }
     }
 
     private fun UMInit() {

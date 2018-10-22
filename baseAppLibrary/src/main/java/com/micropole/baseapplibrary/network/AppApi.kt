@@ -17,12 +17,18 @@ import retrofit2.Retrofit
  */
 class AppApi {
 
-
-    private var api: AppService? = null
+    private var mAny : Any? = null
     private var mApiSign: String? = null
 
-    fun Api(): AppService {
-        if (api == null) {
+    inline fun<reified T> Api(): T {
+            retrofitInit()
+        return Retrofit2Manager
+                .instance
+                .createApi(T::class.java!!)
+    }
+
+    fun retrofitInit(){
+        if (mAny == null) {
             val okHttpClient = Retrofit2Manager
                     .instance
                     .okHttpClient!!
@@ -61,11 +67,8 @@ class AppApi {
 
             Retrofit2Manager.instance.retrofit = retrofit
 
-            api = Retrofit2Manager
-                    .instance
-                    .createApi(AppService::class.java!!)
+            mAny = Any()
         }
-        return api!!
     }
 
     /* public static String getApiSignHeader() {
@@ -83,7 +86,7 @@ class AppApi {
      * 置空,使下次请求时重新获取配置
      */
     fun resetApi() {
-        api = null
+        mAny = null
     }
 
 }

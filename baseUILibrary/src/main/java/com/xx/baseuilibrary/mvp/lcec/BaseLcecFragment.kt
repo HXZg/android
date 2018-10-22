@@ -120,7 +120,7 @@ abstract class BaseLcecFragment<ContentView : View, Data> : BaseMvpViewFragment(
     /**
      * 显示加载中布局
      */
-    private fun showLoading() {
+    protected fun showLoading() {
         showView(viewLoading)
     }
 

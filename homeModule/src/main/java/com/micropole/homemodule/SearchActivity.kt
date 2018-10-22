@@ -22,7 +22,6 @@ class SearchActivity : BaseMvpViewActivity() {
 
     override fun initData() {
         recyclerView.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
-        recyclerView.adapter = HomeHouseAdapter(arrayListOf(Any(), Any(),Any()))
 
         clickSort(tv_search_distance)
     }

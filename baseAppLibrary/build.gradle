@@ -12,6 +12,12 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        buildConfigField "boolean", "IS_DEV", "false"
+
+        buildConfigField "String", "DEV_DOMAIN", "\"http://jiatianxia.goodbooy.cn\""
+
+        buildConfigField "String", "RELEASE_DOMAIN", "\"http://jiatianxia.goodbooy.cn\""
+
     }
 
     buildTypes {

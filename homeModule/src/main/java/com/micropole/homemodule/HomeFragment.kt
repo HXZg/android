@@ -5,11 +5,15 @@ import android.view.View
 import cn.qqtheme.framework.picker.DatePicker
 import cn.qqtheme.framework.picker.DateTimePicker
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.alibaba.android.arouter.launcher.ARouter
+import com.bigkoo.convenientbanner.ConvenientBanner
 import com.flyco.dialog.widget.ActionSheetDialog
 import com.micropole.baseapplibrary.constants.ARouterConst
 import com.micropole.homemodule.adapter.HomeHouseAdapter
-import com.xx.baseuilibrary.mvp.BaseMvpViewFragment
+import com.micropole.homemodule.entity.HomeBean
+import com.micropole.homemodule.mvp.constract.HomeConstract
+import com.micropole.homemodule.mvp.present.HomePresent
+import com.micropole.homemodule.util.ImageHolderView
+import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecFragment
 import kotlinx.android.synthetic.main.view_home.*
 import kotlinx.android.synthetic.main.view_home_yd.*
 import java.util.*
@@ -23,13 +27,16 @@ import java.util.*
  * @Copyright       Guangzhou micro pole mobile Internet Technology Co., Ltd.
  */
 @Route(path = ARouterConst.Home.HOME_FRAGMENT)
-class HomeFragment  : BaseMvpViewFragment(){
-    val homeHouseAdapter = HomeHouseAdapter(arrayListOf(Any(), Any(), Any()))
+class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,HomeConstract.View,HomeConstract.Present>(),HomeConstract.View{
+    override fun createPresenter(): HomeConstract.Present = HomePresent()
+
+    override fun loadData(refresh: Boolean) {
+        presenter.getHomeData()
+    }
+
+    val homeHouseAdapter = HomeHouseAdapter()
 
     override fun getFragmentLayoutId(): Int = R.layout.fragment_home
-
-    override fun initView(view: View?) {
-    }
 
     override fun initEvent(view: View?) {
         homeHouseAdapter.setOnItemClickListener { adapter, view, position ->
@@ -37,14 +44,40 @@ class HomeFragment  : BaseMvpViewFragment(){
         }
 
         stv_home_search.setOnClickListener {
-            startActivity(SearchActivity::class.java)
+            getPNum(100)
+            //startActivity(SearchActivity::class.java)
         }
     }
 
     override fun initData() {
+        showLoading()
         rv_home_house.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
         rv_home_house.adapter = homeHouseAdapter
         rv_home_house.isNestedScrollingEnabled = false
+
+        presenter.getHomeData()
+    }
+
+    override fun setData(data: HomeBean?) {
+        if (data != null){
+            showContent()
+            if (data.adve.isNotEmpty()){
+                var mAdves = arrayListOf<String>()
+                for (i in data.adve.indices){
+                    mAdves.add(data.adve[i].ad_img)
+                }
+                (cb_home as ConvenientBanner<String>).setPages( { ImageHolderView() } , mAdves)
+                        ?.setPageIndicator(intArrayOf(R.drawable.shape_indicator_gray,R.drawable.shape_indicator_red))
+                        ?.setPointViewVisible(true)
+                        ?.setOnItemClickListener {
+                            /*activity?.bannerStart(data[position])*/
+                        }
+            }
+
+            if (data.project.isNotEmpty()){
+                homeHouseAdapter.setNewData(data.project)
+            }
+        }
     }
 
     //时间选择器
