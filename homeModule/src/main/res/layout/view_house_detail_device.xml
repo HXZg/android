@@ -14,6 +14,7 @@
         android:orientation="vertical"
         android:paddingTop="@dimen/dp_14"
         android:paddingLeft="@dimen/dp_14"
+        android:paddingRight="@dimen/dp_10"
         android:paddingBottom="@dimen/dp_10"
         >
         <TextView
