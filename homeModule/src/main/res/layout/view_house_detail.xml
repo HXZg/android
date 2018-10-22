@@ -14,55 +14,52 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintDimensionRatio="H,16:9"
         android:background="@color/colorAccent" />
-
-    <TextView
-        android:id="@+id/tv_house_detail_name"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/ll_msg"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_14"
-        android:paddingRight="@dimen/dp_14"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp_14"
         android:layout_marginTop="@dimen/dp_10"
         app:layout_constraintTop_toBottomOf="@id/cb_house_img"
-        android:textSize="@dimen/text_second"
-        android:textColor="@color/text_one"
-        android:text="【琶洲会展】近珠江新城/太古汇北欧风三居"
-        />
-    <TextView
-        android:id="@+id/tv_house_detail_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_10"
-        app:layout_constraintTop_toBottomOf="@id/tv_house_detail_name"
-        app:layout_constraintLeft_toLeftOf="@id/tv_house_detail_name"
-        android:textSize="@dimen/text_second"
-        android:textColor="@color/text_two"
-        android:text="广州市天河区珠江新城华夏路16号"/>
-    <TextView
-        android:id="@+id/tv_house_detail_des"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_house_detail_address"
-        app:layout_constraintLeft_toLeftOf="@id/tv_house_detail_address"
-        android:layout_marginTop="@dimen/dp_10"
-        android:textSize="@dimen/text_second"
-        android:textColor="@color/text_two"
-        android:text="距离100米  一房一厅  北欧风格"/>
+        app:layout_constraintRight_toLeftOf="@id/iv_right"
+        app:layout_constraintLeft_toLeftOf="parent">
+        <TextView
+            android:id="@+id/tv_house_detail_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/dp_14"
+            android:textSize="@dimen/text_second"
+            android:textColor="@color/text_one"
+            android:text="【琶洲会展】近珠江新城/太古汇北欧风三居"
+            />
+        <TextView
+            android:id="@+id/tv_house_detail_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:textSize="@dimen/text_second"
+            android:textColor="@color/text_two"
+            android:text="广州市天河区珠江新城华夏路16号"/>
+        <TextView
+            android:id="@+id/tv_house_detail_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:textSize="@dimen/text_second"
+            android:textColor="@color/text_two"
+            android:text="距离100米  一房一厅  北欧风格"/>
+    </LinearLayout>
     <ImageView
         android:id="@+id/iv_right"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="@dimen/dp_14"
+        android:paddingRight="@dimen/dp_14"
         android:src="@drawable/home_right_n"
-        app:layout_constraintBottom_toBottomOf="@id/tv_house_detail_des"
-        app:layout_constraintTop_toBottomOf="@id/cb_house_img"/>
-
-    <android.support.constraint.Group
-        android:id="@+id/group_des"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="tv_house_detail_name,tv_house_detail_address,
-tv_house_detail_des,iv_right" />
+        app:layout_constraintBottom_toBottomOf="@id/ll_msg"
+        app:layout_constraintTop_toBottomOf="@id/cb_house_img"
+        />
 
     <TextView
         android:id="@+id/tv_settled_detail"
@@ -71,7 +68,7 @@ tv_house_detail_des,iv_right" />
         android:textSize="@dimen/text_second"
         android:textColor="@color/text_one"
         android:text="@string/home_settled"
-        app:layout_constraintTop_toBottomOf="@id/tv_house_detail_des"
+        app:layout_constraintTop_toBottomOf="@id/ll_msg"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/tv_leave_detail"
         android:layout_marginTop="@dimen/dp_10"

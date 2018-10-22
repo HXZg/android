@@ -4,7 +4,7 @@ import com.xx.baseuilibrary.mvp.BaseMvpViewActivity
 
 /**
  * @ClassName       EvaluationActivity
- * @Description     todo
+ * @Description     评价
  * @Author          HuaiXianZhong
  * @Sign            。。。
  * @Date            2018/10/19 18:04

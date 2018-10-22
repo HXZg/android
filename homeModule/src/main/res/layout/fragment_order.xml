@@ -39,51 +39,65 @@
                 android:layout_weight="1"
                 android:textSize="@dimen/order_txt_size"
                 android:textColor="@color/select_white_black_txt"
-                android:text="@string/order_all_txt"/>
+                android:text="@string/order_all_txt"
+                android:gravity="right"/>
             <TextView
+                android:id="@+id/tv_order_confirm"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="@dimen/order_txt_size"
                 android:textColor="@color/select_white_black_txt"
-                android:text="@string/order_confirm_txt"/>
+                android:text="@string/order_confirm_txt"
+                android:gravity="right"/>
             <TextView
+                android:id="@+id/tv_order_reservation"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="@dimen/order_txt_size"
                 android:textColor="@color/select_white_black_txt"
-                android:text="@string/order_reservation_txt"/>
+                android:text="@string/order_reservation_txt"
+                android:gravity="right"/>
             <TextView
+                android:id="@+id/tv_order_evaluation"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="@dimen/order_txt_size"
                 android:textColor="@color/select_white_black_txt"
-                android:text="@string/order_evaluation_txt"/>
+                android:text="@string/order_evaluation_txt"
+                android:gravity="right"/>
             <TextView
+                android:id="@+id/tv_order_cancel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="@dimen/order_txt_size"
                 android:textColor="@color/select_white_black_txt"
-                android:text="@string/order_cancel_txt"/>
+                android:text="@string/order_cancel_txt"
+                android:gravity="right"/>
             <TextView
+                android:id="@+id/tv_order_refund"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="@dimen/order_txt_size"
                 android:textColor="@color/select_white_black_txt"
-                android:text="@string/order_refund_txt"/>
+                android:text="@string/order_refund_txt"
+                android:gravity="right"/>
             <TextView
+                android:id="@+id/tv_order_complete"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="@dimen/order_txt_size"
                 android:textColor="@color/select_white_black_txt"
-                android:text="@string/order_complete_txt"/>
+                android:text="@string/order_complete_txt"
+                android:gravity="right"/>
         </LinearLayout>
         <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/dp_40">

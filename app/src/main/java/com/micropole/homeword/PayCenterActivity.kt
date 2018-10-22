@@ -25,7 +25,15 @@ class PayCenterActivity : BaseMvpViewActivity(){
     }
 
     override fun initEvent() {
-        tv_pay_wx.setOnClickListener { finish() }
+        tv_pay_wx.setOnClickListener {
+            setResult(0x11)
+            finish()
+        }
+        tv_pay_ali.setOnClickListener {
+            setResult(0x11)
+            finish()
+        }
+        fl_cancel.setOnClickListener { finish() }
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {

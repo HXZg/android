@@ -37,31 +37,98 @@
             android:layout_marginLeft="@dimen/dp_14"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/dp_4"
+            app:layout_constraintBottom_toBottomOf="@id/fl_search_type"
             android:textSize="@dimen/txt_15sp"
             android:textColor="@color/text_black"
             android:text="距离"/>
+        <ImageView
+            android:id="@+id/iv_distance_upper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/select_upper"
+            app:layout_constraintLeft_toRightOf="@id/tv_search_distance"
+            app:layout_constraintTop_toTopOf="@id/tv_search_distance"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="@dimen/dp_4"/>
+        <ImageView
+            android:id="@+id/iv_distance_lower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/select_lower"
+            app:layout_constraintLeft_toLeftOf="@id/iv_distance_upper"
+            app:layout_constraintTop_toBottomOf="@id/iv_distance_upper"
+            android:layout_marginTop="2dp"/>
+        <android.support.constraint.Group
+            android:id="@+id/distance_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="iv_distance_upper,iv_distance_lower"/>
         <TextView
             android:id="@+id/tv_search_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toRightOf="@id/tv_search_distance"
+            app:layout_constraintLeft_toRightOf="@id/iv_distance_upper"
             app:layout_constraintTop_toTopOf="@id/tv_search_distance"
             android:layout_marginLeft="@dimen/dp_14"
             android:textSize="@dimen/txt_15sp"
             android:textColor="@color/text_black"
             android:text="价格"/>
+        <ImageView
+            android:id="@+id/iv_price_upper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/select_upper"
+            app:layout_constraintLeft_toRightOf="@id/tv_search_price"
+            app:layout_constraintTop_toTopOf="@id/tv_search_price"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="@dimen/dp_4"/>
+        <ImageView
+            android:id="@+id/iv_price_lower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/select_lower"
+            app:layout_constraintLeft_toLeftOf="@id/iv_price_upper"
+            app:layout_constraintTop_toBottomOf="@id/iv_price_upper"
+            android:layout_marginTop="2dp"/>
+        <android.support.constraint.Group
+            android:id="@+id/price_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="iv_price_upper,iv_price_lower"/>
         <TextView
             android:id="@+id/tv_search_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toRightOf="@id/tv_search_price"
+            app:layout_constraintLeft_toRightOf="@id/iv_price_lower"
             app:layout_constraintTop_toTopOf="@id/tv_search_distance"
             android:layout_marginLeft="@dimen/dp_14"
             android:textSize="@dimen/txt_15sp"
             android:textColor="@color/text_black"
             android:text="评级"/>
+        <ImageView
+            android:id="@+id/iv_score_upper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/select_upper"
+            app:layout_constraintLeft_toRightOf="@id/tv_search_score"
+            app:layout_constraintTop_toTopOf="@id/tv_search_score"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="@dimen/dp_4"/>
+        <ImageView
+            android:id="@+id/iv_score_lower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/select_lower"
+            app:layout_constraintLeft_toLeftOf="@id/iv_score_upper"
+            app:layout_constraintTop_toBottomOf="@id/iv_score_upper"
+            android:layout_marginTop="2dp"/>
+        <android.support.constraint.Group
+            android:id="@+id/score_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="iv_score_upper,iv_price_lower"/>
         <FrameLayout
+            android:id="@+id/fl_search_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_white_black_bg"
@@ -74,6 +141,9 @@
                 android:textSize="@dimen/text_second"
                 android:textColor="@color/hint_color"
                 android:text="北欧风格"
+                android:drawableRight="@drawable/home_lower_n"
+                android:drawablePadding="@dimen/dp_10"
+                android:gravity="center_vertical"
                 android:paddingVertical="5dp"
                 android:paddingHorizontal="@dimen/dp_14"/>
         </FrameLayout>

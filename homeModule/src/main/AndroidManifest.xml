@@ -3,6 +3,16 @@
     package="com.micropole.homemodule">
 
     <application>
+        <activity android:name=".HouseDetailActivity"/>
+        <activity android:name=".CommitSucActivity"/>
+        <activity android:name=".EvaluationActivity"/>
+        <activity android:name=".EvaluationListActivity"/>
+        <activity android:name=".order.OrderDetailActivity"/>
+        <activity android:name=".ReportHouseActivity"/>
+        <activity android:name=".SearchActivity"/>
+        <activity android:name=".order.FillOrderActivity"/>
+        <activity android:name=".mine.MineNoticeActivity"/>
+        <activity android:name=".mine.MineCollectActivity"/>
     </application>
 
 </manifest>

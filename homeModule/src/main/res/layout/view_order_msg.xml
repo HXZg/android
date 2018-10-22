@@ -53,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/line_color"
-            app:layout_constraintTop_toBottomOf="@id/iv_open_time"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_open_time"
             android:layout_marginTop="@dimen/dp_10"/>
 
         <TextView
@@ -90,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/line_color"
-            app:layout_constraintTop_toBottomOf="@id/iv_leave_time"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_leave_time"
             android:layout_marginTop="@dimen/dp_10"/>
 
         <TextView
@@ -127,7 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/line_color"
-            app:layout_constraintTop_toBottomOf="@id/iv_settled_num"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_settled_num"
             android:layout_marginTop="@dimen/dp_10"/>
 
         <TextView

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.annotation.StringRes
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
+import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import com.xx.baseutilslibrary.common.XxResourceUtil
@@ -55,7 +56,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
         //初始化返回按钮
         val id = XxResourceUtil.getId(mContext, "ib_back")
-        val ibBack = findViewById<ImageButton>(id)
+        val ibBack = findViewById<View>(id)
         ibBack?.setOnClickListener {
             finish()
         }

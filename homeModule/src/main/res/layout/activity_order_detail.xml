@@ -46,12 +46,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingHorizontal="@dimen/dp_14"
-                    android:paddingVertical="@dimen/dp_14">
+                    android:paddingVertical="@dimen/dp_14"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
                     <ImageView
                         android:id="@+id/iv_evaluation_img"
                         android:layout_width="91dp"
                         android:layout_height="91dp"
-                        android:background="@color/colorAccent"/>
+                        android:background="@color/colorAccent"
+                        />
                     <TextView
                         android:id="@+id/tv_evaluation_name"
                         android:layout_width="0dp"

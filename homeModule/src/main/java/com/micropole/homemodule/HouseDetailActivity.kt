@@ -1,6 +1,9 @@
 package com.micropole.homemodule
 
+import com.micropole.homemodule.order.FillOrderActivity
 import com.xx.baseuilibrary.mvp.BaseMvpViewActivity
+import kotlinx.android.synthetic.main.activity_house_detail.*
+import kotlinx.android.synthetic.main.view_house_detail.*
 
 /**
  * @ClassName       HouseDetailActivity
@@ -17,5 +20,17 @@ class HouseDetailActivity : BaseMvpViewActivity(){
     }
 
     override fun initEvent() {
+        ll_msg.setOnClickListener {
+
+        }
+        iv_right.setOnClickListener {
+
+        }
+        view_evaluation.setOnClickListener {
+            startActivity(EvaluationListActivity::class.java)
+        }
+        fl_report.setOnClickListener { startActivity(ReportHouseActivity::class.java) }  //举报该房源
+
+        stv_detail_booking.setOnClickListener { startActivity(FillOrderActivity::class.java) }
     }
 }
