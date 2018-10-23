@@ -16,7 +16,7 @@ class FotgetActivity : AppCompatActivity() {
     }
     companion object {
         fun startFotgetActivity(context:Context){
-            var intent=Intent(context,FotgetActivity::class.java)
+            var intent=Intent(context, FotgetActivity::class.java)
             context.startActivity(intent)
 
         }

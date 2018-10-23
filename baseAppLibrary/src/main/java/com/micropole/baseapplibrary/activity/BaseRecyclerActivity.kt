@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.view_refresh_recy.*
  * @Date            2018/10/22 9:27
  * @Copyright       Guangzhou micro pole mobile Internet Technology Co., Ltd.
  */
-abstract class BaseRecyclerActivity<DATA,M,V : BaseMvpView,P:BaseMvpPresenter<M,V>> : BaseMvpActivity<M,V,P>(), SwipeRefreshLayout.OnRefreshListener {
+abstract class BaseRecyclerActivity<DATA,M,V : BaseMvpView,P:BaseMvpPresenter<M,V>> : BaseMvpActivity<P>(), SwipeRefreshLayout.OnRefreshListener {
 
     var mAdapter : BaseQuickAdapter<DATA,BaseViewHolder>? = null
     var mCurrentPage = 1
