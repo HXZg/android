@@ -9,6 +9,7 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 
@@ -32,7 +33,7 @@ public interface AppService {
      * 获取搜索风格
      * @return
      */
-    @POST("Hotel/hotel_search_get_area")
+    @POST("Index/hotel_search_get_area")
     Observable<BaseResponseEntity<List<SearchStyleBean>>> getStyleData(@Header("lat")String lat, @Header("lng")String lng);
 
     /**
@@ -45,8 +46,30 @@ public interface AppService {
      * @param num       人数
      * @return
      */
-    @POST("Hotel/hotel_search")
+    @FormUrlEncoded
+    @POST("Index/hotel_search")
     Observable<BaseResponseEntity<SearchBean>> getSearchData(@Header("lat")String lat, @Header("lng")String lng,
                                                              @Field("area_id") String styleId, @Field("type_deac") int type, @Field("page") int page,
                                                              @Field("start_time") String startTime, @Field("end_time") String endTime, @Field("people_number") String num);
+
+    /**
+     * 旅馆详情
+     * @return
+     */
+    @POST("Hotel/hotel_detail")
+    Observable<BaseResponseEntity<SearchBean>> getHouseDetail();
+
+    /**
+     * 举报房源
+     * @return
+     */
+    @POST("Hotel/hotel_report")
+    Observable<BaseResponseEntity<SearchBean>> reportHotel();
+
+    /**
+     * 评论列表
+     * @return
+     */
+    @POST("Hotel/hotel_comments")
+    Observable<BaseResponseEntity<SearchBean>> getHouseComment();
 }

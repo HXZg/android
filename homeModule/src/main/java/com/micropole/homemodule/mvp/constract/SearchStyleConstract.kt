@@ -19,6 +19,7 @@ class SearchStyleConstract {
     interface View:BaseMvpView{
         fun getStyleData(data:List<SearchStyleBean>?)
         fun getSearchData(data:SearchBean)
+        fun refreshError()
     }
 
     abstract class Model{

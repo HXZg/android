@@ -140,7 +140,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_second"
                 android:textColor="@color/hint_color"
-                android:text="北欧风格"
+                android:text=""
                 android:drawableRight="@drawable/home_lower_n"
                 android:drawablePadding="@dimen/dp_10"
                 android:gravity="center_vertical"

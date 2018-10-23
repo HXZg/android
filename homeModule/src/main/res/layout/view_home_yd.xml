@@ -106,7 +106,7 @@
             app:stroke_width="1dp"
             app:corner="5dp"
             android:paddingVertical="@dimen/dp_10"
-            android:paddingHorizontal="@dimen/dp_14"
+            android:paddingHorizontal="@dimen/dp_10"
             android:gravity="center"
             android:textSize="@dimen/text_second"
             android:textColor="@color/hint_color"
@@ -140,7 +140,7 @@
             app:stroke_width="1dp"
             app:corner="5dp"
             android:paddingVertical="@dimen/dp_10"
-            android:paddingHorizontal="@dimen/dp_14"
+            android:paddingHorizontal="@dimen/dp_10"
             android:gravity="center"
             android:textSize="@dimen/text_second"
             android:textColor="@color/hint_color"
@@ -177,7 +177,7 @@
             android:gravity="center"
             android:textSize="@dimen/text_second"
             android:textColor="@color/hint_color"
-            android:text="10/11"
+            android:text="1"
             />
         <com.coorchice.library.SuperTextView
             android:id="@+id/stv_home_search"

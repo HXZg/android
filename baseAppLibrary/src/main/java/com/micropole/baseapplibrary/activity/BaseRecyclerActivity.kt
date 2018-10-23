@@ -21,7 +21,7 @@ abstract class BaseRecyclerActivity<DATA,M,V : BaseMvpView,P:BaseMvpPresenter<M,
 
     var mAdapter : BaseQuickAdapter<DATA,BaseViewHolder>? = null
     var mCurrentPage = 1
-    val DEFAULT_SIZE = 10
+    val DEFAULT_SIZE = 0
 
     override fun initData() {
         if (swipe_refresh == null || recycler_view == null){
@@ -54,10 +54,10 @@ abstract class BaseRecyclerActivity<DATA,M,V : BaseMvpView,P:BaseMvpPresenter<M,
                 if (data.size == DEFAULT_SIZE){
                     mAdapter?.loadMoreComplete()
                 }else{
-                    mAdapter?.loadMoreEnd(true)
+                    mAdapter?.loadMoreEnd(false)
                 }
             }else{
-                mAdapter?.loadMoreEnd(true)
+                mAdapter?.loadMoreEnd(false)
             }
         }else{
             swipe_refresh.isRefreshing = false
@@ -69,6 +69,11 @@ abstract class BaseRecyclerActivity<DATA,M,V : BaseMvpView,P:BaseMvpPresenter<M,
                 mAdapter?.setNewData(data)
             }
         }
+    }
+
+    fun refreshError(){
+        swipe_refresh.isRefreshing = false
+        mAdapter?.loadMoreComplete()
     }
 
     //刷新

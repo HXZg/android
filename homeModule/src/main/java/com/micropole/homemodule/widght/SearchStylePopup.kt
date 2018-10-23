@@ -31,6 +31,7 @@ class SearchStylePopup(context: Context,val data: List<SearchStyleBean>, val lis
         view.adapter = adapter
         adapter.setOnItemClickListener { adapter, view, position ->
             listener.invoke(position)
+            dismiss()
         }
     }
 

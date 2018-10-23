@@ -56,11 +56,11 @@ abstract class RxHttpObserver<T> : DefaultObserver<BaseResponseEntity<T>>(), RxH
             onError("连接服务器超时,请稍后重试")
         } else if (throwable is ApiFaileException) {
             onError(throwable.message)
-        } else if (throwable is InvalidLongTokenException) {
-            onError("请重新登录")//长token过期
-        } else if (throwable is InvalidShortTokenException) {
-            onError("请刷新token")//短token过期
-        } else {
+        } else if (throwable is InvalidLongTokenException){
+            onError("444")
+        }else if (throwable is InvalidShortTokenException){
+            onError("333")
+        }else {
             onError("异常:" + throwable.message)
         }
     }

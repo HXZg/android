@@ -1,17 +1,11 @@
 package com.micropole.homemodule
 
-import android.annotation.SuppressLint
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
-import cn.qqtheme.framework.entity.City
-import cn.qqtheme.framework.entity.County
-import cn.qqtheme.framework.entity.Province
-import cn.qqtheme.framework.picker.AddressPicker
 import cn.qqtheme.framework.picker.DatePicker
 import cn.qqtheme.framework.picker.DateTimePicker
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.bigkoo.convenientbanner.ConvenientBanner
-import com.flyco.dialog.widget.ActionSheetDialog
 import com.micropole.baseapplibrary.constants.ARouterConst
 import com.micropole.homemodule.adapter.HomeHouseAdapter
 import com.micropole.homemodule.entity.HomeBean
@@ -24,7 +18,8 @@ import kotlinx.android.synthetic.main.view_home.*
 import kotlinx.android.synthetic.main.view_home_yd.*
 import java.util.*
 import cn.qqtheme.framework.picker.OptionPicker
-
+import cn.qqtheme.framework.util.DateUtils
+import com.blankj.utilcode.util.TimeUtils.getDate
 
 
 /**
@@ -59,9 +54,22 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
         stv_settled_date.setOnClickListener { getDate(click = 1) }  //入驻时间
         stv_leave_store_date.setOnClickListener {
             val date = stv_settled_date.text.toString()
-            val year = date.split("/")[0].toInt()
-            val month = date.split("/")[1].toInt()
-            val day = date.split("/")[2].toInt()
+            var year = date.split("/")[0].toInt()
+            var month = date.split("/")[1].toInt()
+            var day = date.split("/")[2].toInt()
+            val days = DateUtils.calculateDaysInMonth(year, month)
+            if (day + 1 > days){
+                if (month == 12){
+                    ++year
+                    month = 1
+                    day = 1
+                }else{
+                    ++month
+                    day = 1
+                }
+            }else{
+                ++day
+            }
             getDate(year = year,month = month,day = day,click = 2)
         } //离店时间
         stv_settled_num.setOnClickListener { getPNum(mPeopleNum) } //入驻人数
@@ -84,9 +92,30 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
         rv_home_house.adapter = homeHouseAdapter
         rv_home_house.isNestedScrollingEnabled = false
 
-        stv_settled_date.text = "${Calendar.getInstance()[Calendar.YEAR]}/${Calendar.getInstance()[Calendar.MONTH] + 1}/${Calendar.getInstance()[Calendar.DATE] + 1}"
+        setDate(Calendar.getInstance()[Calendar.YEAR],Calendar.getInstance()[Calendar.MONTH] + 1,Calendar.getInstance()[Calendar.DATE])
 
         presenter.getHomeData()
+    }
+
+    fun setDate(year: Int, month: Int, day: Int){
+        var year = year
+        var month = month
+        var day = day
+        stv_settled_date.text = "$year/$month/$day"
+        val days = DateUtils.calculateDaysInMonth(year, month)
+        if (day + 1 > days){
+            if (month == 12){
+                ++year
+                month = 1
+                day = 1
+            }else{
+                ++month
+                day = 1
+            }
+        }else{
+            ++day
+        }
+        stv_leave_store_date.text = "$year/$month/$day"
     }
 
     override fun setData(data: HomeBean?) {
@@ -120,14 +149,19 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
         var datePicker = DatePicker(activity, DateTimePicker.YEAR_MONTH_DAY)
         var myear = if (year == 0) Calendar.getInstance().get(Calendar.YEAR) else year
         var mmonth = if (month == 0) Calendar.getInstance().get(Calendar.MONTH) + 1 else month
-        var mday = if (day == 0) Calendar.getInstance().get(Calendar.DATE) + 1 else day
+        var mday = if (day == 0) Calendar.getInstance().get(Calendar.DATE) else day
         datePicker.setRangeStart(myear,mmonth,mday)
         datePicker.setRangeEnd(myear+100,mmonth,mday)
+        val date = if (click == 1) stv_settled_date.text.toString() else stv_leave_store_date.text.toString()
+        var ayear = date.split("/")[0].toInt()
+        var amonth = date.split("/")[1].toInt()
+        var aday = date.split("/")[2].toInt()
+        datePicker.setSelectedItem(ayear,amonth,aday)
         datePicker.setOnDatePickListener(DatePicker.OnYearMonthDayPickListener { year, month, day ->
             //getPresenter().updateInfo(SetAccountMsgActivity.mTypeList[4],birth = "$year-$month-$day")
             //tv_set_birth.text = "$year-$month-$day"
             if (click == 1){
-                stv_settled_date.text = "$year/$month/$day"
+                setDate(year.toInt(),month.toInt(),day.toInt())
             }else{
                 stv_leave_store_date.text = "$year/$month/$day"
             }

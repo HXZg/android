@@ -2,24 +2,17 @@ package com.micropole.homemodule
 
 import android.content.Context
 import android.content.Intent
-import android.support.constraint.Group
-import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
-import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.micropole.baseapplibrary.activity.BaseRecyclerActivity
-import com.micropole.homemodule.R.id.*
-import com.micropole.homemodule.adapter.HomeHouseAdapter
 import com.micropole.homemodule.adapter.SearchAdapter
 import com.micropole.homemodule.entity.SearchBean
 import com.micropole.homemodule.entity.SearchStyleBean
 import com.micropole.homemodule.mvp.constract.SearchStyleConstract
 import com.micropole.homemodule.mvp.present.SearchStylePresent
 import com.micropole.homemodule.widght.SearchStylePopup
-import com.xx.baseuilibrary.mvp.BaseMvpViewActivity
 import kotlinx.android.synthetic.main.activity_search.*
-import kotlin.math.ln
 
 /**
  * @ClassName       SearchActivity
@@ -101,6 +94,7 @@ class SearchActivity : BaseRecyclerActivity<SearchBean.ProjectBean,SearchStyleCo
     override fun getStyleData(data: List<SearchStyleBean>?) {
         if (data != null && data.isNotEmpty()){
             mData = data
+            tv_search_style.text = data[0].area_name
             mstyleId = data[0].area_id
             onRefresh()
         }
@@ -150,5 +144,6 @@ class SearchActivity : BaseRecyclerActivity<SearchBean.ProjectBean,SearchStyleCo
                 }
             }
         }
+        onRefresh()
     }
 }
