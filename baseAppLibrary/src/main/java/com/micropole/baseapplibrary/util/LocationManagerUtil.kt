@@ -62,7 +62,7 @@ class LocationManagerUtil {
                 sb.append("错误码:" + location.errorCode + "\n")
                 sb.append("错误信息:" + location.errorInfo + "\n")
                 sb.append("错误描述:" + location.locationDetail + "\n")
-                Constants.putLocation(39.92, 116.46, "北京");
+                Constants.putLocation(23.11943, 113.32122, "广州")
             }
             sb.append("***定位质量报告***").append("\n")
             sb.append("* WIFI开关：").append(if (location.locationQualityReport.isWifiAble) "开启" else "关闭").append("\n")
@@ -77,7 +77,7 @@ class LocationManagerUtil {
             //Log.e("Tag",result);
         } else {
             //Log.e("Tag","定位失败，loc is null");
-             Constants.putLocation(39.92, 116.46, "北京");
+            Constants.putLocation(23.11943, 113.32122, "广州")
         }
     }
 

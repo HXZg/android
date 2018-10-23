@@ -13,6 +13,6 @@ import com.micropole.homemodule.network.AppService
  * @Copyright       Guangzhou micro pole mobile Internet Technology Co., Ltd.
  */
 class HomeModel : HomeConstract.Model(){
-    override fun getHomeData(token:String,lat:String,lng:String) =
-            AppApi.Api<AppService>().homeData(token, lat, lng)
+    override fun getHomeData(lat:String,lng:String) =
+            AppApi.Api<AppService>().homeData(lat, lng)
 }

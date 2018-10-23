@@ -17,10 +17,8 @@ import com.xx.baseutilslibrary.network.exception.ApiFaileException
  */
 class HomePresent : HomeConstract.Present() {
     override fun getHomeData() {
-        getModel().getHomeData("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzaG9ydF90b2tlbiIsImF1ZCI6Mzk0MywiaWF0IjoxNTQwMjYwODc4LCJuYmYiOjE1NDAyNjA4NzgsImV4cCI6MTU0MDI3NTI3OCwiaWQiOjM5NDN9.QvNQ3gNJuXJJ73mWgVb_tryOb14K33jIY-hLkvzH7bM"
-                ,Constants.getLocation()[0],Constants.getLocation()[1])
+        getModel().getHomeData(Constants.getLocation()[0],Constants.getLocation()[1])
                 .ui({getView()?.setData(it.data)},{
-                    getView()?.refreshToken(it,{getHomeData()})
                     getView()?.showError(ApiFaileException(it),true)
                 })
     }

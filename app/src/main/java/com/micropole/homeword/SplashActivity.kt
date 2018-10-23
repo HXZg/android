@@ -20,9 +20,9 @@ class SplashActivity : BaseMvpViewActivity(){
 
     override fun initData() {
         PermissionUtils.permission(Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.ACCESS_FINE_LOCATION/*
-                                          Manifest.permission.WRITE_EXTERNAL_STORAGE,*/
-                /*Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.READ_PHONE_STATE*/).callback(object : PermissionUtils.SimpleCallback {
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.READ_PHONE_STATE,
+                Manifest.permission.CHANGE_WIFI_STATE).callback(object : PermissionUtils.SimpleCallback {
             override fun onGranted() {
                 LocationManagerUtil.getInstance().startLocation()
                 startMain()
@@ -33,7 +33,7 @@ class SplashActivity : BaseMvpViewActivity(){
                 startMain()
             }
 
-        }).request()
+        }).rationale { it.again(false) }.request()
 
     }
 
