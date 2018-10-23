@@ -18,7 +18,7 @@ import com.micropole.homemodule.mvp.present.MineNoticePresent
  * @Date            2018/10/22 13:30
  * @Copyright       Guangzhou micro pole mobile Internet Technology Co., Ltd.
  */
-@Route(path = ARouterConst.Mine.MINE_NOTICE)
+@Route(path = ARouterConst.Mine.MINE_NOTICE,extras = ARouterConst.LOGIN_EXTRA)
 class MineNoticeActivity : BaseRecyclerActivity<Any,MineNoticeConstract.Model,MineNoticeConstract.View,MineNoticeConstract.Present>(){
     override fun loadData(page: Int) {
 

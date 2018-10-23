@@ -20,7 +20,7 @@ import com.micropole.homemodule.mvp.present.MineColletPresent
  * @Date            2018/10/22 13:30
  * @Copyright       Guangzhou micro pole mobile Internet Technology Co., Ltd.
  */
-@Route(path = ARouterConst.Mine.MINE_COLLECT)
+@Route(path = ARouterConst.Mine.MINE_COLLECT,extras = ARouterConst.LOGIN_EXTRA)
 class MineCollectActivity : BaseRecyclerActivity<Any,MineColletConstract.Model,MineColletConstract.View,MineColletConstract.Present>(){
     var type = 0
 
