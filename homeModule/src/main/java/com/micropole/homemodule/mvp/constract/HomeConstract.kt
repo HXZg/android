@@ -22,7 +22,7 @@ class HomeConstract {
     }
 
     abstract class Model{
-        abstract fun getHomeData(userId: String,token:String,lat:String,lng:String) : Observable<BaseResponseEntity<HomeBean>>
+        abstract fun getHomeData(token:String,lat:String,lng:String) : Observable<BaseResponseEntity<HomeBean>>
     }
 
     abstract class Present : BaseMvpPresenter<Model,View>(){

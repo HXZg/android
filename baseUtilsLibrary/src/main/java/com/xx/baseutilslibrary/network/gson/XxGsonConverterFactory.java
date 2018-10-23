@@ -11,6 +11,9 @@ import com.google.gson.stream.JsonWriter;
 import com.xx.baseutilslibrary.entity.BaseResponseEntity;
 import com.xx.baseutilslibrary.entity.BaseResponseStatusEntity;
 import com.xx.baseutilslibrary.network.exception.ApiFaileException;
+import com.xx.baseutilslibrary.network.exception.InvalidLongTokenException;
+import com.xx.baseutilslibrary.network.exception.InvalidShortTokenException;
+import com.xx.baseutilslibrary.network.exception.TokenInvalidException;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -110,10 +113,16 @@ public class XxGsonConverterFactory extends Converter.Factory {
 //                    valueString = valueString.replace("[]", "{}");
 //                    return adapter.fromJson(valueString);
 //                }
-                if (baseResponseEntity.getStatus().equals(BaseResponseEntity.Companion.getFAILE())) {
+                if (!baseResponseEntity.getStatus().equals(BaseResponseEntity.Companion.getSUCCESS())) {
                     //接口返回失败时,不继续解析data
-                    throw new ApiFaileException(
-                            !TextUtils.isEmpty(baseResponseEntity.getMsg()) ? baseResponseEntity.getMsg() : "失败");
+                    if (baseResponseEntity.getCode().equals("333")){ //短token过期
+                        throw new InvalidShortTokenException(baseResponseEntity.getMsg());
+                    }else if (baseResponseEntity.getCode().equals("444")){  //长token过期
+                        throw new InvalidLongTokenException(baseResponseEntity.getMsg());
+                    }else {
+                        throw new ApiFaileException(
+                                !TextUtils.isEmpty(baseResponseEntity.getMsg()) ? baseResponseEntity.getMsg() : "失败");
+                    }
                 }
                 //前置操作正常,返回解析内容
                 return adapter.fromJson(valueString);

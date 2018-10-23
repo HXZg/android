@@ -2,6 +2,8 @@ package com.xx.baseutilslibrary.network.rx
 
 
 import com.xx.baseutilslibrary.network.exception.ApiFaileException
+import com.xx.baseutilslibrary.network.exception.InvalidLongTokenException
+import com.xx.baseutilslibrary.network.exception.InvalidShortTokenException
 import com.xx.baseutilslibrary.network.exception.TokenInvalidException
 import io.reactivex.functions.Consumer
 import retrofit2.HttpException
@@ -24,6 +26,10 @@ abstract class ExceptionEngine : Consumer<Throwable> {
             //断开网络
         } else if (throwable is SocketTimeoutException) {
            msg="连接服务器超时,请稍后重试"
+        } else if (throwable is InvalidLongTokenException){
+            msg = "444"
+        }else if (throwable is InvalidShortTokenException){
+            msg = "333"
         } else if (throwable is ApiFaileException) {
            msg=throwable.message!!//接口请求状态为0的情况
         } else if (throwable is TokenInvalidException) {

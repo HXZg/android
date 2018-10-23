@@ -21,5 +21,5 @@ public interface AppService {
      * 首页
      */
     @POST("Index/index")
-    Observable<BaseResponseEntity<HomeBean>> homeData(@Header("userId") String userId, @Header("token")String token, @Header("lat")String lat, @Header("lng")String lng);
+    Observable<BaseResponseEntity<HomeBean>> homeData(@Header("token")String token, @Header("lat")String lat, @Header("lng")String lng);
 }

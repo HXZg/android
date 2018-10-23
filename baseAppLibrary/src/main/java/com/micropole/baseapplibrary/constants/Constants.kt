@@ -12,11 +12,19 @@ import com.blankj.utilcode.util.SPUtils
  */
 object Constants {
 
+    var SHORT_TOKEN = ""
+
     const val MAIN_INDEX_ARG = "main_index"
 
     const val KEY_IS_LOGIN = "is_login_key"
     const val KEY_LOGIN_TOKEN = "login_token_key"
     const val KEY_LOCATION = "location_key"
+    const val KEY_IS_FIRST = "is_first"
+    const val KEY_USER_ID = "user_id"
+
+    fun isFirst() = SPUtils.getInstance().getBoolean(KEY_IS_FIRST,true)
+
+    fun setNoFirst(){SPUtils.getInstance().put(KEY_IS_FIRST,false)}
 
     fun login(){SPUtils.getInstance().put(KEY_IS_LOGIN,true)}
 
@@ -27,6 +35,10 @@ object Constants {
     fun putToken(token : String){SPUtils.getInstance().put(KEY_LOGIN_TOKEN,token)}
 
     fun getToken() : String = SPUtils.getInstance().getString(KEY_LOGIN_TOKEN)
+
+    fun putUserId(userId : String){SPUtils.getInstance().put(KEY_USER_ID,userId)}
+
+    fun getUserId() : String = SPUtils.getInstance().getString(KEY_USER_ID)
 
     /**
      * 存入经纬信息

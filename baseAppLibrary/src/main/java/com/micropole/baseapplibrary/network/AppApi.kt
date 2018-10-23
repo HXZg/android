@@ -15,20 +15,23 @@ import retrofit2.Retrofit
  * @Date            2018/10/16 16:04
  * @Copyright       Guangzhou micro pole mobile Internet Technology Co., Ltd.
  */
-class AppApi {
+object AppApi {
 
-    private var mAny : Any? = null
+    var mt : Any? = null
+    private var isInit = false
     private var mApiSign: String? = null
 
     inline fun<reified T> Api(): T {
             retrofitInit()
-        return Retrofit2Manager
+        if (mt == null || mt !is T)
+        mt = Retrofit2Manager
                 .instance
                 .createApi(T::class.java!!)
+        return mt as T
     }
 
     fun retrofitInit(){
-        if (mAny == null) {
+        if (!isInit) {
             val okHttpClient = Retrofit2Manager
                     .instance
                     .okHttpClient!!
@@ -67,7 +70,7 @@ class AppApi {
 
             Retrofit2Manager.instance.retrofit = retrofit
 
-            mAny = Any()
+            isInit = true
         }
     }
 
@@ -86,7 +89,7 @@ class AppApi {
      * 置空,使下次请求时重新获取配置
      */
     fun resetApi() {
-        mAny = null
+        mt = null
     }
 
 }

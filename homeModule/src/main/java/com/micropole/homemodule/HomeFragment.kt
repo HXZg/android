@@ -71,7 +71,7 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
                         ?.setPointViewVisible(true)
                         ?.setOnItemClickListener {
                             /*activity?.bannerStart(data[position])*/
-                        }
+                        }?.startTurning(2000)
             }
 
             if (data.project.isNotEmpty()){
@@ -94,11 +94,11 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
 
     //入驻人数选择
     private fun getPNum(num:Int){
-        val mNums = arrayListOf<String>()
-        for (i in 0..num){
-            mNums.add(i.toString())
+        val mNums = Array<String>(num,{""})
+        for (i in 1..num){
+            mNums[i-1] = i.toString()
         }
-        val actionSheetDialog = ActionSheetDialog(mContext, mNums.toArray() as Array<out String>, null)
+        val actionSheetDialog = ActionSheetDialog(mContext, mNums, null)
         actionSheetDialog.show()
         actionSheetDialog.setOnOperItemClickL { parent, view, position, id ->
 

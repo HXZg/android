@@ -22,9 +22,10 @@ import com.xx.baseutilslibrary.network.retrofit.Retrofit2Manager
 /**
  * 加载图片
  */
-fun ImageView.loadImag( url: String, tran: BitmapTransformation? = null, plach: Int = 0, error: Int = 0,isCircle : Boolean = false,radio : Int = 0) {
+fun ImageView.loadImag( url: String?, tran: BitmapTransformation? = null, plach: Int = 0, error: Int = 0,isCircle : Boolean = false,radio : Int = 0) {
     var urltemp=url
-    if (url.length>1&&url[0].equals('/')) {
+    if (url.isNullOrEmpty()) return
+    if (url!!.length>1&&url[0].equals('/')) {
         urltemp=Retrofit2Manager.instance.apiConfigProvider?.debugHost+url
     }
     val options = RequestOptions().also {
