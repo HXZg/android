@@ -36,7 +36,7 @@ object ARouterConst {
     const val MINE = "/mine"
     object Mine{
         const val MINE_FRAGMENT = "$MINE/mine_fragment"
-        const val MINE_COLLECT = "$MINE/mine_collect_activity"
-        const val MINE_NOTICE = "$MINE/mine_notice_activity"
+        const val MINE_COLLECT = "$HOME/mine_collect_activity"
+        const val MINE_NOTICE = "$HOME/mine_notice_activity"
     }
 }

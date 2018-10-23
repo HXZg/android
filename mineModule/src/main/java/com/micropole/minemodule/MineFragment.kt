@@ -11,6 +11,7 @@ import com.micropole.minemodule.activity.*
 import com.xx.baseuilibrary.mvp.BaseMvpViewFragment
 import kotlinx.android.synthetic.main.bar_title.*
 import kotlinx.android.synthetic.main.fragment_mine.*
+import kotlinx.android.synthetic.main.fragment_mine.view.*
 
 /**
  * @ClassName       MineFragment
@@ -43,7 +44,7 @@ class MineFragment : BaseMvpViewFragment(), View.OnClickListener {
         ll_exit.setOnClickListener(this)
         iv_setting.setOnClickListener(this)
 
-
+        iv_other.setOnClickListener(this)
     }
 
     override fun initData() {
@@ -55,11 +56,12 @@ class MineFragment : BaseMvpViewFragment(), View.OnClickListener {
      */
     override fun onClick(v: View?) {
         when(v){
+            iv_other -> ARouter.getInstance().build(ARouterConst.Mine.MINE_NOTICE).navigation()
             ll_collection->{//我的收藏
-
+                ARouter.getInstance().build(ARouterConst.Mine.MINE_COLLECT).navigation()
             }
             ll_footmark->{//我的足迹
-
+                ARouter.getInstance().build(ARouterConst.Mine.MINE_COLLECT).withInt("type",1).navigation()
             }
             ll_tour->{//旅游基金
                 TripActivity.startTripActivity(mContext)
