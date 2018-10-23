@@ -9,12 +9,15 @@ import com.micropole.minemodule.dailog.CamaraDialog
 import com.micropole.minemodule.dailog.NickNameDialog
 import com.micropole.minemodule.dailog.SexDialog
 import kotlinx.android.synthetic.main.activity_setting.*
+import kotlinx.android.synthetic.main.bar_title.*
 
 class SettingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
+        tv_title.text="设置"
+        iv_back.setOnClickListener { finish() }
         var nickNameDialog=NickNameDialog(this)
         nickNameDialog.setOnBtnClickListener(object : NickNameDialog.OnBtnClickListener {
             override fun sure() {

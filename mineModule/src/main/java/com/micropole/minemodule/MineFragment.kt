@@ -1,8 +1,11 @@
 package com.micropole.minemodule
 
+import android.app.Activity
+import android.content.Intent
 import android.util.Log
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.micropole.baseapplibrary.constants.ARouterConst
 import com.micropole.minemodule.activity.*
 import com.xx.baseuilibrary.mvp.BaseMvpViewFragment
@@ -75,6 +78,8 @@ class MineFragment : BaseMvpViewFragment(), View.OnClickListener {
 
             }
             ll_exit->{//注销
+                ARouter.getInstance().build(ARouterConst.Login.LOGIN_ACTIVITY).navigation()
+
 
             }
             iv_setting->{//设置资料
