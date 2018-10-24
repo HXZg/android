@@ -55,7 +55,8 @@
                         android:background="@null"
                         android:paddingLeft="10dp"
                         android:hint="请输入账号"
-                        android:textColorHint="#C5C5C5"/>
+                        android:textColorHint="#C5C5C5"
+                        android:inputType="number"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -78,7 +79,8 @@
                         android:background="@null"
                         android:paddingLeft="10dp"
                         android:hint="请输入密码"
-                        android:textColorHint="#C5C5C5"/>
+                        android:textColorHint="#C5C5C5"
+                        android:inputType="textPassword"/>
                 </LinearLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -100,7 +102,8 @@
                         android:text="忘记密码？"
                         android:textSize="16sp"
                         android:layout_alignParentRight="true"
-                        android:textColor="#C5C5C5"/>
+                        android:textColor="#C5C5C5"
+                        />
                 </RelativeLayout>
 
 
@@ -118,7 +121,7 @@
         android:gravity="center"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="-24dp"
-        android:layout_centerHorizontal="true"
-       />
+        android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>

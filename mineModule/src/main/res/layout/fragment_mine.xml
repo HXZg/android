@@ -326,5 +326,9 @@
     </LinearLayout>
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
+    <include layout="@layout/item_loading"
+        android:id="@+id/loading"/>
+    <include layout="@layout/item_login"
+        android:id="@+id/view_login"/>
 
 </RelativeLayout>

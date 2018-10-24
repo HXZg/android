@@ -1,17 +1,16 @@
 package com.micropole.minemodule
 
-import android.app.Activity
-import android.content.Intent
 import android.util.Log
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.micropole.baseapplibrary.constants.ARouterConst
+import com.micropole.baseapplibrary.constants.Constants
 import com.micropole.minemodule.activity.*
 import com.xx.baseuilibrary.mvp.BaseMvpViewFragment
 import kotlinx.android.synthetic.main.bar_title.*
 import kotlinx.android.synthetic.main.fragment_mine.*
-import kotlinx.android.synthetic.main.fragment_mine.view.*
+import kotlinx.android.synthetic.main.item_login.*
 
 /**
  * @ClassName       MineFragment
@@ -28,6 +27,9 @@ class MineFragment : BaseMvpViewFragment(), View.OnClickListener {
     override fun getFragmentLayoutId(): Int = R.layout.fragment_mine
 
     override fun initView(view: View?) {
+        if (Constants.isLogin()){
+            view_login.visibility=View.GONE
+        }
     }
 
     override fun initEvent(view: View?) {
@@ -45,6 +47,10 @@ class MineFragment : BaseMvpViewFragment(), View.OnClickListener {
         iv_setting.setOnClickListener(this)
 
         iv_other.setOnClickListener(this)
+        tv_login.setOnClickListener {
+            ARouter.getInstance().build(ARouterConst.Login.LOGIN_ACTIVITY).navigation()
+        }
+        view_login.setOnClickListener {  }
     }
 
     override fun initData() {
@@ -80,6 +86,7 @@ class MineFragment : BaseMvpViewFragment(), View.OnClickListener {
 
             }
             ll_exit->{//注销
+                Constants.loginOut()
                 ARouter.getInstance().build(ARouterConst.Login.LOGIN_ACTIVITY).navigation()
 
 
@@ -90,5 +97,28 @@ class MineFragment : BaseMvpViewFragment(), View.OnClickListener {
             }
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!isHidden){
+            if (Constants.isLogin()){
+                loading.visibility=View.GONE
+                view_login.visibility=View.GONE
+            }else{
+                view_login.visibility=View.VISIBLE
+            }
+        }
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!isHidden){
+            if (Constants.isLogin()){
+                loading.visibility=View.GONE
+            }else{
+                view_login.visibility=View.VISIBLE
+            }
+        }
     }
 }

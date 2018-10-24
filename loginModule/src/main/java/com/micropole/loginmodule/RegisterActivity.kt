@@ -2,14 +2,42 @@ package com.micropole.loginmodule
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
-import com.micropole.loginmodule.R.id.iv_back
+import android.os.Handler
+import android.os.Message
+import com.micropole.loginmodule.bean.Code
+import com.micropole.loginmodule.mvp.contract.RegisterContract
 import com.micropole.loginmodule.mvp.presenter.RegisterPresenter
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
+import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.bar_title.*
 
-class RegisterActivity : BaseMvpActivity<RegisterPresenter>() {
+class RegisterActivity : BaseMvpActivity<RegisterPresenter>(),RegisterContract.View {
+    private var time = 60//验证码时间
+    private var mHandler : Handler = object : Handler() {
+        override fun handleMessage(msg: Message) {
+            super.handleMessage(msg)
+            time--
+            if (time > 0) {
+                tv_code.setText(time.toString() + " s")
+                tv_code.setEnabled(false)
+                sendEmptyMessageDelayed(1,1000)
+            } else {
+                tv_code.setText("重新获取")
+                time = 60
+                tv_code.setEnabled(true)
+            }
+        }
+    }
+    override fun getCode(code: Code) {
+        showToast("发送成功"+code.code)
+        mHandler.sendEmptyMessage(1)
+    }
+
+    override fun register(msg: String) {
+        showToast(msg)
+        finish()
+    }
+
     /**
      * 创建P层
      *
@@ -36,6 +64,12 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>() {
      */
     override fun initEvent() {
         iv_back.setOnClickListener { finish() }
+        tv_register.setOnClickListener {
+            getPresenter().register(et_accout.text.toString(),et_password.text.toString(),et_password_two.text.toString(),et_code.text.toString(),et_nickname.text.toString())
+        }
+        tv_code.setOnClickListener {
+            getPresenter().getCode(et_accout.text.toString())
+        }
 
     }
 

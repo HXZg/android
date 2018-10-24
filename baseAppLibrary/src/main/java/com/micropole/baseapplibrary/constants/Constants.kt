@@ -17,7 +17,8 @@ object Constants {
     const val MAIN_INDEX_ARG = "main_index"
 
     const val KEY_IS_LOGIN = "is_login_key"
-    const val KEY_LOGIN_TOKEN = "login_token_key"
+    const val KEY_LONG_TOKEN = "long_token_key"
+    const val KEY_SHORT_TOKEN = "short_token_key"
     const val KEY_LOCATION = "location_key"
     const val KEY_IS_FIRST = "is_first"
     const val KEY_USER_ID = "user_id"
@@ -32,9 +33,10 @@ object Constants {
 
     fun loginOut(){SPUtils.getInstance().put(KEY_IS_LOGIN,false)}
 
-    fun putToken(token : String){SPUtils.getInstance().put(KEY_LOGIN_TOKEN,token)}
 
-    fun getToken() : String = SPUtils.getInstance().getString(KEY_LOGIN_TOKEN)
+    fun putLongToken(token : String){SPUtils.getInstance().put(KEY_LONG_TOKEN,token)}
+
+    fun getLongToken() : String = SPUtils.getInstance().getString(KEY_LONG_TOKEN)
 
     fun putUserId(userId : String){SPUtils.getInstance().put(KEY_USER_ID,userId)}
 
