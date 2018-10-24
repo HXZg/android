@@ -5,6 +5,7 @@
     android:background="#f7f7f7"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <com.bigkoo.convenientbanner.ConvenientBanner
         android:id="@+id/cb_house_img"
         android:layout_width="0dp"
@@ -13,7 +14,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintDimensionRatio="H,16:9"
-        android:background="@color/colorAccent" />
+         />
     <LinearLayout
         android:id="@+id/ll_msg"
         android:layout_width="0dp"
@@ -31,7 +32,7 @@
             android:paddingRight="@dimen/dp_14"
             android:textSize="@dimen/text_second"
             android:textColor="@color/text_one"
-            android:text="【琶洲会展】近珠江新城/太古汇北欧风三居"
+            android:text=""
             />
         <TextView
             android:id="@+id/tv_house_detail_address"
@@ -40,7 +41,7 @@
             android:layout_marginTop="@dimen/dp_10"
             android:textSize="@dimen/text_second"
             android:textColor="@color/text_two"
-            android:text="广州市天河区珠江新城华夏路16号"/>
+            android:text=""/>
         <TextView
             android:id="@+id/tv_house_detail_des"
             android:layout_width="wrap_content"
@@ -48,7 +49,7 @@
             android:layout_marginTop="@dimen/dp_10"
             android:textSize="@dimen/text_second"
             android:textColor="@color/text_two"
-            android:text="距离100米  一房一厅  北欧风格"/>
+            android:text=""/>
     </LinearLayout>
     <ImageView
         android:id="@+id/iv_right"
@@ -87,12 +88,13 @@
         />
     <com.coorchice.library.SuperTextView
         android:id="@+id/stv_settled_time"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tv_settled_detail"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="@id/tv_settled_detail"
         android:layout_marginTop="@dimen/dp_4"
+        android:paddingHorizontal="@dimen/dp_14"
         app:solid="@color/put_bg_color"
         app:stroke_color="@color/put_stroke_color"
         app:stroke_width="1dp"
@@ -100,17 +102,18 @@
         app:corner="5dp"
         android:textSize="@dimen/text_second"
         android:textColor="@color/hint_color"
-        android:text="10月11日"
+        android:text="2018年10月11日"
         android:gravity="center"
         />
     <com.coorchice.library.SuperTextView
         android:id="@+id/stv_leave_time"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tv_settled_detail"
         app:layout_constraintLeft_toLeftOf="@id/tv_leave_detail"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="@dimen/dp_4"
+        android:paddingHorizontal="@dimen/dp_14"
         app:solid="@color/put_bg_color"
         app:stroke_color="@color/put_stroke_color"
         app:stroke_width="1dp"
@@ -118,7 +121,7 @@
         app:corner="5dp"
         android:textSize="@dimen/text_second"
         android:textColor="@color/hint_color"
-        android:text="10月11日"
+        android:text="2018年10月11日"
         android:gravity="center"
         />
 

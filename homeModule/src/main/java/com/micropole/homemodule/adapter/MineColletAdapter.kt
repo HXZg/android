@@ -6,7 +6,7 @@ import com.micropole.homemodule.R
 
 /**
  * @ClassName       EvaluationListAdapter
- * @Description     评论列表
+ * @Description     收藏 足迹
  * @Author          HuaiXianZhong
  * @Sign            。。。
  * @Date            2018/10/22 11:19

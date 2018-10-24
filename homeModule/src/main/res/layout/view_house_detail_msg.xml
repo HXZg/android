@@ -8,6 +8,7 @@
     app:cardPreventCornerOverlap="false"
     android:background="#fff">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,7 +29,7 @@
             android:layout_marginTop="@dimen/dp_10"
             android:textSize="@dimen/order_txt_size"
             android:textColor="@color/text_one"
-            android:text="1、可住2人\n2、一房一厅一卫/88m²\n3、朝向东南"
+            android:text=""
             android:lineSpacingExtra="@dimen/dp_4"
             android:paddingBottom="@dimen/dp_10"/>
 

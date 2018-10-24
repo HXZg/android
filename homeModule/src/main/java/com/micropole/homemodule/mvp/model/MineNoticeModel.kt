@@ -4,7 +4,7 @@ import com.micropole.homemodule.mvp.constract.MineNoticeConstract
 
 /**
  * @ClassName       MineColletModel
- * @Description     todo
+ * @Description     消息列表
  * @Author          HuaiXianZhong
  * @Sign            。。。
  * @Date            2018/10/22 14:32

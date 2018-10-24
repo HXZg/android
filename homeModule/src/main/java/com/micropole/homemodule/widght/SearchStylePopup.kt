@@ -15,6 +15,7 @@ import com.micropole.homemodule.entity.SearchStyleBean
 /**
  * author: HuaiXianZhong
  * date: 2018/8/14
+ *       搜索风格弹框
  * describe:
  */
 class SearchStylePopup(context: Context,val data: List<SearchStyleBean>, val listener:(id:Int)->Unit) : BasePopup<SearchStylePopup>(context) {

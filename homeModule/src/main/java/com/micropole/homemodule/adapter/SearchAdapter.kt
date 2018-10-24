@@ -8,7 +8,7 @@ import com.micropole.homemodule.util.loadImg
 
 /**
  * @ClassName       SearchAdapter
- * @Description     todo
+ * @Description     搜索
  * @Author          HuaiXianZhong
  * @Sign            。。。
  * @Date            2018/10/23 14:45

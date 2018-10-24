@@ -41,6 +41,7 @@ class SearchActivity : BaseRecyclerActivity<SearchBean.ProjectBean,SearchStyleCo
     var endTime = ""
     var num = ""
     var mstyleId = ""
+    var mOldType = 0
 
     var mData:List<SearchStyleBean>? = null
 
@@ -52,8 +53,6 @@ class SearchActivity : BaseRecyclerActivity<SearchBean.ProjectBean,SearchStyleCo
     }
 
     override fun createPresenter(): SearchStyleConstract.Present = SearchStylePresent()
-
-    var mOldType : Int = 0
 
     override fun getActivityLayoutId(): Int = R.layout.activity_search
 

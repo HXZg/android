@@ -32,6 +32,7 @@
         <include layout="@layout/view_loading"/>
         <include layout="@layout/view_error"/>
         <include layout="@layout/view_check_net"/>
+
         <LinearLayout
             android:id="@+id/view_content"
             android:layout_width="match_parent"

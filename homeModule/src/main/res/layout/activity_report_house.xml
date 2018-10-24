@@ -46,6 +46,7 @@
         android:layout_marginRight="@dimen/dp_14"
         android:layout_marginTop="@dimen/dp_14"
         >
+
         <EditText
             android:id="@+id/et_put_report"
             android:layout_width="match_parent"

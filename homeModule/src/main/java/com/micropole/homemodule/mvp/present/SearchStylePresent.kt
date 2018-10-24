@@ -26,7 +26,7 @@ class SearchStylePresent : SearchStyleConstract.Present() {
     }
 
     override fun getSearchData(lat:String,lng:String,styleId:String,type:Int,page:Int,startTime:String,endTime:String,num:String) {
-        if (lat.isNullOrEmpty() || lng.isEmpty() || styleId.isEmpty() || type == 0 || startTime.isEmpty() || endTime.isEmpty() || num.isEmpty()) return
+        if (lat.isEmpty() || lng.isEmpty() || styleId.isEmpty() || type == 0 || startTime.isEmpty() || endTime.isEmpty() || num.isEmpty()) return
         getModel().getSearchData(lat,lng,styleId, type, page, startTime, endTime, num)
                 .handler({msg, entity ->
                     getView()?.getSearchData(entity!!)

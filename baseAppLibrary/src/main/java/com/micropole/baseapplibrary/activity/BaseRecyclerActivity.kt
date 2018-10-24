@@ -67,6 +67,8 @@ abstract class BaseRecyclerActivity<DATA,M,V : BaseMvpView,P:BaseMvpPresenter<M,
                     mAdapter?.setEnableLoadMore(true)
                 }
                 mAdapter?.setNewData(data)
+            }else{
+                showToast("该列表没有数据")
             }
         }
     }

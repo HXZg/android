@@ -8,6 +8,7 @@ import android.widget.TextView
 import com.blankj.utilcode.util.ImageUtils
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.xx.baseutilslibrary.network.retrofit.Retrofit2Manager
 /**
@@ -33,9 +34,10 @@ fun ImageView.loadImag( url: String?, tran: BitmapTransformation? = null, plach:
         if (plach != 0) it.placeholder(plach)
         if (error != 0) it.error(error)
         if (isCircle) it.circleCrop()
+        if (radio != 0) it.transform(RoundedCorners(radio))
 //        if (radio != 0) it.transform()
     }
-    Glide.with(this.context).applyDefaultRequestOptions(options).load(urltemp).into(this)
+    Glide.with(this.context).load(urltemp).apply(options).into(this)
     /*Glide.with(this.context).load(urltemp).also {
         if (tran != null) {
             it.transform(tran)

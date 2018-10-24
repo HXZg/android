@@ -5,6 +5,7 @@
     android:descendantFocusability="blocksDescendants"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <com.bigkoo.convenientbanner.ConvenientBanner
         android:id="@+id/cb_home"
         android:layout_width="0dp"

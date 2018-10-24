@@ -8,6 +8,7 @@
     app:cardPreventCornerOverlap="false"
     android:background="#fff">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,7 +29,7 @@
             android:layout_marginTop="@dimen/dp_10"
             android:textSize="@dimen/order_txt_size"
             android:textColor="@color/text_one"
-            android:text="清洁费：50元\n额外房客：每 1 位增加 100 元"
+            android:text=""
             android:lineSpacingExtra="@dimen/dp_4"
             android:paddingBottom="@dimen/dp_10"/>
 

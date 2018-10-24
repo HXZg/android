@@ -6,7 +6,7 @@ import com.micropole.homemodule.network.AppService
 
 /**
  * @ClassName       HomeModel
- * @Description     todo
+ * @Description     首页
  * @Author          HuaiXianZhong
  * @Sign            。。。
  * @Date            2018/10/22 17:19

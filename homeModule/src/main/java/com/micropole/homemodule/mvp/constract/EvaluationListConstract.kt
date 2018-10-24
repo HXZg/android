@@ -1,7 +1,10 @@
 package com.micropole.homemodule.mvp.constract
 
+import com.micropole.homemodule.entity.EvaluationBean
 import com.xx.baseuilibrary.mvp.BaseMvpView
 import com.xx.baseuilibrary.mvp.presenter.BaseMvpPresenter
+import com.xx.baseutilslibrary.entity.BaseResponseEntity
+import io.reactivex.Observable
 
 /**
  * @ClassName       EvaluationListConstract
@@ -14,14 +17,16 @@ import com.xx.baseuilibrary.mvp.presenter.BaseMvpPresenter
 class EvaluationListConstract {
 
     interface View : BaseMvpView{
-
+        fun getEvaluationData(data:List<EvaluationBean>?)
+        fun refreshError()
     }
 
     abstract class Model{
-
+        abstract fun getEvaluationData(lat:String,lng:String,h_id:String,page:Int) : Observable<BaseResponseEntity<List<EvaluationBean>>>
     }
 
     abstract class Present : BaseMvpPresenter<Model,View>(){
 
+        abstract fun getEvaluationData(h_id:String,page:Int)
     }
 }

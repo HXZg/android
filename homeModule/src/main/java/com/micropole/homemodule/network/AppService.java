@@ -1,6 +1,11 @@
 package com.micropole.homemodule.network;
 
+import com.micropole.homemodule.entity.EvaluationBean;
 import com.micropole.homemodule.entity.HomeBean;
+import com.micropole.homemodule.entity.HouseDetailBean;
+import com.micropole.homemodule.entity.OrderDetailBean;
+import com.micropole.homemodule.entity.OrderListBean;
+import com.micropole.homemodule.entity.RefreshTokenBean;
 import com.micropole.homemodule.entity.SearchBean;
 import com.micropole.homemodule.entity.SearchStyleBean;
 import com.xx.baseutilslibrary.entity.BaseResponseEntity;
@@ -22,6 +27,15 @@ import retrofit2.http.POST;
  * @Copyright Guangzhou micro pole mobile Internet Technology Co., Ltd.
  */
 public interface AppService {
+
+    /**
+     * 刷新token
+     * @param token
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("login/get_short_token")
+    Observable<BaseResponseEntity<RefreshTokenBean>> refreshToken(@Field("long_token") String token);
 
     /**
      * 首页
@@ -56,20 +70,55 @@ public interface AppService {
      * 旅馆详情
      * @return
      */
-    @POST("Hotel/hotel_detail")
-    Observable<BaseResponseEntity<SearchBean>> getHouseDetail();
+    @FormUrlEncoded
+    @POST("Index/hotel_detail")
+    Observable<BaseResponseEntity<HouseDetailBean>> getHouseDetail(@Header("token")String token,@Header("lat")String lat, @Header("lng")String lng,
+                                                                   @Field("h_id") String h_id);
 
     /**
      * 举报房源
      * @return
      */
+    @FormUrlEncoded
     @POST("Hotel/hotel_report")
-    Observable<BaseResponseEntity<SearchBean>> reportHotel();
+    Observable<BaseResponseEntity<Object>> reportHotel(@Header("token")String token,@Header("lat")String lat, @Header("lng")String lng,
+                                                           @Field("h_id") String h_id,@Field("report_content") String content);
 
     /**
      * 评论列表
      * @return
      */
-    @POST("Hotel/hotel_comments")
-    Observable<BaseResponseEntity<SearchBean>> getHouseComment();
+    @FormUrlEncoded
+    @POST("Index/hotel_comments")
+    Observable<BaseResponseEntity<List<EvaluationBean>>> getHouseComment(@Header("lat")String lat, @Header("lng")String lng,
+                                                                         @Field("h_id") String h_id, @Field("page") int page);
+
+    /**
+     * 收藏旅馆
+     * @param token
+     * @param lat
+     * @param lng
+     * @param h_id
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Hotel/hotel_collect")
+    Observable<BaseResponseEntity<Object>> collectHotel(@Header("token")String token,@Header("lat")String lat, @Header("lng")String lng,
+                                                                      @Field("h_id") String h_id);
+
+    /**
+     * 订单列表
+     * @param staut 1=支付成功，待确认，2=管理员确认预约，已预订，3=已经完成 4=已取消 5=退款中 7=全部订单 8=待评价
+     * @param page
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Userorder/order_list")
+    Observable<BaseResponseEntity<List<OrderListBean>>> orderList(@Header("token")String token, @Header("lat")String lat, @Header("lng")String lng,
+                                                                  @Field("or_stat") int staut, @Field("page") int page);
+
+    @FormUrlEncoded
+    @POST("Userorder/order_detail")
+    Observable<BaseResponseEntity<OrderDetailBean>> orderDetail(@Header("token")String token, @Header("lat")String lat, @Header("lng")String lng,
+                                                                @Field("or_id") String orderId);
 }

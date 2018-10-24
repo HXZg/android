@@ -25,6 +25,7 @@
             android:text="评论"/>
     </FrameLayout>
 
+
     <include layout="@layout/view_refresh_recy"/>
 
 </LinearLayout>

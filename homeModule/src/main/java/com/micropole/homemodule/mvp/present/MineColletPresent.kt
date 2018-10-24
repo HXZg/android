@@ -5,7 +5,7 @@ import com.micropole.homemodule.mvp.model.MineColletModel
 
 /**
  * @ClassName       MineColletPresent
- * @Description     todo
+ * @Description     收藏 足迹
  * @Author          HuaiXianZhong
  * @Sign            。。。
  * @Date            2018/10/22 14:31

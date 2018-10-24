@@ -5,7 +5,7 @@ import com.micropole.homemodule.mvp.model.MineNoticeModel
 
 /**
  * @ClassName       MineColletPresent
- * @Description     todo
+ * @Description     消息列表
  * @Author          HuaiXianZhong
  * @Sign            。。。
  * @Date            2018/10/22 14:31

@@ -20,6 +20,9 @@ import java.util.*
 import cn.qqtheme.framework.picker.OptionPicker
 import cn.qqtheme.framework.util.DateUtils
 import com.blankj.utilcode.util.TimeUtils.getDate
+import com.micropole.homemodule.util.TimerUtil
+import com.micropole.homemodule.util.setRanger
+import com.micropole.homemodule.util.setTurnImage
 
 
 /**
@@ -46,7 +49,7 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
 
     override fun initEvent(view: View?) {
         homeHouseAdapter.setOnItemClickListener { adapter, view, position ->
-            startActivity(HouseDetailActivity::class.java)
+            HouseDetailActivity.startHouseDetail(mContext,homeHouseAdapter.data[position].h_id)
         }
 
         stv_location.setOnClickListener {  }
@@ -54,23 +57,9 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
         stv_settled_date.setOnClickListener { getDate(click = 1) }  //入驻时间
         stv_leave_store_date.setOnClickListener {
             val date = stv_settled_date.text.toString()
-            var year = date.split("/")[0].toInt()
-            var month = date.split("/")[1].toInt()
-            var day = date.split("/")[2].toInt()
-            val days = DateUtils.calculateDaysInMonth(year, month)
-            if (day + 1 > days){
-                if (month == 12){
-                    ++year
-                    month = 1
-                    day = 1
-                }else{
-                    ++month
-                    day = 1
-                }
-            }else{
-                ++day
-            }
-            getDate(year = year,month = month,day = day,click = 2)
+            val data = date.split("/")
+            val addDate = TimerUtil.addDate(data[0].toInt(), data[1].toInt(), data[2].toInt())
+            getDate(year = addDate[0],month = addDate[1],day = addDate[2],click = 2)
         } //离店时间
         stv_settled_num.setOnClickListener { getPNum(mPeopleNum) } //入驻人数
 
@@ -87,7 +76,6 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
     }
 
     override fun initData() {
-        showLoading()
         rv_home_house.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
         rv_home_house.adapter = homeHouseAdapter
         rv_home_house.isNestedScrollingEnabled = false
@@ -98,24 +86,9 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
     }
 
     fun setDate(year: Int, month: Int, day: Int){
-        var year = year
-        var month = month
-        var day = day
         stv_settled_date.text = "$year/$month/$day"
-        val days = DateUtils.calculateDaysInMonth(year, month)
-        if (day + 1 > days){
-            if (month == 12){
-                ++year
-                month = 1
-                day = 1
-            }else{
-                ++month
-                day = 1
-            }
-        }else{
-            ++day
-        }
-        stv_leave_store_date.text = "$year/$month/$day"
+        val addDate = TimerUtil.addDate(year, month, day)
+        stv_leave_store_date.text = "${addDate[0]}/${addDate[1]}/${addDate[2]}"
     }
 
     override fun setData(data: HomeBean?) {
@@ -127,13 +100,7 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
                 for (i in data.adve.indices){
                     mAdves.add(data.adve[i].ad_img)
                 }
-                (cb_home as ConvenientBanner<String>).setPages( { ImageHolderView() } , mAdves)
-                        ?.setPageIndicator(intArrayOf(R.drawable.shape_indicator_gray,R.drawable.shape_indicator_red))
-                        ?.setPointViewVisible(true)
-                        ?.setOnItemClickListener {
-                            /*activity?.bannerStart(data[position])*/
-                            showToast(it.toString())
-                        }?.startTurning(2000)
+                cb_home.setTurnImage(mAdves)
             }
 
             if (data.project.isNotEmpty()){
@@ -147,19 +114,13 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
     //时间选择器
     private fun getDate(year:Int = 0, month : Int = 0, day : Int = 0, click:Int){
         var datePicker = DatePicker(activity, DateTimePicker.YEAR_MONTH_DAY)
-        var myear = if (year == 0) Calendar.getInstance().get(Calendar.YEAR) else year
-        var mmonth = if (month == 0) Calendar.getInstance().get(Calendar.MONTH) + 1 else month
-        var mday = if (day == 0) Calendar.getInstance().get(Calendar.DATE) else day
-        datePicker.setRangeStart(myear,mmonth,mday)
-        datePicker.setRangeEnd(myear+100,mmonth,mday)
+        datePicker.setRanger(year, month, day)
+
         val date = if (click == 1) stv_settled_date.text.toString() else stv_leave_store_date.text.toString()
-        var ayear = date.split("/")[0].toInt()
-        var amonth = date.split("/")[1].toInt()
-        var aday = date.split("/")[2].toInt()
-        datePicker.setSelectedItem(ayear,amonth,aday)
+        val adata = date.split("/")
+        datePicker.setSelectedItem(adata[0].toInt(),adata[1].toInt(),adata[2].toInt())
+
         datePicker.setOnDatePickListener(DatePicker.OnYearMonthDayPickListener { year, month, day ->
-            //getPresenter().updateInfo(SetAccountMsgActivity.mTypeList[4],birth = "$year-$month-$day")
-            //tv_set_birth.text = "$year-$month-$day"
             if (click == 1){
                 setDate(year.toInt(),month.toInt(),day.toInt())
             }else{
@@ -178,7 +139,7 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
         }
         val picker = OptionPicker(activity, mNums) //list为选择器中的选项
         picker.setOffset(2)
-        picker.selectedIndex = 1 //默认选中项
+        picker.selectedIndex = 0 //默认选中项
         picker.setTextSize(18)
         picker.setOnOptionPickListener(object : OptionPicker.OnOptionPickListener() {
             override fun onOptionPicked(position: Int, option: String) {

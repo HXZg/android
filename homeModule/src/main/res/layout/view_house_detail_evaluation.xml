@@ -7,6 +7,7 @@
     app:cardUseCompatPadding="true"
     app:cardPreventCornerOverlap="false">
 
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,7 +32,7 @@
             android:drawablePadding="@dimen/dp_10"
             android:textColor="@color/price_color"
             android:textSize="@dimen/text_second"
-            android:text="120条评论"/>
+            android:text=""/>
         <TextView
             android:id="@+id/tv_detail_ev_score"
             android:layout_width="wrap_content"
@@ -39,7 +40,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_detail_ev_title"
             android:textColor="@color/price_color"
             android:textSize="50sp"
-            android:text="5.0"
+            android:text=""
             />
         <TextView
             android:layout_width="wrap_content"
@@ -57,7 +58,8 @@
             android:textSize="@dimen/text_second"
             android:textColor="@color/text_two"
             android:paddingBottom="@dimen/dp_10"
-            android:text="服务5.0  设施5.0 位置5.0 卫生5.0"/>
+            android:text=""
+            android:visibility="gone"/>
 
     </android.support.constraint.ConstraintLayout>
 
