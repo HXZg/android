@@ -1,4 +1,4 @@
-package com.micropole.baseapplibrary.util
+package com.micropole.homeword.util
 
 import android.content.Context
 import com.amap.api.location.*

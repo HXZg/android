@@ -1,7 +1,11 @@
 package com.micropole.homemodule.mvp.constract
 
+import com.micropole.homemodule.entity.NewsBean
+import com.micropole.homemodule.entity.SearchBean
 import com.xx.baseuilibrary.mvp.BaseMvpView
 import com.xx.baseuilibrary.mvp.presenter.BaseMvpPresenter
+import com.xx.baseutilslibrary.entity.BaseResponseEntity
+import io.reactivex.Observable
 
 /**
  * @ClassName       MineColletConstract
@@ -13,9 +17,17 @@ import com.xx.baseuilibrary.mvp.presenter.BaseMvpPresenter
  */
 class MineColletConstract {
 
-    interface View:BaseMvpView{}
+    interface View:BaseMvpView{
+        fun setData(data : SearchBean?)
+        fun refreshError()
+    }
 
-    abstract class Model {}
+    abstract class Model {
+        abstract fun collectList(token:String,lat:String,lng:String,page : Int) : Observable<BaseResponseEntity<SearchBean>>
+        abstract fun footList(token:String,lat:String,lng:String,page : Int) : Observable<BaseResponseEntity<SearchBean>>
+    }
 
-    abstract class Present : BaseMvpPresenter<Model,View>(){}
+    abstract class Present : BaseMvpPresenter<Model,View>(){
+        abstract fun collectFootList(type:Int,page: Int)
+    }
 }

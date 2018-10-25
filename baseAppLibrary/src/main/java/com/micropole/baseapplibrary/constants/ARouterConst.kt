@@ -21,6 +21,7 @@ object ARouterConst {
     const val MAIN = "/main"
     object Main{
         const val MAIN_PAY_CENTER = "$MAIN/pay_center_activity"
+        const val MAIN_MAP = "$MAIN/map_activity"
     }
 
     const val HOME = "/home"
@@ -30,7 +31,8 @@ object ARouterConst {
 
     const val ORDER = "/order"
     object Order{
-        const val ORDER_FRAGEMENT = "$ORDER/order_fragment"
+        const val ORDER_FRAGEMENT = "$HOME/order_fragment"
+        const val ORDERLIST_FRAGEMENT = "$HOME/orderlist_fragment"
     }
 
     const val MINE = "/mine"

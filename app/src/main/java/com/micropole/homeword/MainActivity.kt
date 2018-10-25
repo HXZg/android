@@ -60,7 +60,7 @@ class MainActivity : BaseNavigationActivity() {
     override fun getFragments(): List<Fragment> {
         var mFragments = arrayListOf<Fragment>()
         mFragments.add(ARouter.getInstance().build(ARouterConst.Home.HOME_FRAGMENT).navigation() as Fragment)
-        mFragments.add(ARouter.getInstance().build(ARouterConst.Order.ORDER_FRAGEMENT).navigation() as Fragment)
+        mFragments.add(ARouter.getInstance().build(ARouterConst.Order.ORDERLIST_FRAGEMENT).navigation() as Fragment)
         mFragments.add(ARouter.getInstance().build(ARouterConst.Mine.MINE_FRAGMENT).navigation() as Fragment)
         return mFragments
     }

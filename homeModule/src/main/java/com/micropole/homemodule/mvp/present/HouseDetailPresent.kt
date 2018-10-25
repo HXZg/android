@@ -18,15 +18,31 @@ import com.xx.baseutilslibrary.network.exception.ApiFaileException
  * @Copyright       Guangzhou micro pole mobile Internet Technology Co., Ltd.
  */
 class HouseDetailPresent : HouseDetailConstract.Present() {
+    override fun getUserPhone(h_id: String) {
+        if (Constants.isLogin()){
+            getView()?.showLoadingDialog("正在获取")
+            getModel().getUserPhone(Constants.SHORT_TOKEN,Constants.getLocation()[0],Constants.getLocation()[1],h_id)
+                    .ui({
+                        getView()?.dismissLoadingDialog()
+                        getView()?.userPhone(it.data)},{
+                        getView()?.dismissLoadingDialog()
+                        getView()?.refreshToken(it,{collectHouse(h_id)})
+                    })
+        }else{
+            getView()?.showToast("请先登录")
+        }
+    }
+
     override fun collectHouse(h_id: String) {
         if (Constants.isLogin()){
-            getView()?.showLoadingDialog()
+            getView()?.showLoadingDialog("正在收藏")
             getModel().collectHouse(Constants.SHORT_TOKEN,Constants.getLocation()[0],Constants.getLocation()[1],h_id)
                     .ui({
                         getView()?.dismissLoadingDialog()
                         getView()?.showToast(it.msg)},{
                         getView()?.dismissLoadingDialog()
-                        getView()?.showToast(it)})
+                        getView()?.refreshToken(it,{collectHouse(h_id)})
+                    })
         }else{
             getView()?.showToast("请先登录")
         }

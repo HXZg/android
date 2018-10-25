@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="order_list_title">
+        <item>@string/order_all_txt</item>
+        <item>@string/order_confirm_txt</item>
+        <item>@string/order_reservation_txt</item>
+        <item>@string/order_evaluation_txt</item>
+        <item>@string/order_cancel_txt</item>
+        <item>@string/order_refund_txt</item>
+        <item>@string/order_complete_txt</item>
+    </string-array>
+</resources>

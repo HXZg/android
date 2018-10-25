@@ -7,6 +7,7 @@ import com.micropole.baseapplibrary.activity.BaseRecyclerActivity
 import com.micropole.baseapplibrary.constants.ARouterConst
 import com.micropole.homemodule.R
 import com.micropole.homemodule.adapter.MineNoticeAdapter
+import com.micropole.homemodule.entity.NewsBean
 import com.micropole.homemodule.mvp.constract.MineNoticeConstract
 import com.micropole.homemodule.mvp.present.MineNoticePresent
 
@@ -19,12 +20,12 @@ import com.micropole.homemodule.mvp.present.MineNoticePresent
  * @Copyright       Guangzhou micro pole mobile Internet Technology Co., Ltd.
  */
 @Route(path = ARouterConst.Mine.MINE_NOTICE,extras = ARouterConst.LOGIN_EXTRA)
-class MineNoticeActivity : BaseRecyclerActivity<Any,MineNoticeConstract.Model,MineNoticeConstract.View,MineNoticeConstract.Present>(){
+class MineNoticeActivity : BaseRecyclerActivity<NewsBean,MineNoticeConstract.Model,MineNoticeConstract.View,MineNoticeConstract.Present>(),MineNoticeConstract.View{
     override fun loadData(page: Int) {
-
+        getPresenter().newsList(page)
     }
 
-    override fun getAdapter(): BaseQuickAdapter<Any, BaseViewHolder> = MineNoticeAdapter()
+    override fun getAdapter(): BaseQuickAdapter<NewsBean, BaseViewHolder> = MineNoticeAdapter()
 
     override fun clickItem(position: Int) {
     }
@@ -36,6 +37,9 @@ class MineNoticeActivity : BaseRecyclerActivity<Any,MineNoticeConstract.Model,Mi
     override fun initData() {
         super.initData()
         setTitleText("消息")
-        mAdapter?.setNewData(arrayListOf(Any(), Any(), Any()))
+    }
+
+    override fun newsList(data: List<NewsBean>?) {
+        if (data != null) setData(data)
     }
 }

@@ -17,8 +17,9 @@ import io.reactivex.Observable
  */
 class OrderListConstract {
 
-    interface View : BaseMvpLcecView<List<OrderListBean>?>{
-
+    interface View : BaseMvpView{
+        fun setData(data:List<OrderListBean>?)
+        fun refreshError()
     }
 
     abstract class Model{

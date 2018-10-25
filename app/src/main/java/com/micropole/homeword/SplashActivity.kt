@@ -1,9 +1,8 @@
 package com.micropole.homeword
 
 import android.Manifest
-import android.util.Log
 import com.blankj.utilcode.util.PermissionUtils
-import com.micropole.baseapplibrary.util.LocationManagerUtil
+import com.micropole.homeword.util.LocationManagerUtil
 import com.xx.baseuilibrary.mvp.BaseMvpViewActivity
 import java.util.*
 

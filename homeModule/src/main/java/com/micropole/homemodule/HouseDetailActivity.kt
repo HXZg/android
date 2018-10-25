@@ -7,11 +7,13 @@ import android.view.View
 import cn.qqtheme.framework.picker.DatePicker
 import cn.qqtheme.framework.picker.DateTimePicker
 import com.alibaba.android.arouter.launcher.ARouter
-import com.bigkoo.convenientbanner.ConvenientBanner
+import com.blankj.utilcode.util.PhoneUtils
+import com.flyco.dialog.listener.OnBtnClickL
+import com.flyco.dialog.widget.NormalDialog
 import com.micropole.baseapplibrary.constants.ARouterConst
-import com.micropole.baseapplibrary.constants.Constants
 import com.micropole.homemodule.adapter.DetailDeviceAdapter
 import com.micropole.homemodule.entity.HouseDetailBean
+import com.micropole.homemodule.entity.LandlordBean
 import com.micropole.homemodule.mvp.constract.HouseDetailConstract
 import com.micropole.homemodule.mvp.present.HouseDetailPresent
 import com.micropole.homemodule.order.FillOrderActivity
@@ -123,10 +125,10 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
             getDate(year = addDate[0],month = addDate[1],day = addDate[2],click = 2)
         }
         ll_msg.setOnClickListener {
-
+            ARouter.getInstance().build(ARouterConst.Main.MAIN_MAP).navigation()
         }
         iv_right.setOnClickListener {
-
+            ARouter.getInstance().build(ARouterConst.Main.MAIN_MAP).navigation()
         }
         view_evaluation.setOnClickListener {
             EvaluationListActivity.startEvaluationList(mContext,mHId)
@@ -134,12 +136,38 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
         fl_report.setCheckLoginListener { ReportHouseActivity.startReportHotel(mContext,mHId) }  //举报该房源
 
         stv_detail_booking.setCheckLoginListener { startActivity(FillOrderActivity::class.java) }  //填写订单
+
+        iv_detail_telephone.setOnClickListener { presenter.getUserPhone(mHId) }  //联系房东
+
+        iv_detail_follow.setOnClickListener { presenter.collectHouse(mHId) }  //收藏
+
+        iv_detail_share.setOnClickListener {  }  //分享
+
+        stv_detail_booking.setOnClickListener {  }  //预订
     }
 
     fun setDate(year: Int, month: Int, day: Int){
         stv_settled_time.text = "$year/$month/$day"
         val addDate = TimerUtil.addDate(year, month, day)
         stv_leave_time.text = "${addDate[0]}/${addDate[1]}/${addDate[2]}"
+    }
+
+    override fun userPhone(bean: LandlordBean?) {
+        if (bean != null) callPhone(bean.user_phone)
+    }
+
+    fun callPhone(phone:String){
+        val normalDialog = NormalDialog(mContext)
+        normalDialog.style(NormalDialog.STYLE_TWO)
+        normalDialog.isTitleShow(false)
+        normalDialog.content(phone)
+        normalDialog.btnText("取消","呼叫")
+        normalDialog.btnTextColor(resources.getColor(R.color.btn_bg),resources.getColor(R.color.btn_bg))
+        normalDialog.setOnBtnClickL(OnBtnClickL { normalDialog.dismiss() }, OnBtnClickL {
+            PhoneUtils.call(phone)
+            normalDialog.dismiss()
+        })
+        normalDialog.show()
     }
 
     //时间选择器

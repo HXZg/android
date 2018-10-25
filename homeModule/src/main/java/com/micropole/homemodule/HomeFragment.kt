@@ -82,7 +82,7 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
 
         setDate(Calendar.getInstance()[Calendar.YEAR],Calendar.getInstance()[Calendar.MONTH] + 1,Calendar.getInstance()[Calendar.DATE])
 
-        presenter.getHomeData()
+        if (!isHidden) presenter.getHomeData()
     }
 
     fun setDate(year: Int, month: Int, day: Int){

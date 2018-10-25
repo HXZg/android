@@ -21,13 +21,10 @@ class OrderListPresent : OrderListConstract.Present() {
     }
 
     override fun orderList(staut: Int, page: Int) {
-        getView()?.showLoadingDialog()
         getModel().orderList(Constants.SHORT_TOKEN,Constants.getLocation()[0],Constants.getLocation()[1],staut, page)
                 .ui({
-                    getView()?.dismissLoadingDialog()
                     getView()?.setData(it.data)},{
-                    getView()?.dismissLoadingDialog()
-                    if (it != "333") getView()?.showError(ApiFaileException(it),true)
+                    if (it != "333") getView()?.refreshError()
                     getView()?.refreshToken(it,{orderList(staut,page)})})
     }
 }

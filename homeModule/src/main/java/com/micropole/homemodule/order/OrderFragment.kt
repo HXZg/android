@@ -1,21 +1,23 @@
 package com.micropole.homemodule.order
 
-import android.support.v7.widget.LinearLayoutManager
+import android.content.Context
+import android.support.v4.view.ViewPager
+import android.util.Log
 import android.view.View
-import android.widget.TextView
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.micropole.baseapplibrary.constants.ARouterConst
 import com.micropole.baseapplibrary.constants.Constants
 import com.micropole.homemodule.R
-import com.micropole.homemodule.R.id.rv_order
-import com.micropole.homemodule.R.id.tv_order_all
-import com.micropole.homemodule.adapter.OrderItemAdapter
-import com.micropole.homemodule.entity.OrderListBean
-import com.micropole.homemodule.mvp.constract.OrderListConstract
-import com.micropole.homemodule.mvp.present.OrderListPresent
+import com.micropole.homemodule.adapter.OrderListFragmentAdapter
 import com.xx.baseuilibrary.mvp.BaseMvpViewFragment
-import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecFragment
 import kotlinx.android.synthetic.main.fragment_order.*
+import net.lucode.hackware.magicindicator.ViewPagerHelper
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.SimplePagerTitleView
 
 /**
  * @ClassName       OrderFragment
@@ -26,104 +28,72 @@ import kotlinx.android.synthetic.main.fragment_order.*
  * @Date            2018/10/16 16:21
  * @Copyright       Guangzhou micro pole mobile Internet Technology Co., Ltd.
  */
-@Route(path = ARouterConst.Order.ORDER_FRAGEMENT)
-class OrderFragment  : BaseMvpLcecFragment<View,List<OrderListBean>?,OrderListConstract.Model,OrderListConstract.View,OrderListConstract.Present>(),OrderListConstract.View{
-    val orderAdapter = OrderItemAdapter()
-    var mCurrentPage = 1
-    var mStaus = 7  //默认全部
-    var mTxtView : View? = null
+@Route(path = ARouterConst.Order.ORDERLIST_FRAGEMENT)
+class OrderFragment  : BaseMvpViewFragment(){
+
+    val mfragments = arrayListOf(OrderListFragment.startOrderList(7),OrderListFragment.startOrderList(1),OrderListFragment.startOrderList(2)
+    ,OrderListFragment.startOrderList(8),OrderListFragment.startOrderList(4),OrderListFragment.startOrderList(5),OrderListFragment.startOrderList(3))
+
+    var mData : Array<String>? = null
 
     override fun getFragmentLayoutId(): Int = R.layout.fragment_order
 
-    override fun createPresenter(): OrderListConstract.Present = OrderListPresent()
+    override fun initView(view: View?) {
 
-    override fun loadData(refresh: Boolean) {
-        mCurrentPage = 1
-        presenter.orderList(mStaus,mCurrentPage)
     }
 
     override fun initEvent(view: View?) {
-        orderAdapter.setOnItemClickListener { adapter, view, position ->
-            OrderDetailActivity.startOrderDetail(mContext,orderAdapter.data[position].or_id)
-        }
-        orderAdapter.setOnLoadMoreListener({  //加载
-            ++mCurrentPage
-            presenter.orderList(mStaus,mCurrentPage)
-        },rv_order)
-        swipe_refresh.setOnRefreshListener {  //刷新
-            loadData(true)
-        }
+        vp_order_list.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
 
-        tv_order_all.setOnClickListener {
-            mStaus = 7
-            clickItem(it)
-        }  //全部
-        tv_order_confirm.setOnClickListener {
-            mStaus = 1
-            clickItem(it)
-        } //待确认
-        tv_order_cancel.setOnClickListener {
-            mStaus = 4
-            clickItem(it)
-        } //取消
-        tv_order_complete.setOnClickListener {
-            mStaus = 3
-            clickItem(it)
-        }  //已完成
-        tv_order_evaluation.setOnClickListener {
-            mStaus = 8
-            clickItem(it)
-        }  //待评价
-        tv_order_refund.setOnClickListener {
-            mStaus = 5
-            clickItem(it)
-        }  //退款中
-        tv_order_reservation.setOnClickListener {
-            mStaus = 2
-            clickItem(it)
-        } //已预订
+            }
 
+            override fun onPageSelected(position: Int) {
+                Log.i("select","$position")
+                (mfragments[position] as OrderListFragment).refreshLoad()
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+
+            }
+
+        })
+        stv_order_login.setOnClickListener { ARouter.getInstance().build(ARouterConst.Login.LOGIN_ACTIVITY).navigation() }
+    }
+
+    fun initMagic(){
+        val commonNavigator = CommonNavigator(mContext)
+        commonNavigator.adapter = object : CommonNavigatorAdapter() {
+            override fun getTitleView(p0: Context?, index: Int): IPagerTitleView {
+                val simplePagerTitleView = SimplePagerTitleView(context)
+                simplePagerTitleView.text = mData!![index]
+                simplePagerTitleView.normalColor = resources.getColor(R.color.colorWhite)
+                simplePagerTitleView.selectedColor = resources.getColor(R.color.text_black)
+                simplePagerTitleView.textSize = 14f
+                simplePagerTitleView.setOnClickListener { vp_order_list.currentItem = index }
+                return simplePagerTitleView
+            }
+
+            override fun getCount(): Int = mData!!.size
+
+            override fun getIndicator(p0: Context?): IPagerIndicator? {
+                return null
+            }
+        }
+        magic_indicator.navigator = commonNavigator
+        ViewPagerHelper.bind(magic_indicator,vp_order_list)
     }
 
     override fun initData() {
-        clickItem(tv_order_all)
-        rv_order.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
-        rv_order.adapter = orderAdapter
-    }
+        mData = resources.getStringArray(R.array.order_list_title)
+        vp_order_list.adapter = OrderListFragmentAdapter(childFragmentManager,mfragments)
 
-    override fun onResume() {
-        super.onResume()
-        if (!Constants.isLogin()){
-            fl_order_login.visibility = View.VISIBLE
-        }else{
-            fl_order_login.visibility = View.GONE
-            loadData(true)
-        }
-    }
-
-    fun clickItem(view:View){
-        if (mTxtView != view){
-            mTxtView?.isSelected = false
-            view.isSelected = true
-            mTxtView = view
-            loadData(true)
-        }
-    }
-
-    override fun setData(data: List<OrderListBean>?) {
-        showContent()
-        if (orderAdapter.isLoading){
-            if (data != null && data.isNotEmpty()){
-                orderAdapter.loadMoreComplete()
-                orderAdapter.addData(data)
+        if (!isHidden){
+            if (!Constants.isLogin()){
+                fl_order_login.visibility = View.VISIBLE
             }else{
-                orderAdapter.loadMoreEnd(false)
-            }
-        }else{
-            swipe_refresh.isRefreshing = false
-            orderAdapter.setNewData(data)
-            if (data == null || data.isEmpty()){
-                showToast("该列表没有数据")
+                fl_order_login.visibility = View.GONE
+                initMagic()
             }
         }
     }

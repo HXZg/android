@@ -3,6 +3,8 @@ package com.micropole.homemodule.network;
 import com.micropole.homemodule.entity.EvaluationBean;
 import com.micropole.homemodule.entity.HomeBean;
 import com.micropole.homemodule.entity.HouseDetailBean;
+import com.micropole.homemodule.entity.LandlordBean;
+import com.micropole.homemodule.entity.NewsBean;
 import com.micropole.homemodule.entity.OrderDetailBean;
 import com.micropole.homemodule.entity.OrderListBean;
 import com.micropole.homemodule.entity.RefreshTokenBean;
@@ -85,6 +87,15 @@ public interface AppService {
                                                            @Field("h_id") String h_id,@Field("report_content") String content);
 
     /**
+     *得到房东联系方式
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Hotel/hotel_user_phone")
+    Observable<BaseResponseEntity<LandlordBean>> getUserPhone(@Header("token")String token, @Header("lat")String lat, @Header("lng")String lng,
+                                                              @Field("h_id") String h_id);
+
+    /**
      * 评论列表
      * @return
      */
@@ -117,8 +128,43 @@ public interface AppService {
     Observable<BaseResponseEntity<List<OrderListBean>>> orderList(@Header("token")String token, @Header("lat")String lat, @Header("lng")String lng,
                                                                   @Field("or_stat") int staut, @Field("page") int page);
 
+    /**
+     * 订单详情
+     * @param token
+     * @param lat
+     * @param lng
+     * @param orderId
+     * @return
+     */
     @FormUrlEncoded
     @POST("Userorder/order_detail")
     Observable<BaseResponseEntity<OrderDetailBean>> orderDetail(@Header("token")String token, @Header("lat")String lat, @Header("lng")String lng,
                                                                 @Field("or_id") String orderId);
+
+    /**
+     * 收藏列表
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("user/user_collect")
+    Observable<BaseResponseEntity<SearchBean>> collectList(@Header("token")String token, @Header("lat")String lat, @Header("lng")String lng,
+                                                           @Field("page") int page);
+
+    /**
+     * 足迹列表
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("user/user_footprint")
+    Observable<BaseResponseEntity<SearchBean>> footList(@Header("token")String token, @Header("lat")String lat, @Header("lng")String lng,
+                                                        @Field("page") int page);
+
+    /**
+     * 消息列表
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("user/user_news")
+    Observable<BaseResponseEntity<List<NewsBean>>> newsList(@Header("token")String token, @Header("lat")String lat, @Header("lng")String lng,
+                                                      @Field("page") int page);
 }

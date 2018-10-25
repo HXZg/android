@@ -1,4 +1,4 @@
-package com.micropole.baseapplibrary.activity
+package com.micropole.homeword
 
 import android.Manifest
 import android.content.Intent
@@ -8,10 +8,10 @@ import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.amap.api.maps2d.AMap
 import com.amap.api.maps2d.CameraUpdateFactory
 import com.amap.api.maps2d.model.*
-import kotlinx.android.synthetic.main.activity_map_location.*
 import com.amap.api.services.core.LatLonPoint
 import com.amap.api.services.geocoder.GeocodeResult
 import com.amap.api.services.geocoder.GeocodeSearch
@@ -21,11 +21,11 @@ import com.autonavi.amap.mapcore2d.Inner_3dMap_location
 import com.blankj.utilcode.util.PermissionUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.flyco.dialog.widget.ActionSheetDialog
-import com.micropole.baseapplibrary.R
-import com.micropole.baseapplibrary.constants.Constants
+import com.micropole.baseapplibrary.constants.ARouterConst
 import com.micropole.baseapplibrary.util.OpenNavigationUtils
 import com.xx.baseuilibrary.mvp.BaseMvpViewActivity
-import java.util.ArrayList
+import kotlinx.android.synthetic.main.activity_map_location.*
+import java.util.*
 
 
 /**
@@ -33,6 +33,7 @@ import java.util.ArrayList
  * date: 2018/7/12
  * describe:
  */
+@Route(path = ARouterConst.Main.MAIN_MAP)
 class MapActivity : BaseMvpViewActivity(), AMap.OnMyLocationChangeListener {
     override fun getActivityLayoutId(): Int = R.layout.activity_map_location
     override fun initData() {
@@ -154,10 +155,9 @@ class MapActivity : BaseMvpViewActivity(), AMap.OnMyLocationChangeListener {
                 showDialog()
             }else if (type == 2){
                 if (result != null && result?.regeocodeAddress != null){
-                    Constants.putLocation(lats!!,logs!!,result?.regeocodeAddress?.pois!![0].title)   //存储经纬度，城市名
                     var intent = Intent()
                     intent.putExtra("location_result", result?.regeocodeAddress?.pois!!.get(0).title)
-                    setResult(0x11,intent)
+                    //setResult(MainActivity.RESULT_CODE,intent)
                     finish()
                 }else{
                     ToastUtils.showShort("无法定位")
@@ -169,7 +169,7 @@ class MapActivity : BaseMvpViewActivity(), AMap.OnMyLocationChangeListener {
                     intent.putExtra("location_address",result?.regeocodeAddress?.formatAddress)
                     intent.putExtra("location_lat",""+lats)
                     intent.putExtra("location_log",""+logs)
-                    setResult(0x11,intent)
+                    //setResult(MainActivity.RESULT_CODE,intent)
                     finish()
                 }else{
                     ToastUtils.showShort("无法定位")

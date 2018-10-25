@@ -9,7 +9,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/titlebar_height"
-        android:background="@color/colorAccent">
+        android:background="@color/btn_bg">
 
         <TextView
             android:id="@+id/tv_store_list_title"
