@@ -1,5 +1,6 @@
 package com.micropole.homemodule.mvp.constract
 
+import com.micropole.homemodule.entity.BookingBean
 import com.micropole.homemodule.entity.HouseDetailBean
 import com.micropole.homemodule.entity.LandlordBean
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecView

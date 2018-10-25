@@ -22,6 +22,7 @@ object ARouterConst {
     object Main{
         const val MAIN_PAY_CENTER = "$MAIN/pay_center_activity"
         const val MAIN_MAP = "$MAIN/map_activity"
+        const val MAIN_SHARE = "$MAIN/share_activity"
     }
 
     const val HOME = "/home"

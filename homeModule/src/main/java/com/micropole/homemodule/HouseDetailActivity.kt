@@ -12,6 +12,7 @@ import com.flyco.dialog.listener.OnBtnClickL
 import com.flyco.dialog.widget.NormalDialog
 import com.micropole.baseapplibrary.constants.ARouterConst
 import com.micropole.homemodule.adapter.DetailDeviceAdapter
+import com.micropole.homemodule.entity.BookingBean
 import com.micropole.homemodule.entity.HouseDetailBean
 import com.micropole.homemodule.entity.LandlordBean
 import com.micropole.homemodule.mvp.constract.HouseDetailConstract
@@ -135,15 +136,13 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
         }
         fl_report.setCheckLoginListener { ReportHouseActivity.startReportHotel(mContext,mHId) }  //举报该房源
 
-        stv_detail_booking.setCheckLoginListener { startActivity(FillOrderActivity::class.java) }  //填写订单
-
         iv_detail_telephone.setOnClickListener { presenter.getUserPhone(mHId) }  //联系房东
 
         iv_detail_follow.setOnClickListener { presenter.collectHouse(mHId) }  //收藏
 
-        iv_detail_share.setOnClickListener {  }  //分享
+        iv_detail_share.setOnClickListener { ARouter.getInstance().build(ARouterConst.Main.MAIN_SHARE).navigation() }  //分享
 
-        stv_detail_booking.setOnClickListener {  }  //预订
+        stv_detail_booking.setOnClickListener { FillOrderActivity.startFillOrder(mContext,mHId,stv_settled_time.text.toString(),stv_leave_time.text.toString()) }  //预订
     }
 
     fun setDate(year: Int, month: Int, day: Int){

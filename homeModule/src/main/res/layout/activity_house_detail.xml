@@ -56,27 +56,27 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_telephone_n"
                     android:layout_gravity="center_vertical"
-                    android:paddingHorizontal="@dimen/dp_10"
+                    android:paddingHorizontal="8dp"
                     android:paddingVertical="@dimen/dp_4"
-                    android:layout_marginLeft="@dimen/dp_14"/>
+                    android:layout_marginLeft="@dimen/dp_10"/>
                 <ImageView
                     android:id="@+id/iv_detail_follow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_follow_n"
                     android:layout_gravity="center_vertical"
-                    android:paddingHorizontal="@dimen/dp_10"
+                    android:paddingHorizontal="8dp"
                     android:paddingVertical="@dimen/dp_4"
-                    android:layout_marginLeft="@dimen/dp_14"/>
+                    android:layout_marginLeft="@dimen/dp_10"/>
                 <ImageView
                     android:id="@+id/iv_detail_share"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_share_n"
                     android:layout_gravity="center_vertical"
-                    android:paddingHorizontal="@dimen/dp_10"
+                    android:paddingHorizontal="8dp"
                     android:paddingVertical="@dimen/dp_4"
-                    android:layout_marginLeft="@dimen/dp_14"/>
+                    android:layout_marginLeft="@dimen/dp_10"/>
                 <TextView
                     android:id="@+id/tv_house_detail_price"
                     android:layout_width="0dp"

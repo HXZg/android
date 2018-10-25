@@ -1,5 +1,7 @@
 package com.micropole.homemodule.network;
 
+import com.micropole.homemodule.entity.BookingBean;
+import com.micropole.homemodule.entity.CommitOrderBean;
 import com.micropole.homemodule.entity.EvaluationBean;
 import com.micropole.homemodule.entity.HomeBean;
 import com.micropole.homemodule.entity.HouseDetailBean;
@@ -103,6 +105,29 @@ public interface AppService {
     @POST("Index/hotel_comments")
     Observable<BaseResponseEntity<List<EvaluationBean>>> getHouseComment(@Header("lat")String lat, @Header("lng")String lng,
                                                                          @Field("h_id") String h_id, @Field("page") int page);
+
+    /**
+     * 点击立即预订
+     * 	1=使用旅游基金抵扣，2=没有使用
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Userorder/purchase_order")
+    Observable<BaseResponseEntity<BookingBean>> bookingHouse(@Header("token")String token, @Header("lat")String lat, @Header("lng")String lng,
+                                                             @Field("h_id") String h_id,@Field("start_time") String startTime,@Field("end_time") String endTime,
+                                                             @Field("people_number") int num,@Field("use_balance_pay") int balance);
+
+    /**
+     * 提交订单
+     * @param balance
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Userorder/add_order")
+    Observable<BaseResponseEntity<CommitOrderBean>> commitOrder(@Header("token")String token, @Header("lat")String lat, @Header("lng")String lng,
+                                                                @Field("h_id") String h_id, @Field("start_time") String startTime, @Field("end_time") String endTime,
+                                                                @Field("people_number") int num, @Field("use_balance_pay") int balance,
+                                                                @Field("or_nickname") String nickName, @Field("or_idcard") String idCard, @Field("or_phone") String phone);
 
     /**
      * 收藏旅馆

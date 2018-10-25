@@ -18,6 +18,7 @@ import com.xx.baseutilslibrary.network.exception.ApiFaileException
  * @Copyright       Guangzhou micro pole mobile Internet Technology Co., Ltd.
  */
 class HouseDetailPresent : HouseDetailConstract.Present() {
+
     override fun getUserPhone(h_id: String) {
         if (Constants.isLogin()){
             getView()?.showLoadingDialog("正在获取")

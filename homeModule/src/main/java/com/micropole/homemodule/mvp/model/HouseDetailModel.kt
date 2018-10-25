@@ -1,6 +1,7 @@
 package com.micropole.homemodule.mvp.model
 
 import com.micropole.baseapplibrary.network.AppApi
+import com.micropole.homemodule.entity.BookingBean
 import com.micropole.homemodule.entity.HouseDetailBean
 import com.micropole.homemodule.entity.LandlordBean
 import com.micropole.homemodule.mvp.constract.HouseDetailConstract
@@ -17,6 +18,7 @@ import io.reactivex.Observable
  * @Copyright       Guangzhou micro pole mobile Internet Technology Co., Ltd.
  */
 class HouseDetailModel : HouseDetailConstract.Model() {
+
     override fun getUserPhone(token: String, lat: String, lng: String, h_id: String): Observable<BaseResponseEntity<LandlordBean>> {
         return AppApi.Api<AppService>().getUserPhone(token, lat, lng, h_id)
     }
