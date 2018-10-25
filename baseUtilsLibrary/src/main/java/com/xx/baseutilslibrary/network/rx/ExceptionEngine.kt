@@ -9,6 +9,7 @@ import io.reactivex.functions.Consumer
 import retrofit2.HttpException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 
 
 abstract class ExceptionEngine : Consumer<Throwable> {
@@ -24,6 +25,9 @@ abstract class ExceptionEngine : Consumer<Throwable> {
             }
         } else if (throwable is ConnectException) {
             //断开网络
+            msg="网络已断开"
+        } else if (throwable is UnknownHostException){
+            msg="网络已断开"
         } else if (throwable is SocketTimeoutException) {
            msg="连接服务器超时,请稍后重试"
         } else if (throwable is InvalidLongTokenException){

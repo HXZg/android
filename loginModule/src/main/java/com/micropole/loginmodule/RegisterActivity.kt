@@ -30,11 +30,13 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(),RegisterContract.V
     }
     override fun getCode(code: Code) {
         showToast("发送成功"+code.code)
+        dismissLoadingDialog()
         mHandler.sendEmptyMessage(1)
     }
 
     override fun register(msg: String) {
         showToast(msg)
+        dismissLoadingDialog()
         finish()
     }
 
@@ -65,9 +67,11 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(),RegisterContract.V
     override fun initEvent() {
         iv_back.setOnClickListener { finish() }
         tv_register.setOnClickListener {
+            showLoadingDialog("加载中...")
             getPresenter().register(et_accout.text.toString(),et_password.text.toString(),et_password_two.text.toString(),et_code.text.toString(),et_nickname.text.toString())
         }
         tv_code.setOnClickListener {
+            showLoadingDialog("加载中...")
             getPresenter().getCode(et_accout.text.toString())
         }
 
