@@ -39,7 +39,7 @@ class SplashActivity : BaseMvpViewActivity(){
     fun startMain(){
         Timer().schedule(object : TimerTask() {
             override fun run() {
-                startActivity(MainActivity::class.java)
+                startActivity(GuideActivity::class.java)
             }
         },1500)
     }

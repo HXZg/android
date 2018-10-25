@@ -2,7 +2,10 @@ package com.micropole.homeword
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Gravity
 import android.view.View
+import android.view.Window
+import android.widget.LinearLayout
 import android.widget.Toast
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.micropole.baseapplibrary.constants.ARouterConst
@@ -22,7 +25,13 @@ import com.xx.baseuilibrary.mvp.BaseMvpViewActivity
 @Route(path = ARouterConst.Main.MAIN_SHARE)
 class ShareActivity : BaseMvpViewActivity() {
     override fun initData() {
-
+        window.getDecorView().setPadding(0, 0, 0, 0);
+        // 获取Window的LayoutParams
+        var attributes = window.getAttributes();
+        attributes.width = LinearLayout.LayoutParams.MATCH_PARENT
+        attributes.gravity = Gravity.BOTTOM
+        // 一定要重新设置, 才能生效
+        window.setAttributes(attributes);
     }
 
     override fun initEvent() {
