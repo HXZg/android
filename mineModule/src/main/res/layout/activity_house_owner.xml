@@ -82,6 +82,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginTop="20dp"/>
     <RelativeLayout
+        android:id="@+id/ll_zheng"
         android:layout_width="match_parent"
         android:layout_height="166dp"
         android:layout_marginRight="29dp"
@@ -91,7 +92,8 @@
         <ImageView
             android:id="@+id/iv_zhenmian"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
         <ImageView
             android:id="@+id/iv_zhen"
             android:layout_width="wrap_content"
@@ -100,6 +102,7 @@
             android:layout_marginTop="50dp"
             android:src="@drawable/ic_camera_n"/>
         <TextView
+            android:id="@+id/tv_tishiz"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="请上传身份证正面图片"
@@ -112,6 +115,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/ll_fan"
         android:layout_width="match_parent"
         android:layout_height="166dp"
         android:layout_marginRight="29dp"
@@ -121,7 +125,8 @@
         <ImageView
             android:id="@+id/iv_fanmian"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
         <ImageView
             android:id="@+id/iv_fan"
             android:layout_width="wrap_content"
@@ -130,6 +135,7 @@
             android:layout_marginTop="50dp"
             android:src="@drawable/ic_camera_n"/>
         <TextView
+            android:id="@+id/tv_tishif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="请上传身份证反面图片"
@@ -161,7 +167,7 @@
 
     </LinearLayout>
     <TextView
-        android:id="@+id/tv_ming"
+        android:id="@+id/tv_tijiao"
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:text="提交审核"

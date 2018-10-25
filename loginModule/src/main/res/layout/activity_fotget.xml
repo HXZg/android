@@ -58,7 +58,8 @@
                         android:hint="请输入账号"
                         android:textColorHint="#C5C5C5"
                         android:layout_toRightOf="@+id/iv_phone"
-                        android:layout_toLeftOf="@+id/tv_code"/>
+                        android:layout_toLeftOf="@+id/tv_code"
+                        android:inputType="number"/>
                     <TextView
                         android:id="@+id/tv_code"
                         android:layout_width="118dp"
@@ -93,6 +94,7 @@
                         android:background="@null"
                         android:paddingLeft="10dp"
                         android:hint="请输入验证码"
+                        android:inputType="number"
                         android:textColorHint="#C5C5C5"/>
                 </LinearLayout>
 
@@ -117,7 +119,8 @@
                         android:background="@null"
                         android:paddingLeft="10dp"
                         android:hint="请输入密码"
-                        android:textColorHint="#C5C5C5"/>
+                        android:textColorHint="#C5C5C5"
+                        android:inputType="textPassword"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -140,7 +143,8 @@
                         android:background="@null"
                         android:paddingLeft="10dp"
                         android:hint="请输入确认密码"
-                        android:textColorHint="#C5C5C5"/>
+                        android:textColorHint="#C5C5C5"
+                        android:inputType="textPassword"/>
                 </LinearLayout>
 
 

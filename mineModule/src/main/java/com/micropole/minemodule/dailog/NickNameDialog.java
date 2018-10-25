@@ -68,6 +68,9 @@ public class NickNameDialog extends Dialog  {
         et_nickName = view.findViewById(R.id.et_nickName);
         setContentView(view);
     }
+    public String getContent(){
+        return et_nickName.getText().toString();
+    }
 
 
     @Override

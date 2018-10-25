@@ -7,16 +7,18 @@
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textColor="@color/back_707070"
         android:text="邀请好友奖励"
         android:layout_marginTop="8dp"
-        android:layout_marginLeft="15dp"/>
+        android:layout_marginLeft="15dp"
+        android:singleLine="true"
+        android:maxEms="15"/>
     <TextView
         android:id="@+id/tv_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textColor="@color/back_707070"
         android:layout_below="@+id/tv_name"
         android:text="2018-10-12 12:11"

@@ -22,6 +22,8 @@ object Constants {
     const val KEY_LOCATION = "location_key"
     const val KEY_IS_FIRST = "is_first"
     const val KEY_USER_ID = "user_id"
+    const val KEY_USER_INFO = "user_info"
+
 
     fun isFirst() = SPUtils.getInstance().getBoolean(KEY_IS_FIRST,true)
 
@@ -41,6 +43,12 @@ object Constants {
     fun putUserId(userId : String){SPUtils.getInstance().put(KEY_USER_ID,userId)}
 
     fun getUserId() : String = SPUtils.getInstance().getString(KEY_USER_ID)
+    fun putUserInfo(userInfo: String){SPUtils.getInstance().put(KEY_USER_INFO,userInfo)}
+
+    fun getUserInfo() : String {
+        var user=SPUtils.getInstance().getString(KEY_USER_INFO)
+        return user
+    }
 
     /**
      * 存入经纬信息

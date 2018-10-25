@@ -4,12 +4,21 @@ import android.util.Log
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import com.flyco.dialog.listener.OnBtnClickL
+import com.flyco.dialog.widget.NormalDialog
+import com.google.gson.Gson
 import com.micropole.baseapplibrary.constants.ARouterConst
 import com.micropole.baseapplibrary.constants.Constants
 import com.micropole.minemodule.activity.*
+import com.micropole.minemodule.bean.UserInfo
+import com.micropole.minemodule.mvp.contract.MineContract
+import com.micropole.minemodule.mvp.presenter.MinePresenter
+import com.xx.baseuilibrary.mvp.BaseMvpFragment
 import com.xx.baseuilibrary.mvp.BaseMvpViewFragment
+import com.xx.baseutilslibrary.extensions.loadImag
 import kotlinx.android.synthetic.main.bar_title.*
 import kotlinx.android.synthetic.main.fragment_mine.*
+import kotlinx.android.synthetic.main.fragment_mine.view.*
 import kotlinx.android.synthetic.main.item_login.*
 
 /**
@@ -21,7 +30,30 @@ import kotlinx.android.synthetic.main.item_login.*
  * @Copyright       Guangzhou micro pole mobile Internet Technology Co., Ltd.
  */
 @Route(path = ARouterConst.Mine.MINE_FRAGMENT)
-class MineFragment : BaseMvpViewFragment(), View.OnClickListener {
+class MineFragment : BaseMvpFragment<MineContract.Model,MineContract.View,MineContract.Presenter>(),MineContract.View, View.OnClickListener {
+   var userInfo: UserInfo?=null
+    override fun getInfo(userInfo: UserInfo) {
+        loading.visibility=View.GONE
+        this.userInfo=userInfo
+        Constants.putUserInfo(Gson().toJson(userInfo))
+        view_login.visibility=View.GONE
+        tv_name.text=userInfo.user.nickname
+        tv_photo.text=userInfo.user.user_phone
+        if (userInfo.user.user_sex.equals("1")){//nv
+            iv_sex.setImageResource(R.drawable.ic_female)
+        }else if (userInfo.user.user_sex.equals("2")){
+            iv_sex.setImageResource(R.drawable.ic_male)
+        }
+        iv_hand.loadImag(userInfo.user.user_img)
+
+    }
+
+    /**
+     * 创建P层
+     *
+     * @return P层对象
+     */
+    override fun createPresenter(): MineContract.Presenter =MinePresenter()
 
 
     override fun getFragmentLayoutId(): Int = R.layout.fragment_mine
@@ -33,7 +65,6 @@ class MineFragment : BaseMvpViewFragment(), View.OnClickListener {
     }
 
     override fun initEvent(view: View?) {
-        Log.i("ss","dd")
         tv_title.text="个人中心"
         iv_back.visibility=View.GONE
         iv_other.visibility=View.VISIBLE
@@ -86,8 +117,7 @@ class MineFragment : BaseMvpViewFragment(), View.OnClickListener {
 
             }
             ll_exit->{//注销
-                Constants.loginOut()
-                ARouter.getInstance().build(ARouterConst.Login.LOGIN_ACTIVITY).navigation()
+                showDailog()
 
 
             }
@@ -103,22 +133,45 @@ class MineFragment : BaseMvpViewFragment(), View.OnClickListener {
         super.onResume()
         if (!isHidden){
             if (Constants.isLogin()){
-                loading.visibility=View.GONE
                 view_login.visibility=View.GONE
+                getPresenter().getInfo()
             }else{
                 view_login.visibility=View.VISIBLE
             }
         }
     }
 
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        if (!isHidden){
-            if (Constants.isLogin()){
-                loading.visibility=View.GONE
-            }else{
-                view_login.visibility=View.VISIBLE
-            }
+//    override fun onHiddenChanged(hidden: Boolean) {
+//        super.onHiddenChanged(hidden)
+//        if (!isHidden){
+//            if (Constants.isLogin()){
+//                loading.visibility=View.GONE
+//                getPresenter().getInfo()
+//            }else{
+//                view_login.visibility=View.VISIBLE
+//            }
+//        }
+//    }
+    fun showDailog(){
+            var normalDialog= NormalDialog(context)
+            normalDialog.isTitleShow(false).content("您是否确定退出登录？")
+                    .style(NormalDialog.STYLE_TWO)
+                    .contentTextColor(resources.getColor(R.color.title_color))
+                    .contentTextSize(17f)
+                    .btnTextSize(14f)
+                    .setCancelable(false)
+            normalDialog.setCanceledOnTouchOutside(false)
+            normalDialog.btnNum(2).btnText("取消","确定")
+                    .btnTextColor(resources.getColor(R.color.colorPrimary),resources.getColor(R.color.colorPrimary))?.show()
+            normalDialog.setOnBtnClickL(OnBtnClickL {
+                normalDialog.dismiss()
+            }, OnBtnClickL {
+                Constants.loginOut()
+                ARouter.getInstance().build(ARouterConst.Login.LOGIN_ACTIVITY).navigation()
+                normalDialog.dismiss()
+
+            })
+
         }
-    }
+
 }

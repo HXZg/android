@@ -43,8 +43,13 @@ class RegisterPresenter:RegisterContract.Presenter() {
             getView()?.dismissLoadingDialog()
             return
         }
+        if (surePW!=pwd){
+            getView()?.showToast("两次输入密码不相同")
+            getView()?.dismissLoadingDialog()
+            return
+        }
         if (yzm.isNullOrEmpty()||yzm.length!=6){
-            getView()?.showToast("两次密码不相同")
+            getView()?.showToast("请输入6位验证码")
             getView()?.dismissLoadingDialog()
             return
         }

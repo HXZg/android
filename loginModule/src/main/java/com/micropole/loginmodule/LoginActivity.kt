@@ -42,7 +42,7 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(),LoginContract.View {
             FotgetActivity.startFotgetActivity(this)
         }
         tv_login.setOnClickListener {
-            showLoadingDialog()
+            showLoadingDialog("加载中...")
             getPresenter().login(et_accout.text.toString(),et_password.text.toString())
         }
     }

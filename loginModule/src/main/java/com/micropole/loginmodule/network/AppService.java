@@ -36,6 +36,12 @@ public interface AppService {
     @FormUrlEncoded
     @POST("login/login")
     Observable<BaseResponseEntity<Login>> login(@Field("phone") String phone,@Field("sign") String sign);
+/**
+     * 忘记密码
+     */
+    @FormUrlEncoded
+    @POST("login/forget_passwd")
+    Observable<BaseResponseEntity<Object>> forgetPW(@Field("phone") String phone,@Field("pwd") String pwd,@Field("code")String code);
 
 
 
