@@ -1,5 +1,6 @@
 package com.micropole.homeword
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.micropole.baseapplibrary.constants.ARouterConst
@@ -44,7 +45,7 @@ class GuideFragment : BaseMvpViewFragment() {
 
         stv_btn.setOnClickListener {
             if (index == 2){
-                startActivity(MainActivity::class.java)
+                activity?.startActivity(Intent(activity,MainActivity::class.java))
             }else if (index != null){
                 (activity as GuideActivity).vp_guide.currentItem = index + 1
             }

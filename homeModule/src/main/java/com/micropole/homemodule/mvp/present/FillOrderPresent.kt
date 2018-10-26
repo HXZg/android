@@ -31,7 +31,7 @@ class FillOrderPresent : FillOrderConstract.Present(){
 
     override fun bookingHouse(h_id: String, startTime: String, endTime: String, num: Int, balance: Int) {
         if (Constants.isLogin()){
-            getView()?.showLoadingDialog("正在预订")
+            getView()?.showLoadingDialog("获取中")
             getModel().bookingHouse(Constants.SHORT_TOKEN, Constants.getLocation()[0], Constants.getLocation()[1],h_id,startTime, endTime, num, balance)
                     .ui({
                         getView()?.dismissLoadingDialog()

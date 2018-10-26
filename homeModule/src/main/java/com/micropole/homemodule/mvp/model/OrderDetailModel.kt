@@ -16,6 +16,10 @@ import io.reactivex.Observable
  * @Copyright       Guangzhou micro pole mobile Internet Technology Co., Ltd.
  */
 class OrderDetailModel : OrderDetailConstract.Model(){
+    override fun refundOrder(token: String, lat: String, lng: String, orderId: String): Observable<BaseResponseEntity<Any>> {
+        return AppApi.Api<AppService>().refundOrder(token, lat, lng, orderId)
+    }
+
     override fun orderDetail(token: String, lat: String, lng: String, orderId: String): Observable<BaseResponseEntity<OrderDetailBean>> {
         return AppApi.Api<AppService>().orderDetail(token, lat, lng, orderId)
     }

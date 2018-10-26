@@ -15,6 +15,19 @@ import com.xx.baseutilslibrary.extensions.ui
  * @Copyright       Guangzhou micro pole mobile Internet Technology Co., Ltd.
  */
 class OrderDetailPresent : OrderDetailConstract.Present() {
+    override fun refundOrder(orderId: String) {
+        getView()?.showLoadingDialog("正在取消")
+        getModel().refundOrder(Constants.SHORT_TOKEN,Constants.getLocation()[0],Constants.getLocation()[1],orderId)
+                .ui({
+                    getView()?.dismissLoadingDialog()
+                    getView()?.showToast(it.msg)
+                    getView()?.finishActivity()
+                },{
+                    getView()?.dismissLoadingDialog()
+                    getView()?.refreshToken(it,{refundOrder(orderId)})
+                })
+    }
+
     override fun orderDetail(orderId: String) {
         getModel().orderDetail(Constants.SHORT_TOKEN,Constants.getLocation()[0],Constants.getLocation()[1],orderId)
                 .ui({getView()?.setData(it.data)},{getView()?.refreshToken(it,{orderDetail(orderId)})})

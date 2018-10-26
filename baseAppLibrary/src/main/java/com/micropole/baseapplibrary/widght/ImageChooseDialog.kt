@@ -27,8 +27,14 @@ class ImageChooseDialog(context : Context,val action : (index : Int) -> Unit) : 
         mLlTop.gravity = Gravity.BOTTOM
 
         mOnCreateView.findViewById<Button>(R.id.btn_cancel).setOnClickListener { dismiss() }
-        mOnCreateView.findViewById<Button>(R.id.btn_photo).setOnClickListener { action.invoke(0) }
-        mOnCreateView.findViewById<Button>(R.id.btn_album).setOnClickListener { action.invoke(1) }
+        mOnCreateView.findViewById<Button>(R.id.btn_photo).setOnClickListener {
+            action.invoke(0)
+            dismiss()
+        }
+        mOnCreateView.findViewById<Button>(R.id.btn_album).setOnClickListener {
+            action.invoke(1)
+            dismiss()
+        }
 
     }
 

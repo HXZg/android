@@ -6,13 +6,14 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import cn.qqtheme.framework.picker.DatePicker
 import cn.qqtheme.framework.picker.DateTimePicker
+import cn.qqtheme.framework.util.DateUtils
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.PhoneUtils
+import com.blankj.utilcode.util.TimeUtils.getDate
 import com.flyco.dialog.listener.OnBtnClickL
 import com.flyco.dialog.widget.NormalDialog
 import com.micropole.baseapplibrary.constants.ARouterConst
 import com.micropole.homemodule.adapter.DetailDeviceAdapter
-import com.micropole.homemodule.entity.BookingBean
 import com.micropole.homemodule.entity.HouseDetailBean
 import com.micropole.homemodule.entity.LandlordBean
 import com.micropole.homemodule.mvp.constract.HouseDetailConstract
@@ -140,15 +141,15 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
 
         iv_detail_follow.setOnClickListener { presenter.collectHouse(mHId) }  //收藏
 
-        iv_detail_share.setOnClickListener { ARouter.getInstance().build(ARouterConst.Main.MAIN_SHARE).navigation() }  //分享
+        iv_detail_share.setOnClickListener { ARouter.getInstance().build(ARouterConst.Main.MAIN_SHARE).withString("h_id",mHId).navigation() }  //分享
 
-        stv_detail_booking.setOnClickListener { FillOrderActivity.startFillOrder(mContext,mHId,stv_settled_time.text.toString(),stv_leave_time.text.toString()) }  //预订
+        stv_detail_booking.setCheckLoginListener { FillOrderActivity.startFillOrder(mContext,mHId,stv_settled_time.text.toString(),stv_leave_time.text.toString()) }  //预订
     }
 
     fun setDate(year: Int, month: Int, day: Int){
-        stv_settled_time.text = "$year/$month/$day"
+        stv_settled_time.text = "$year/${DateUtils.fillZero(month)}/${DateUtils.fillZero(day)}"
         val addDate = TimerUtil.addDate(year, month, day)
-        stv_leave_time.text = "${addDate[0]}/${addDate[1]}/${addDate[2]}"
+        stv_leave_time.text = "${addDate[0]}/${DateUtils.fillZero(addDate[1])}/${DateUtils.fillZero(addDate[2])}"
     }
 
     override fun userPhone(bean: LandlordBean?) {

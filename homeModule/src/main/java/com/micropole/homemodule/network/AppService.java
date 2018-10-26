@@ -12,6 +12,7 @@ import com.micropole.homemodule.entity.OrderListBean;
 import com.micropole.homemodule.entity.RefreshTokenBean;
 import com.micropole.homemodule.entity.SearchBean;
 import com.micropole.homemodule.entity.SearchStyleBean;
+import com.micropole.homemodule.entity.UpImageBean;
 import com.xx.baseutilslibrary.entity.BaseResponseEntity;
 
 import java.util.List;
@@ -165,6 +166,35 @@ public interface AppService {
     @POST("Userorder/order_detail")
     Observable<BaseResponseEntity<OrderDetailBean>> orderDetail(@Header("token")String token, @Header("lat")String lat, @Header("lng")String lng,
                                                                 @Field("or_id") String orderId);
+
+    /**
+     * 取消订单（退款）
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Userorder/order_refund")
+    Observable<BaseResponseEntity<Object>> refundOrder(@Header("token")String token, @Header("lat")String lat, @Header("lng")String lng,
+                                                       @Field("or_id") String orderId);
+
+    /**
+     * 上传图片
+     * @param img
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Index/imgup")
+    Observable<BaseResponseEntity<UpImageBean>> upImage(@Field("img") String img);
+
+    /**
+     * 评价
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Userorder/order_comment")
+    Observable<BaseResponseEntity<Object>> evaluationOrder(@Header("token")String token, @Header("lat")String lat, @Header("lng")String lng,
+                                                           @Field("or_id") String orderId,@Field("h_id") String h_id,
+                                                           @Field("comment_score") String score,@Field("com_content") String content,
+                                                           @Field("com_pic") String pic);
 
     /**
      * 收藏列表

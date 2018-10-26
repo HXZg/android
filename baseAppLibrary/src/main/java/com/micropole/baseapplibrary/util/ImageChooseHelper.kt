@@ -23,7 +23,7 @@ import java.util.*
  * @Date            2018/10/8 11:43
  * @Copyright       Guangzhou micro pole mobile Internet Technology Co., Ltd.
  */
-class ImageChooseHelper(val activity : Activity, val action : (image : TImage) -> Unit) : TakePhoto.TakeResultListener, InvokeListener {
+class ImageChooseHelper(val activity : Activity, val action : (image : TResult) -> Unit) : TakePhoto.TakeResultListener, InvokeListener {
     var takePhoto : TakePhoto = TakePhotoInvocationHandler.of(this).bind(TakePhotoImpl(activity, this)) as TakePhoto
 
     var invokeParam : InvokeParam? = null
@@ -32,10 +32,12 @@ class ImageChooseHelper(val activity : Activity, val action : (image : TImage) -
      * 成功回调
      */
     override fun takeSuccess(result: TResult?) {
-        action.invoke(result?.images!![0])
-        //删除压缩后的图片
-        for (i in result.images.indices){
-            TFileUtils.delete(result.images[i].compressPath)
+        if (result != null) {
+            action.invoke(result)
+            //删除压缩后的图片
+            for (i in result.images.indices){
+                TFileUtils.delete(result.images[i].compressPath)
+            }
         }
     }
 

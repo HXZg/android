@@ -46,8 +46,8 @@
             app:layout_constraintLeft_toRightOf="@id/tv_order_open_time"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_order_open_time"
+            app:layout_constraintBottom_toBottomOf="@id/tv_order_open_time"
             android:src="@drawable/home_right_n"
-            android:layout_marginTop="2dp"
             android:layout_marginLeft="@dimen/dp_4"
             />
         <View
@@ -60,7 +60,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/iv_open_time"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_open_time"
             android:layout_marginTop="20dp"
             android:textSize="@dimen/txt_15sp"
             android:textColor="@color/text_three"
@@ -69,7 +69,7 @@
             android:id="@+id/tv_order_leave_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/iv_open_time"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_open_time"
             android:layout_marginTop="20dp"
             app:layout_constraintRight_toLeftOf="@id/iv_leave_time"
             android:textSize="@dimen/txt_15sp"
@@ -83,8 +83,9 @@
             app:layout_constraintLeft_toRightOf="@id/tv_order_leave_time"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_order_leave_time"
+            app:layout_constraintBottom_toBottomOf="@id/tv_order_leave_time"
             android:src="@drawable/home_right_n"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="4dp"
             android:layout_marginLeft="@dimen/dp_4"
             />
         <View
@@ -106,7 +107,7 @@
             android:id="@+id/tv_order_settled_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/iv_leave_time"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_leave_time"
             android:layout_marginTop="20dp"
             app:layout_constraintRight_toLeftOf="@id/iv_settled_num"
             android:textSize="@dimen/txt_15sp"
@@ -119,9 +120,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toRightOf="@id/tv_order_settled_num"
             app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/tv_order_settled_num"
             app:layout_constraintTop_toTopOf="@id/tv_order_settled_num"
             android:src="@drawable/home_right_n"
-            android:layout_marginTop="2dp"
             android:layout_marginLeft="@dimen/dp_4"
             />
         <View
@@ -134,7 +135,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/iv_settled_num"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_settled_num"
             android:layout_marginTop="20dp"
             android:textSize="@dimen/txt_15sp"
             android:textColor="@color/text_three"
@@ -143,7 +144,7 @@
             android:id="@+id/et_order_settled_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/iv_settled_num"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_settled_num"
             android:layout_marginTop="20dp"
             app:layout_constraintRight_toRightOf="parent"
             android:textSize="@dimen/txt_15sp"

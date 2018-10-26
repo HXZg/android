@@ -4,6 +4,8 @@ import com.micropole.baseapplibrary.BaseApplication
 import com.micropole.homeword.util.LocationManagerUtil
 import com.umeng.commonsdk.UMConfigure
 import com.umeng.socialize.PlatformConfig
+import com.xx.anypay.WxAppIDProvider
+import com.xx.anypay.XxAnyPay
 
 /**
  * @ClassName       App
@@ -19,6 +21,11 @@ class App : BaseApplication() {
         super.onCreate()
         LocationManagerUtil.getInstance().init(this)
         UMInit()
+        XxAnyPay.intance.init(this)
+        XxAnyPay.intance.wxAppIDProvider = object : WxAppIDProvider {
+            override val weChatAppID: String
+                get() = "wxe13c15b520e07f80"
+        }
     }
 
     private fun UMInit() {

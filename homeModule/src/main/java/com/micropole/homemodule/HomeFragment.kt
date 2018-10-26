@@ -64,10 +64,11 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
         stv_settled_num.setOnClickListener { getPNum(mPeopleNum) } //入驻人数
 
         stv_home_search.setOnClickListener {
-            SearchActivity.startSearch(mContext,"23,113",
+            /*SearchActivity.startSearch(mContext,"23,113",
                     stv_settled_date.text.toString().replace("/",""),
                     stv_settled_num.text.toString().replace("/",""),
-                    stv_settled_num.text.toString())
+                    stv_settled_num.text.toString())*/
+            startActivity(EvaluationActivity::class.java)
         }
 
         swipe_refresh.setOnRefreshListener {
@@ -86,9 +87,9 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
     }
 
     fun setDate(year: Int, month: Int, day: Int){
-        stv_settled_date.text = "$year/$month/$day"
+        stv_settled_date.text = "$year/${DateUtils.fillZero(month)}/${DateUtils.fillZero(day)}"
         val addDate = TimerUtil.addDate(year, month, day)
-        stv_leave_store_date.text = "${addDate[0]}/${addDate[1]}/${addDate[2]}"
+        stv_leave_store_date.text = "${addDate[0]}/${DateUtils.fillZero(addDate[1])}/${DateUtils.fillZero(addDate[2])}"
     }
 
     override fun setData(data: HomeBean?) {

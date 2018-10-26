@@ -22,9 +22,11 @@ class OrderDetailConstract {
 
     abstract class Model{
         abstract fun orderDetail(token:String,lat:String,lng:String,orderId:String) : Observable<BaseResponseEntity<OrderDetailBean>>
+        abstract fun refundOrder(token:String,lat:String,lng:String,orderId:String) : Observable<BaseResponseEntity<Any>>
     }
 
     abstract class Present : BaseMvpPresenter<Model,View>(){
         abstract fun orderDetail(orderId:String)
+        abstract fun refundOrder(orderId:String)
     }
 }

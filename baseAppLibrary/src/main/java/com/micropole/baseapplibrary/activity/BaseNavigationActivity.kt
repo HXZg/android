@@ -31,16 +31,22 @@ abstract class BaseNavigationActivity : BaseMvpViewActivity() {
     val mFragmentContainerHelper = FragmentContainerHelper()
 
     var mFragments : List<Fragment>? = null
+    var mShowFragment = arrayListOf<Fragment>()
+    var mBaseF = BaseFragment()
 
     override fun getActivityLayoutId(): Int = R.layout.activity_navigation
 
     override fun initData() {
         initNavigation()
-        if (getFragments().size == getDataSize()) mFragments = getFragments() else throw RuntimeException("fragment size must be equal data size")
-        checkItem(0)
+        supportFragmentManager.beginTransaction().add(R.id.fl_content,mBaseF).show(mBaseF).commit()
+        Thread{Thread.sleep(50)
+        runOnUiThread{checkItem(0)}}.start()
     }
 
     fun checkItem(index: Int) {
+        if (mFragments == null){
+            if (getFragments().size == getDataSize()) mFragments = getFragments() else throw RuntimeException("fragment size must be equal data size")
+        }
         mFragmentContainerHelper.handlePageSelected(index, false)
         swithPagers(index)
     }
@@ -111,27 +117,23 @@ abstract class BaseNavigationActivity : BaseMvpViewActivity() {
     fun swithPagers(index : Int){
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
-        var fragment: Fragment
-        var i = 0
-        val j = mFragments!!.size
-        while (i < j) {
-            if (i == index) {
-                i++
-                continue
+        fragmentTransaction.hide(mBaseF)
+        if (mShowFragment.size > index){
+            for (i in mShowFragment.indices){
+                if (i == index){
+                    fragmentTransaction.show(mShowFragment[i])
+                }else{
+                    fragmentTransaction.hide(mShowFragment[i])
+                }
             }
-            fragment = mFragments!![i]
-            if (fragment.isAdded) {
-                fragmentTransaction.hide(fragment)
+        }else{
+            for (i in mShowFragment.indices){
+                fragmentTransaction.hide(mShowFragment[i])
             }
-            i++
+            mShowFragment.add(mFragments!![index])
+            fragmentTransaction.add(R.id.fl_content,mShowFragment[index]).show(mShowFragment[index])
         }
-        fragment = mFragments!![index]
-        if (fragment.isAdded) {
-            fragmentTransaction.show(fragment)
-        } else {
-            fragmentTransaction.add(R.id.fl_content, fragment)
-        }
-        fragmentTransaction.commitAllowingStateLoss()
+        fragmentTransaction.commit()
     }
 
 }

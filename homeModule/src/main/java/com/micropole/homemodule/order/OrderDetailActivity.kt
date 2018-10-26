@@ -39,6 +39,8 @@ class OrderDetailActivity : BaseMvpLcecActivity<View,OrderDetailBean?,OrderDetai
 
     var mPriceAdapter = OrderPriceAdapter()
     var mOrderId = ""
+    var mStat = "7"
+    var bean : OrderDetailBean? = null
 
     override fun getActivityLayoutId(): Int = R.layout.activity_order_detail
 
@@ -68,16 +70,32 @@ class OrderDetailActivity : BaseMvpLcecActivity<View,OrderDetailBean?,OrderDetai
 
     override fun initEvent() {
 
-        stv_order_detail_btn.setOnClickListener { startActivity(EvaluationActivity::class.java) }
+        stv_order_detail_btn.setOnClickListener {
+            if (stv_order_detail_btn.text.toString() == "去评价" && bean != null){
+                EvaluationActivity.startEvaluation(mContext,mOrderId,bean!!.h_id,bean!!.h_imgs,bean!!.h_title,bean!!.h_address)
+            }else if (mStat == "2" || mStat == "1"){
+                presenter.refundOrder(mOrderId)
+            }
+        }
     }
 
     override fun setData(data: OrderDetailBean?) {
         showContent()
         if (data != null){
+            bean = data
             mOrderId = data.or_id
 
             tv_order_detail_price.text = "¥${data.real_price}"
-            stv_order_detail_btn.text = data.or_stat_detail
+            mStat = data.or_stat
+            when(data.or_stat){
+                "1" -> stv_order_detail_btn.text = "退款"
+                "2" -> stv_order_detail_btn.text = "退款"
+                "3" -> {
+                    if (data.is_comment != "1") stv_order_detail_btn.text = "去评价"
+                    else stv_order_detail_btn.text = data.or_stat_detail
+                }
+                else -> stv_order_detail_btn.text = data.or_stat_detail
+            }
 
             iv_order_detail_img.loadImag(data.h_imgs,radio = 16)
             tv_order_detail_name.text = data.h_title

@@ -87,13 +87,25 @@ class OrderFragment  : BaseMvpViewFragment(){
     override fun initData() {
         mData = resources.getStringArray(R.array.order_list_title)
         vp_order_list.adapter = OrderListFragmentAdapter(childFragmentManager,mfragments)
+        initMagic()
+    }
 
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        checkLogin()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        checkLogin()
+    }
+
+    fun checkLogin(){
         if (!isHidden){
             if (!Constants.isLogin()){
                 fl_order_login.visibility = View.VISIBLE
             }else{
                 fl_order_login.visibility = View.GONE
-                initMagic()
             }
         }
     }

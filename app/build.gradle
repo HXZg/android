@@ -87,4 +87,6 @@ dependencies {
     implementation 'com.umeng.sdk:share-qq:6.9.1.1'
     implementation 'com.umeng.sdk:share-wechat:latest.integration'
     implementation 'com.umeng.sdk:share-sina:latest.integration'
+
+    implementation 'com.github.LoveJ2057:XxAnyPay:1.0.2'
 }

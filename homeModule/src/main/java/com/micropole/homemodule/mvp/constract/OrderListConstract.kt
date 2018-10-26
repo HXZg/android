@@ -20,6 +20,7 @@ class OrderListConstract {
     interface View : BaseMvpView{
         fun setData(data:List<OrderListBean>?)
         fun refreshError()
+        fun loginOut()
     }
 
     abstract class Model{

@@ -1,6 +1,7 @@
 package com.micropole.homeword
 
 import android.graphics.Color
+import com.blankj.utilcode.util.ActivityUtils
 import com.micropole.homeword.util.adapter.GuideAdapter
 import com.xx.baseuilibrary.mvp.BaseMvpViewActivity
 import kotlinx.android.synthetic.main.activity_guide.*
@@ -20,6 +21,7 @@ class GuideActivity : BaseMvpViewActivity(){
     override fun getActivityLayoutId(): Int = R.layout.activity_guide
 
     override fun initData() {
+        ActivityUtils.finishActivity(SplashActivity::class.java)
         vp_guide.adapter = GuideAdapter(supportFragmentManager, arrayListOf(GuideFragment.startGuide(0),GuideFragment.startGuide(1),GuideFragment.startGuide(2)))
         initMagicIndicator3()
     }

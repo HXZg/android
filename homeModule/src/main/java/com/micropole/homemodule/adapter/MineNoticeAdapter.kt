@@ -15,6 +15,9 @@ import com.micropole.homemodule.entity.NewsBean
  */
 class MineNoticeAdapter : BaseQuickAdapter<NewsBean,BaseViewHolder>(R.layout.item_notice_view){
     override fun convert(helper: BaseViewHolder?, item: NewsBean?) {
-
+            helper?.run {
+                setText(R.id.tv_notice_status,item?.new_title)
+                setText(R.id.tv_notice_des,item?.new_text)
+            }
     }
 }

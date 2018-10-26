@@ -21,10 +21,19 @@ class OrderListPresent : OrderListConstract.Present() {
     }
 
     override fun orderList(staut: Int, page: Int) {
+        getView()?.showLoadingDialog("正在获取")
         getModel().orderList(Constants.SHORT_TOKEN,Constants.getLocation()[0],Constants.getLocation()[1],staut, page)
                 .ui({
+                    getView()?.dismissLoadingDialog()
                     getView()?.setData(it.data)},{
-                    if (it != "333") getView()?.refreshError()
-                    getView()?.refreshToken(it,{orderList(staut,page)})})
+                    getView()?.dismissLoadingDialog()
+                    if (it == "444") getView()?.loginOut()
+                    else if (it != "333") {
+                        getView()?.refreshError()
+                        getView()?.refreshToken(it,{orderList(staut,page)})
+                    }else{
+                        getView()?.refreshToken(it,{orderList(staut,page)})
+                    }
+                })
     }
 }

@@ -14,6 +14,7 @@ import com.micropole.homemodule.entity.OrderListBean
 import com.micropole.homemodule.mvp.constract.OrderListConstract
 import com.micropole.homemodule.mvp.present.OrderListPresent
 import com.xx.baseuilibrary.mvp.BaseMvpFragment
+import kotlinx.android.synthetic.main.fragment_order.*
 
 /**
  * @ClassName       OrderListFragment
@@ -105,5 +106,9 @@ class OrderListFragment : BaseMvpFragment<OrderListConstract.Model,OrderListCons
     override fun refreshError() {
         mSwipe?.isRefreshing = false
         orderAdapter.loadMoreEnd(true)
+    }
+
+    override fun loginOut() {
+        (parentFragment as OrderFragment).fl_order_login.visibility = View.VISIBLE
     }
 }

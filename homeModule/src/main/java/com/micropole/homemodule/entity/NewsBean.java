@@ -22,6 +22,11 @@ public class NewsBean {
     private String user_id;
     private String new_text;
     private String add_time;
+    /**
+     * new_title : 上架成功
+     */
+
+    private String new_title;
 
     public String getNew_id() {
         return new_id;
@@ -53,5 +58,13 @@ public class NewsBean {
 
     public void setAdd_time(String add_time) {
         this.add_time = add_time;
+    }
+
+    public String getNew_title() {
+        return new_title;
+    }
+
+    public void setNew_title(String new_title) {
+        this.new_title = new_title;
     }
 }

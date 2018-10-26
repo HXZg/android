@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_second"
             android:textColor="@color/text_one"
-            android:text="预订成功"
+            android:text=""
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/dp_14"/>
 
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_second"
             android:textColor="@color/text_one"
-            android:text="您已成功预订【琶洲会展】近珠江新城/太古汇北"
+            android:text=""
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/dp_10"
             android:layout_marginLeft="@dimen/dp_14"
