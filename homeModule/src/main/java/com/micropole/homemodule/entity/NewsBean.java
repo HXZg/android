@@ -27,6 +27,11 @@ public class NewsBean {
      */
 
     private String new_title;
+    /**
+     * new_content :
+     */
+
+    private String new_content;
 
     public String getNew_id() {
         return new_id;
@@ -66,5 +71,13 @@ public class NewsBean {
 
     public void setNew_title(String new_title) {
         this.new_title = new_title;
+    }
+
+    public String getNew_content() {
+        return new_content;
+    }
+
+    public void setNew_content(String new_content) {
+        this.new_content = new_content;
     }
 }

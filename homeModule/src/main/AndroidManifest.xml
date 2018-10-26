@@ -13,6 +13,7 @@
         <activity android:name=".order.FillOrderActivity"/>
         <activity android:name=".mine.MineNoticeActivity"/>
         <activity android:name=".mine.MineCollectActivity"/>
+        <activity android:name=".mine.NoticeDetailActivity"/>
     </application>
 
 </manifest>

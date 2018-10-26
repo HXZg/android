@@ -64,11 +64,10 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
         stv_settled_num.setOnClickListener { getPNum(mPeopleNum) } //入驻人数
 
         stv_home_search.setOnClickListener {
-            /*SearchActivity.startSearch(mContext,"23,113",
+            SearchActivity.startSearch(mContext,"23,113",
                     stv_settled_date.text.toString().replace("/",""),
                     stv_settled_num.text.toString().replace("/",""),
-                    stv_settled_num.text.toString())*/
-            startActivity(EvaluationActivity::class.java)
+                    stv_settled_num.text.toString())
         }
 
         swipe_refresh.setOnRefreshListener {

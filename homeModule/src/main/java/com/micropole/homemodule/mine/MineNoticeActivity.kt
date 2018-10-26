@@ -28,6 +28,7 @@ class MineNoticeActivity : BaseRecyclerActivity<NewsBean,MineNoticeConstract.Mod
     override fun getAdapter(): BaseQuickAdapter<NewsBean, BaseViewHolder> = MineNoticeAdapter()
 
     override fun clickItem(position: Int) {
+        if (mAdapter != null) NoticeDetailActivity.startNoticeDetail(mContext,mAdapter!!.data[position].new_content)
     }
 
     override fun createPresenter(): MineNoticeConstract.Present = MineNoticePresent()

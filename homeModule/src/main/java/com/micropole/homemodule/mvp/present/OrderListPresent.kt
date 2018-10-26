@@ -21,7 +21,7 @@ class OrderListPresent : OrderListConstract.Present() {
     }
 
     override fun orderList(staut: Int, page: Int) {
-        getView()?.showLoadingDialog("正在获取")
+        if (page == 1)getView()?.showLoadingDialog("正在获取")
         getModel().orderList(Constants.SHORT_TOKEN,Constants.getLocation()[0],Constants.getLocation()[1],staut, page)
                 .ui({
                     getView()?.dismissLoadingDialog()
