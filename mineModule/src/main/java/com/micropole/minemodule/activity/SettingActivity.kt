@@ -19,7 +19,11 @@ import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_setting.*
 import kotlinx.android.synthetic.main.bar_title.*
 import java.io.File
-
+/**
+ * author: xiaoguagnfei
+ * date: 2018/10/23
+ * describe:个人资料设置
+ */
 class SettingActivity : BaseMvpActivity<SettingPresenter>(),SettingContract.View {
     override fun setImageURI(imageUri: ImageViewUri) {
         getPresenter().setInfo("","",imageUri.imgUrl)

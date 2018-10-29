@@ -103,7 +103,7 @@
             android:layout_marginLeft="15dp"
             android:layout_gravity="center_vertical"/>
         <EditText
-            android:id="@+id/et_shengfenz"
+            android:id="@+id/et_new_code"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
@@ -118,7 +118,7 @@
             android:layout_marginRight="15dp"/>
     </LinearLayout>
     <TextView
-        android:id="@+id/tv_exit"
+        android:id="@+id/tv_sure"
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:text="确定"

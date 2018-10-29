@@ -9,12 +9,17 @@ import com.micropole.loginmodule.mvp.presenter.LoginPresenter
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.bar_title.*
-
+/**
+ * author: xiaoguagnfei
+ * date: 2018/10/23
+ * describe:登录
+ */
 @Route(path = ARouterConst.Login.LOGIN_ACTIVITY)
 class LoginActivity : BaseMvpActivity<LoginPresenter>(),LoginContract.View {
     override fun login(login: Login) {
         Constants.login()
         Constants.putLongToken(login.long_token)
+        Constants.putShortToken(login.short_token)
         Constants.SHORT_TOKEN=login.short_token
         finish()
 

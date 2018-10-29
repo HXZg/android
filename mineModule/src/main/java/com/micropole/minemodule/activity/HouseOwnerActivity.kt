@@ -15,7 +15,11 @@ import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_house_owner.*
 import kotlinx.android.synthetic.main.bar_title.*
 import java.io.File
-
+/**
+ * author: xiaoguagnfei
+ * date: 2018/10/23
+ * describe:成为房东
+ */
 class HouseOwnerActivity : BaseMvpActivity<HouseOwmerPresenter>(),HouserOwnerContract.View {
     var zheng=""
     var fan=""

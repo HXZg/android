@@ -7,7 +7,11 @@ import android.os.Bundle
 import com.micropole.minemodule.R
 import kotlinx.android.synthetic.main.activity_zhima.*
 import kotlinx.android.synthetic.main.bar_title.*
-
+/**
+ * author: xiaoguagnfei
+ * date: 2018/10/23
+ * describe:芝麻信用授权
+ */
 class ZhimaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

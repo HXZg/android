@@ -1,6 +1,8 @@
 package com.micropole.minemodule.network;
 
+import com.micropole.minemodule.bean.Code;
 import com.micropole.minemodule.bean.ImageViewUri;
+import com.micropole.minemodule.bean.Note;
 import com.micropole.minemodule.bean.RefreshTokenBean;
 import com.micropole.minemodule.bean.Trip;
 import com.micropole.minemodule.bean.UserInfo;
@@ -71,5 +73,28 @@ public interface AppService {
     @FormUrlEncoded
     @POST("user/hotel_apply")
     Observable<BaseResponseEntity<Object>> beHouse(@Header("token") String token, @Header("lat") String lat, @Header("lng") String lng, @Field("a_nickname")String a_nickname,@Field("a_idcard")String a_idcard,@Field("a_front_idcard")String a_front_idcard,@Field("a_verso_idcard")String a_verso_idcard);
+    /**
+     *房东申请协议
+     */
+    @POST("User/apply_protocol")
+    Observable<BaseResponseEntity<Note>> note(@Header("token") String token, @Header("lat") String lat, @Header("lng") String lng);
+    /**
+     *修改密码
+     */
+    @FormUrlEncoded
+    @POST("login/update_user_pwd")
+    Observable<BaseResponseEntity<Object>> setPW(@Header("token") String token, @Header("lat") String lat, @Header("lng") String lng,@Field("user_phone")String user_phone,@Field("code")String code,@Field("new_user_pwd")String new_user_pwd);
+    /**
+     *修改手机
+     */
+    @FormUrlEncoded
+    @POST("User/update_user_phone")
+    Observable<BaseResponseEntity<Object>> setPhone( @Header("token") String token, @Header("lat") String lat, @Header("lng") String lng,@Field("old_user_phone")String old_user_phone,@Field("new_user_phone")String new_user_phone,@Field("new_code")String new_code,@Field("old_code")String old_code);
+    /**
+     * 发送验证码
+     */
+    @FormUrlEncoded
+    @POST("login/sendSMS")
+    Observable<BaseResponseEntity<Code>> getCode(@Field("phone") String phone);
 
 }

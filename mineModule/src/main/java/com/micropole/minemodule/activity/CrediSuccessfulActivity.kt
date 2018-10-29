@@ -6,13 +6,17 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.micropole.minemodule.R
 import kotlinx.android.synthetic.main.bar_title.*
-
+/**
+ * author: xiaoguagnfei
+ * date: 2018/10/23
+ * describe:芝麻信用授权成功
+ */
 class CrediSuccessfulActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_credi_successful)
-        tv_title.text=="芝麻信用授权"
+        tv_title.text="芝麻信用授权"
         iv_back.setOnClickListener { finish() }
     }
     companion object {

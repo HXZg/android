@@ -1,5 +1,6 @@
 package com.micropole.minemodule.mvp.contract
 
+import com.micropole.minemodule.bean.Note
 import com.micropole.minemodule.bean.RefreshTokenBean
 import com.micropole.minemodule.bean.UserInfo
 import com.xx.baseuilibrary.mvp.BaseMvpView
@@ -14,12 +15,15 @@ import io.reactivex.Observable
  */
 interface NoteContract {
     interface View:BaseMvpView{
+        fun getNote(note:Note)
 
     }
     interface Model{
+        fun getNote(token:String,lat:String,lng:String):Observable<BaseResponseEntity<Note>>
 
     }
     abstract class Presenter:BaseMvpPresenter<Model,View>(){
+        abstract  fun getNote()
 
     }
 }
