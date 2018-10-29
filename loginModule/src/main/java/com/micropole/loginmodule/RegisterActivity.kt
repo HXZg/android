@@ -10,7 +10,11 @@ import com.micropole.loginmodule.mvp.presenter.RegisterPresenter
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.bar_title.*
-
+/**
+ * author: xiaoguagnfei
+ * date: 2018/10/23
+ * describe:注册
+ */
 class RegisterActivity : BaseMvpActivity<RegisterPresenter>(),RegisterContract.View {
     private var time = 60//验证码时间
     private var mHandler : Handler = object : Handler() {

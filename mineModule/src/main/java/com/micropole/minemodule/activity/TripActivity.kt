@@ -10,7 +10,11 @@ import com.micropole.minemodule.R
 import com.micropole.minemodule.bean.UserInfo
 import kotlinx.android.synthetic.main.activity_trip.*
 import kotlinx.android.synthetic.main.bar_title.*
-
+/**
+ * author: xiaoguagnfei
+ * date: 2018/10/23
+ * describe:旅游基金
+ */
 class TripActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

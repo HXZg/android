@@ -10,7 +10,11 @@ import com.micropole.loginmodule.mvp.presenter.ForgetPresenter
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_fotget.*
 import kotlinx.android.synthetic.main.bar_title.*
-
+/**
+ * author: xiaoguagnfei
+ * date: 2018/10/23
+ * describe:忘记密码
+ */
 class FotgetActivity : BaseMvpActivity<ForgetPresenter>(),ForgetContract.View {
 
     private var time = 60//验证码时间

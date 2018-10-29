@@ -39,6 +39,9 @@ object Constants {
     fun putLongToken(token : String){SPUtils.getInstance().put(KEY_LONG_TOKEN,token)}
 
     fun getLongToken() : String = SPUtils.getInstance().getString(KEY_LONG_TOKEN)
+    fun putShortToken(token : String){SPUtils.getInstance().put(KEY_SHORT_TOKEN,token)}
+
+    fun getShotToken() : String = SPUtils.getInstance().getString(KEY_SHORT_TOKEN)
 
     fun putUserId(userId : String){SPUtils.getInstance().put(KEY_USER_ID,userId)}
 

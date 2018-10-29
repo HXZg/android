@@ -12,7 +12,11 @@ import com.micropole.minemodule.mvp.presenter.TripIntraPresenter
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_trip_intra.*
 import kotlinx.android.synthetic.main.bar_title.*
-
+/**
+ * author: xiaoguagnfei
+ * date: 2018/10/23
+ * describe:旅游基金明细
+ */
 class TripIntraActivity : BaseMvpActivity<TripIntraPresenter>(),TripIntraContract.View, BaseQuickAdapter.RequestLoadMoreListener {
 
     override fun getTripList(trip: List<Trip>) {
