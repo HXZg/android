@@ -151,7 +151,8 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
 
         iv_detail_follow.setOnClickListener { presenter.collectHouse(mHId) }  //收藏
 
-        iv_detail_share.setOnClickListener { ARouter.getInstance().build(ARouterConst.Main.MAIN_SHARE).withString("h_id",mHId).navigation() }  //分享
+        iv_detail_share.setOnClickListener { ARouter.getInstance().build(ARouterConst.Main.MAIN_SHARE).withString("h_id",mHId)
+                .withString("share_url",mBean?.share_url).navigation() }  //分享
 
         stv_detail_booking.setCheckLoginListener { FillOrderActivity.startFillOrder(mContext,mHId,stv_settled_time.text.toString(),stv_leave_time.text.toString()) }  //预订
     }

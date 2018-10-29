@@ -74,7 +74,8 @@ class ShareActivity : BaseMvpActivity<ShareConstract.Present>(),ShareConstract.V
     override fun createPresenter(): ShareConstract.Present = ShareConstract.Present()
 
     override fun share(bean: ShareHotlBean?) {
-        var web = UMWeb("http://www.xj-yl.com/mob/catalog/product?pid=65")
+        val url = intent.getStringExtra("share_url")
+        var web = UMWeb(url)
         web.title = bean?.share?.share_title
         web.setThumb( UMImage(this, bean?.share?.share_img))
         web.description = bean?.share?.share_content
@@ -86,6 +87,14 @@ class ShareActivity : BaseMvpActivity<ShareConstract.Present>(),ShareConstract.V
     }
 
     private var clickListener = View.OnClickListener {
+        if (mHid.isNullOrEmpty()){
+            val bean = ShareHotlBean()
+            bean.share.share_title = intent.getStringExtra("share_title")
+            bean.share.share_img = intent.getStringExtra("share_img")
+            bean.share.share_content = intent.getStringExtra("share_content")
+            share(bean)
+            return@OnClickListener
+        }
         platform = when(it.id){
             R.id.tv_share_weixin -> SHARE_MEDIA.WEIXIN
             R.id.tv_share_moments -> SHARE_MEDIA.WEIXIN_CIRCLE

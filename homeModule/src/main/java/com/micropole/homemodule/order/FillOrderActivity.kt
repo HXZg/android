@@ -93,7 +93,7 @@ class FillOrderActivity : BaseMvpActivity<FillOrderConstract.Present>(),FillOrde
 
         mPriceAdapter.setOnItemChildClickListener { adapter, view, position ->
             if (view.id == R.id.stv_zmm){
-
+                ARouter.getInstance().build(ARouterConst.Mine.MINE_ALIAUTHO).navigation()
             }else if (view.id == R.id.iv_slide_btn){
                 val selected = view.isSelected
                 view.isSelected = !selected

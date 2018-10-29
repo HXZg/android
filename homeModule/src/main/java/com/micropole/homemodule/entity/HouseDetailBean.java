@@ -82,6 +82,12 @@ public class HouseDetailBean {
     private List<String> h_imgs;
     private List<List<String>> other_price_arr;
     private List<FacilityServicesArrBean> facility_services_arr;
+    /**
+     * other_price_arr : [["清洁费","50"]]
+     * share_url : http://jiatianxia.goodbooy.cn/home/login/reg
+     */
+
+    private String share_url;
 
     public String getH_id() {
         return h_id;
@@ -345,6 +351,14 @@ public class HouseDetailBean {
 
     public void setFacility_services_arr(List<FacilityServicesArrBean> facility_services_arr) {
         this.facility_services_arr = facility_services_arr;
+    }
+
+    public String getShare_url() {
+        return share_url;
+    }
+
+    public void setShare_url(String share_url) {
+        this.share_url = share_url;
     }
 
     public static class HotelUserBean {
