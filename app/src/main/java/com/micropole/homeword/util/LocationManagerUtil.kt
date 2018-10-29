@@ -220,7 +220,7 @@ class LocationManagerUtil {
             var latitude = lastKnownLocation.latitude
             var longitude = lastKnownLocation.longitude
             Log.i("update_init","$longitude,$latitude")
-            Constants.putLocation(latitude,longitude,"")
+            Constants.putLocation(latitude,longitude,"广州")
             return "$longitude,$latitude"
         }
         return null

@@ -55,7 +55,7 @@ fun DatePicker.setRanger(year:Int = 0, month : Int = 0, day : Int = 0){
     setRangeEnd(myear+TimerUtil.DATE_RANGE,mmonth,mday)
 }
 
-fun ConvenientBanner<*>.setTurnImage(mImgs:List<String>,isturn : Long = 2000){
+fun ConvenientBanner<*>.setTurnImage(mImgs:List<String>,isturn : Long = 2000) : ConvenientBanner<*>{
     this as ConvenientBanner<String>
     setPages( { ImageHolderView() } , mImgs)
             setPageIndicator(intArrayOf(R.drawable.shape_indicator_gray, R.drawable.shape_indicator_red))
@@ -65,6 +65,7 @@ fun ConvenientBanner<*>.setTurnImage(mImgs:List<String>,isturn : Long = 2000){
                 ToastUtils.showShort(it.toString())
             }
     if (isturn != 0L) startTurning(isturn)
+    return this
 }
 
 fun View.setCheckLoginListener(action: (view:View) -> Unit){

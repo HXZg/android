@@ -21,7 +21,9 @@
             android:textColor="@color/text_one"
             android:text=""
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/dp_14"/>
+            android:layout_marginTop="@dimen/dp_14"
+            android:layout_marginLeft="@dimen/dp_14"
+            android:layout_marginRight="@dimen/dp_14"/>
 
         <TextView
             android:id="@+id/tv_notice_des"

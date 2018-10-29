@@ -24,6 +24,7 @@ import cn.qqtheme.framework.picker.OptionPicker
 import cn.qqtheme.framework.util.DateUtils
 import com.blankj.utilcode.util.TimeUtils.getDate
 import com.micropole.baseapplibrary.constants.Constants
+import com.micropole.homemodule.mine.NoticeDetailActivity
 import com.micropole.homemodule.util.*
 
 
@@ -116,7 +117,13 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
                 for (i in data.adve.indices){
                     mAdves.add(data.adve[i].ad_img)
                 }
-                cb_home.setTurnImage(mAdves)
+                cb_home.setTurnImage(mAdves).setOnItemClickListener {
+                    if (data.adve[it].ad_type.isNullOrEmpty() || data.adve[it].ad_type == "1" ){
+                        HouseDetailActivity.startHouseDetail(mContext,data.adve[it].pro_id)
+                    }else if (data.adve[it].ad_type == "3"){
+                        NoticeDetailActivity.startNoticeDetail(mContext,data.adve[it].ad_url)
+                    }
+                }
             }
 
             if (data.project.isNotEmpty()){

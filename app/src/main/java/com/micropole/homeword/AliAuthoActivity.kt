@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.ToastUtils
 import com.micropole.baseapplibrary.constants.ARouterConst
-import java.util.*
 
 /**
  * @ClassName       AliAuthoActivity
@@ -20,12 +19,14 @@ class AliAuthoActivity : AppCompatActivity(){
     override fun onResume() {
         super.onResume()
         ToastUtils.showShort("auth activity")
+        setResult(0x11)
+        finish()
 
-        Timer().schedule(object : TimerTask() {
+        /*Timer().schedule(object : TimerTask() {
             override fun run() {
                 setResult(0x11)
                 finish()
             }
-        },1500)
+        },1500)*/
     }
 }
