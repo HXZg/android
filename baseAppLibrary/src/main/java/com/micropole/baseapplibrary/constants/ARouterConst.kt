@@ -23,6 +23,7 @@ object ARouterConst {
         const val MAIN_PAY_CENTER = "$MAIN/pay_center_activity"
         const val MAIN_MAP = "$MAIN/map_activity"
         const val MAIN_SHARE = "$MAIN/share_activity"
+        const val MAIN_MAIN = "$MAIN/main_activity"
     }
 
     const val HOME = "/home"
@@ -41,5 +42,6 @@ object ARouterConst {
         const val MINE_FRAGMENT = "$MINE/mine_fragment"
         const val MINE_COLLECT = "$HOME/mine_collect_activity"
         const val MINE_NOTICE = "$HOME/mine_notice_activity"
+        const val MINE_ALIAUTHO = "$MINE/mine_ali_activity"
     }
 }

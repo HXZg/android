@@ -26,7 +26,7 @@ open class BaseApplication : MultiDexApplication() {
         }
         ARouter.init(this) // 尽可能早，推荐在Application中初始化
         Utils.init(this)
-        Stetho.initializeWithDefaults(this)
+//        Stetho.initializeWithDefaults(this)
 
         Retrofit2Manager.instance.apiConfigProvider = object : XxApiConfigProvider {
             override fun getReleaseHost(): String = BuildConfig.RELEASE_DOMAIN

@@ -63,6 +63,7 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
     override fun setData(data: HouseDetailBean?) {
         if (data != null){
             showContent()
+            mBean = data
             mHId = data.h_id
             val mImgs = arrayListOf<String>()
             for (i in data.h_imgs.indices){
@@ -102,6 +103,7 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
 
     var mDeviceAdapter = DetailDeviceAdapter()
     var mHId = ""
+    var mBean : HouseDetailBean? = null
 
     override fun getActivityLayoutId(): Int = R.layout.activity_house_detail
 
@@ -127,10 +129,18 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
             getDate(year = addDate[0],month = addDate[1],day = addDate[2],click = 2)
         }
         ll_msg.setOnClickListener {
-            ARouter.getInstance().build(ARouterConst.Main.MAIN_MAP).navigation()
+            ARouter.getInstance().build(ARouterConst.Main.MAIN_MAP).withInt("type_location",1)
+                    .withString("address_location",mBean?.h_address)
+                    .withString("lat_location",mBean?.lat_long!!.split(",")[1])
+                    .withString("lng_location",mBean?.lat_long!!.split(",")[0])
+                    .navigation()
         }
         iv_right.setOnClickListener {
-            ARouter.getInstance().build(ARouterConst.Main.MAIN_MAP).navigation()
+            ARouter.getInstance().build(ARouterConst.Main.MAIN_MAP).withInt("type_location",1)
+                    .withString("address_location",mBean?.h_address)
+                    .withString("lat_location",mBean?.lat_long!!.split(",")[1])
+                    .withString("lng_location",mBean?.lat_long!!.split(",")[0])
+                    .navigation()
         }
         view_evaluation.setOnClickListener {
             EvaluationListActivity.startEvaluationList(mContext,mHId)

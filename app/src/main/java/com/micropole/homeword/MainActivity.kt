@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.ActivityUtils
 import com.micropole.baseapplibrary.R
@@ -16,6 +17,7 @@ import com.micropole.baseapplibrary.constants.ARouterConst
 import com.micropole.baseapplibrary.constants.Constants
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.CommonPagerTitleView
 
+@Route(path = ARouterConst.Main.MAIN_MAIN)
 class MainActivity : BaseNavigationActivity() {
 
     override fun getDataSize(): Int = 3

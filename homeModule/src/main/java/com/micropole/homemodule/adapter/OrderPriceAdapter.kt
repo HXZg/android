@@ -18,7 +18,7 @@ class OrderPriceAdapter(val isFillOrder : Boolean = false) : BaseQuickAdapter<Li
         helper?.run {
             if (item != null){
                 if (isFillOrder){
-                    if (item[1].contains("-")){
+                    if (item[0].contains("使用旅行基金")){
                         setGone(R.id.iv_slide_btn,true)
                         addOnClickListener(R.id.iv_slide_btn)
                     }

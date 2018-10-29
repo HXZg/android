@@ -23,12 +23,10 @@ class SplashActivity : BaseMvpViewActivity(){
                 Manifest.permission.READ_PHONE_STATE,
                 Manifest.permission.CHANGE_WIFI_STATE).callback(object : PermissionUtils.SimpleCallback {
             override fun onGranted() {
-                LocationManagerUtil.getInstance().startLocation()
                 startMain()
             }
 
             override fun onDenied() {
-                LocationManagerUtil.getInstance().startLocation()
                 startMain()
             }
 
@@ -37,6 +35,8 @@ class SplashActivity : BaseMvpViewActivity(){
     }
 
     fun startMain(){
+        LocationManagerUtil.getInstance().getLocation()
+        //LocationManagerUtil.getInstance().startLocation()
         Timer().schedule(object : TimerTask() {
             override fun run() {
                 startActivity(GuideActivity::class.java)

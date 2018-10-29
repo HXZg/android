@@ -1,8 +1,15 @@
 package com.micropole.homeword.util
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
+import android.location.LocationManager
+import android.util.Log
 import com.amap.api.location.*
+import com.blankj.utilcode.util.PermissionUtils
 import com.blankj.utilcode.util.SPUtils
+import com.blankj.utilcode.util.ToastUtils
+import com.blankj.utilcode.util.Utils
 import com.micropole.baseapplibrary.constants.Constants
 
 /**
@@ -185,4 +192,37 @@ class LocationManagerUtil {
     public void setOnLocationResultListener(OnLocationResultListener listener){
         this.mOnLocationResultListener=listener;
     }*/
+
+    @SuppressLint("HardwareIds", "MissingPermission")
+    fun getLocation() : String?{
+        if (!PermissionUtils.isGranted(Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.ACCESS_FINE_LOCATION)){
+            return null
+        }
+        var locationManager = Utils.getApp().getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        val providerEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+        if (!providerEnabled){
+            ToastUtils.showShort("未开启GPS,无法定位")
+            return null
+        }
+        val providers = locationManager.getProviders(true)
+        var provider = ""
+        for (i in providers.indices) {
+            if (providers.contains(LocationManager.GPS_PROVIDER)) {
+                provider = LocationManager.GPS_PROVIDER
+            } else if (providers.contains(LocationManager.NETWORK_PROVIDER)) {
+                provider = LocationManager.NETWORK_PROVIDER
+            } else {
+            }
+        }
+        var lastKnownLocation = locationManager.getLastKnownLocation(provider)
+        if (lastKnownLocation != null){
+            var latitude = lastKnownLocation.latitude
+            var longitude = lastKnownLocation.longitude
+            Log.i("update_init","$longitude,$latitude")
+            Constants.putLocation(latitude,longitude,"")
+            return "$longitude,$latitude"
+        }
+        return null
+    }
 }

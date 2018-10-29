@@ -51,6 +51,10 @@ class FillOrderActivity : BaseMvpActivity<FillOrderConstract.Present>(),FillOrde
     var mNum = 1
     var mBalance = 2
 
+    var mMaxPeoPleNum = 1
+
+    var mOrderId = ""
+
     override fun getActivityLayoutId(): Int = R.layout.activity_order_detail
 
     override fun createPresenter(): FillOrderConstract.Present {
@@ -80,7 +84,7 @@ class FillOrderActivity : BaseMvpActivity<FillOrderConstract.Present>(),FillOrde
             val addDate = TimerUtil.addDate(data[0].toInt(), data[1].toInt(), data[2].toInt())
             getDate(year = addDate[0],month = addDate[1],day = addDate[2],click = 2)
         }
-        tv_order_settled_num.setOnClickListener { getPNum(10) }
+        tv_order_settled_num.setOnClickListener { getPNum(mMaxPeoPleNum) }
 
         stv_order_detail_btn.setOnClickListener {
             getPresenter().commitOrder(mHid,tv_order_open_time.text.toString(),tv_order_leave_time.text.toString(),
@@ -93,7 +97,7 @@ class FillOrderActivity : BaseMvpActivity<FillOrderConstract.Present>(),FillOrde
             }else if (view.id == R.id.iv_slide_btn){
                 val selected = view.isSelected
                 view.isSelected = !selected
-                mBalance = if (selected) 1 else 2
+                mBalance = if (selected) 2 else 1
                 getPresenter().bookingHouse(mHid,mStartTime,mEndTime,mNum,mBalance)
             }
         }
@@ -102,13 +106,15 @@ class FillOrderActivity : BaseMvpActivity<FillOrderConstract.Present>(),FillOrde
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 0x10 && resultCode == 0x11){
-            startActivityThenFinishSelf(CommitSucActivity::class.java)
+            CommitSucActivity.startCommitSuc(mContext,mOrderId)
+            finish()
         }
     }
 
     override fun bookingSuc(bean: BookingBean?) {
         if (bean != null){
             mPriceAdapter.isFree = bean.deposit_free
+            mMaxPeoPleNum = bean.max_people.toInt()
             iv_order_detail_img.loadImag(bean.h_imgs,radio = 16)
             tv_order_detail_name.text = bean.h_title
             tv_order_detail_address.text = bean.h_address                //房间信息
@@ -116,21 +122,23 @@ class FillOrderActivity : BaseMvpActivity<FillOrderConstract.Present>(),FillOrde
             tv_order_detail_price.text = "合计 ¥${bean.or_all_price}"
 
             val arr = bean.other_price_arr
-            if (bean.or_balance_arr != null && bean.or_balance_arr.have == "1") arr.add(arrayListOf("使用旅行基金","-${bean.or_balance_arr.balance_price}"))
+            val s = if (mBalance == 2) "" else "-"
+            if (bean.or_balance_arr != null && bean.or_balance_arr.have == "1") arr.add(arrayListOf("使用旅行基金","$s${bean.or_balance_arr.balance_price}"))
             mPriceAdapter.setNewData(arr)
         }
     }
 
     override fun commit(bean: CommitOrderBean?) {
         if (bean != null){
+            mOrderId = bean.or_id
             if (bean.stat == "2")
                 ARouter.getInstance().build(ARouterConst.Main.MAIN_PAY_CENTER).withString("or_id",bean.or_id).navigation(this,0x10)
             else{
-                showToast("已生成订单")
+                CommitSucActivity.startCommitSuc(mContext,mOrderId)
                 finish()
             }
         }
-}
+    }
 
     /**
      * 设置入住离店日期

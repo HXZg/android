@@ -2,6 +2,10 @@ package com.micropole.homemodule
 
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import cn.qqtheme.framework.entity.City
+import cn.qqtheme.framework.entity.County
+import cn.qqtheme.framework.entity.Province
+import cn.qqtheme.framework.picker.AddressPicker
 import cn.qqtheme.framework.picker.DatePicker
 import cn.qqtheme.framework.picker.DateTimePicker
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -11,7 +15,6 @@ import com.micropole.homemodule.adapter.HomeHouseAdapter
 import com.micropole.homemodule.entity.HomeBean
 import com.micropole.homemodule.mvp.constract.HomeConstract
 import com.micropole.homemodule.mvp.present.HomePresent
-import com.micropole.homemodule.util.ImageHolderView
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.view_home.*
@@ -20,9 +23,8 @@ import java.util.*
 import cn.qqtheme.framework.picker.OptionPicker
 import cn.qqtheme.framework.util.DateUtils
 import com.blankj.utilcode.util.TimeUtils.getDate
-import com.micropole.homemodule.util.TimerUtil
-import com.micropole.homemodule.util.setRanger
-import com.micropole.homemodule.util.setTurnImage
+import com.micropole.baseapplibrary.constants.Constants
+import com.micropole.homemodule.util.*
 
 
 /**
@@ -52,7 +54,21 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
             HouseDetailActivity.startHouseDetail(mContext,homeHouseAdapter.data[position].h_id)
         }
 
-        stv_location.setOnClickListener {  }
+        stv_location.setOnClickListener { stv_location_txt.text = Constants.getLocation()[2] }
+        stv_location_txt.setOnClickListener {
+            var addressPickTask = AddressPickTask(activity)
+            addressPickTask.setCallback(object : AddressPickTask.Callback {
+                override fun onAddressInitFailed() {
+                    showToast("失败")
+                }
+
+                override fun onAddressPicked(province: Province?, city: City?, county: County?) {
+                    stv_location_txt.text = province?.areaName + city?.areaName + county?.areaName
+                }
+
+            })
+            addressPickTask.execute()
+        }
 
         stv_settled_date.setOnClickListener { getDate(click = 1) }  //入驻时间
         stv_leave_store_date.setOnClickListener {
@@ -82,7 +98,7 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
 
         setDate(Calendar.getInstance()[Calendar.YEAR],Calendar.getInstance()[Calendar.MONTH] + 1,Calendar.getInstance()[Calendar.DATE])
 
-        if (!isHidden) presenter.getHomeData()
+        presenter.getHomeData()
     }
 
     fun setDate(year: Int, month: Int, day: Int){

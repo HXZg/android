@@ -27,7 +27,7 @@ class HouseDetailPresent : HouseDetailConstract.Present() {
                         getView()?.dismissLoadingDialog()
                         getView()?.userPhone(it.data)},{
                         getView()?.dismissLoadingDialog()
-                        getView()?.refreshToken(it,{collectHouse(h_id)})
+                        getView()?.refreshToken(it,{getUserPhone(h_id)})
                     })
         }else{
             getView()?.showToast("请先登录")
