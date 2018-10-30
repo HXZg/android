@@ -25,7 +25,7 @@
         android:allowBackup="true"
         android:icon="@drawable/logo_hw"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo_hw"
         android:supportsRtl="true"
         android:name=".App"
         android:theme="@style/AppTheme">
@@ -45,7 +45,6 @@
         </activity>
 
         <activity android:name=".GuideActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/GuideTheme"/>
 
         <activity android:name=".MainActivity"
@@ -59,9 +58,6 @@
 
         <activity android:name=".ShareActivity"
             android:theme="@style/bottomdialogstyle"/>
-
-        <activity android:name=".AliAuthoActivity"
-            android:theme="@style/TranlucentTheme"/>
 
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
