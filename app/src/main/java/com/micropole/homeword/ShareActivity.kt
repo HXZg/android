@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.micropole.baseapplibrary.constants.ARouterConst
+import com.micropole.baseapplibrary.constants.ARouterConst.Main.MAIN_SHARE
 import com.micropole.baseapplibrary.constants.Constants
 import com.micropole.baseapplibrary.network.AppApi
 import com.micropole.homemodule.network.AppService
@@ -36,11 +37,12 @@ import kotlinx.android.synthetic.main.popup_share.*
  * @Date            2018/10/25 14:54
  * @Copyright       Guangzhou micro pole mobile Internet Technology Co., Ltd.
  */
-@Route(path = ARouterConst.Main.MAIN_SHARE)
+@Route(path = MAIN_SHARE)
 class ShareActivity : BaseMvpActivity<ShareConstract.Present>(),ShareConstract.View {
 
-    lateinit var mHid : String
+     var mHid : String?=null
     var platform = SHARE_MEDIA.QQ
+
     override fun initData() {
         mHid = intent.getStringExtra("h_id")
         window.getDecorView().setPadding(0, 0, 0, 0);
@@ -102,7 +104,7 @@ class ShareActivity : BaseMvpActivity<ShareConstract.Present>(),ShareConstract.V
             R.id.tv_share_weibo -> SHARE_MEDIA.SINA
             else -> SHARE_MEDIA.QQ
         }
-        getPresenter().share(mHid)
+        getPresenter().share(mHid!!)
     }
 
     private var  shareListener = object : UMShareListener {

@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.alibaba.android.arouter.launcher.ARouter
+import com.micropole.baseapplibrary.constants.ARouterConst
 import com.micropole.minemodule.R
 import com.micropole.minemodule.bean.Share
 import com.micropole.minemodule.mvp.contract.InviteContract
@@ -46,9 +48,14 @@ class InviteActivity : BaseMvpActivity<InvitePresenter>(),InviteContract.View{
      */
     override fun initEvent() {
         iv_back.setOnClickListener { finish() }
+        iv_share.setOnClickListener {
+            ARouter.getInstance().build(ARouterConst.Main.MAIN_SHARE).withString("share_title",share?.nickname)
+                    .withString("share_img",share?.user_img).withString("share_content",share?.url).navigation()
+        }
     }
-
+    var share:Share?=null
     override fun getShare(share: Share) {
+        this.share=share
         iv_hand.loadImag(share.user_img)
         tv_name.text=share.nickname
         tv_phote.text=share.user_phone

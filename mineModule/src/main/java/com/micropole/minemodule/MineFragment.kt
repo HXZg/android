@@ -109,7 +109,8 @@ class MineFragment : BaseMvpFragment<MineContract.Model,MineContract.View,MineCo
 
             }
             ll_zhima->{//芝麻信用
-                ZhimaActivity.startZhimaActivity(mContext)
+                showToast("暂未开放，敬请期待")
+//                ZhimaActivity.startZhimaActivity(mContext)
 
             }
             ll_invite->{//邀请好友
@@ -118,8 +119,6 @@ class MineFragment : BaseMvpFragment<MineContract.Model,MineContract.View,MineCo
             }
             ll_exit->{//注销
                 showDailog()
-
-
             }
             iv_setting->{//设置资料
                 SettingActivity.startSettingActivity(mContext)
