@@ -4,6 +4,7 @@ import com.micropole.minemodule.bean.Code;
 import com.micropole.minemodule.bean.ImageViewUri;
 import com.micropole.minemodule.bean.Note;
 import com.micropole.minemodule.bean.RefreshTokenBean;
+import com.micropole.minemodule.bean.Share;
 import com.micropole.minemodule.bean.Trip;
 import com.micropole.minemodule.bean.UserInfo;
 import com.xx.baseutilslibrary.entity.BaseResponseEntity;
@@ -96,5 +97,10 @@ public interface AppService {
     @FormUrlEncoded
     @POST("login/sendSMS")
     Observable<BaseResponseEntity<Code>> getCode(@Field("phone") String phone);
+    /**
+     * 用户中心分享
+     */
+    @POST("User/user_share")
+    Observable<BaseResponseEntity<Share>> getShare(@Header("token") String token, @Header("lat") String lat, @Header("lng") String lng);
 
 }

@@ -27,6 +27,7 @@
             android:layout_height="65dp"
             app:cardCornerRadius="5dp">
             <ImageView
+                android:id="@+id/iv_hand"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/datouxiang_"/>
@@ -59,6 +60,7 @@
         </LinearLayout>
     </LinearLayout>
     <ImageView
+        android:id="@+id/iv_iqcode"
         android:layout_width="183dp"
         android:layout_height="183dp"
         android:src="@drawable/ic_code_n"
@@ -97,6 +99,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp">
                 <TextView
+                    android:id="@+id/tv_web"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="https://www.baidu.com"

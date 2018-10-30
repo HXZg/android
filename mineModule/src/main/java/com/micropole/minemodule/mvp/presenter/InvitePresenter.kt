@@ -1,14 +1,9 @@
 package com.micropole.minemodule.mvp.presenter
 
-import android.provider.SyncStateContract
-import android.util.Log
+
 import com.micropole.baseapplibrary.constants.Constants
 import com.micropole.minemodule.mvp.contract.InviteContract
-import com.micropole.minemodule.mvp.contract.MineContract
-import com.micropole.minemodule.mvp.contract.SettingContract
 import com.micropole.minemodule.mvp.model.InviteModel
-import com.micropole.minemodule.mvp.model.MineModel
-import com.micropole.minemodule.mvp.model.SettingModel
 import com.micropole.minemodule.util.refreshToken
 import com.xx.baseutilslibrary.extensions.ui
 
@@ -17,7 +12,19 @@ import com.xx.baseutilslibrary.extensions.ui
  * date: 2018/10/25
  * describe:
  */
-class InvitePresenter:InviteContract.Presenter() {
+class InvitePresenter: InviteContract.Presenter() {
+    override fun getShare() {
+        getView()?.showLoadingDialog("加载中...")
+        var str=Constants.getLocation()
+        getModel().getShare(Constants.SHORT_TOKEN,str[0],str[1]).ui({
+            getView()?.dismissLoadingDialog()
+            getView()?.getShare(it.data!!)
+        },{
+            getView()?.dismissLoadingDialog()
+            getView()?.refreshToken(it,{getShare()})
+        })
+
+    }
 
     override fun createModel(): InviteContract.Model =InviteModel()
 }
