@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.micropole.baseapplibrary.constants.ARouterConst
+import com.micropole.baseapplibrary.constants.Constants
 import com.micropole.homemodule.R
 import com.micropole.homemodule.adapter.OrderItemAdapter
 import com.micropole.homemodule.entity.OrderListBean
@@ -76,7 +77,7 @@ class OrderListFragment : BaseMvpFragment<OrderListConstract.Model,OrderListCons
 
     override fun onResume() {
         super.onResume()
-        if (userVisibleHint){
+        if (userVisibleHint && Constants.isLogin()){
             refreshLoad()
         }
     }

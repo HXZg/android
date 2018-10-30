@@ -222,4 +222,7 @@ public interface AppService {
     @POST("user/user_news")
     Observable<BaseResponseEntity<List<NewsBean>>> newsList(@Header("token")String token, @Header("lat")String lat, @Header("lng")String lng,
                                                       @Field("page") int page);
+
+    /*http://api.map.baidu.com/geocoder?address=%E5%B9%BF%E5%B7%9E&output=json&key=AIzaSyCCjNaAQc-Blj921uEIJy7tdDserKGuSRs*/
+
 }

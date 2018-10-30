@@ -2,6 +2,8 @@ package com.micropole.homeword
 
 import android.Manifest
 import com.blankj.utilcode.util.PermissionUtils
+import com.micropole.baseapplibrary.constants.ARouterConst
+import com.micropole.baseapplibrary.constants.Constants
 import com.micropole.homeword.util.LocationManagerUtil
 import com.xx.baseuilibrary.mvp.BaseMvpViewActivity
 import java.util.*
@@ -39,7 +41,8 @@ class SplashActivity : BaseMvpViewActivity(){
         //LocationManagerUtil.getInstance().startLocation()
         Timer().schedule(object : TimerTask() {
             override fun run() {
-                startActivity(GuideActivity::class.java)
+                if (Constants.isFirst()) startActivity(GuideActivity::class.java)
+                else startActivity(MainActivity::class.java)
             }
         },1500)
     }

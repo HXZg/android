@@ -6,8 +6,8 @@ import android.content.Context
 import android.location.LocationManager
 import android.util.Log
 import com.amap.api.location.*
+import com.amap.api.services.geocoder.GeocodeAddress
 import com.blankj.utilcode.util.PermissionUtils
-import com.blankj.utilcode.util.SPUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.blankj.utilcode.util.Utils
 import com.micropole.baseapplibrary.constants.Constants

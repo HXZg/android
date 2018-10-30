@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.micropole.baseapplibrary.constants.ARouterConst
+import com.micropole.baseapplibrary.constants.Constants
 import com.xx.baseuilibrary.mvp.BaseMvpViewFragment
 import kotlinx.android.synthetic.main.activity_guide.*
 import kotlinx.android.synthetic.main.view_guide_vp.*
@@ -45,6 +46,7 @@ class GuideFragment : BaseMvpViewFragment() {
 
         stv_btn.setOnClickListener {
             if (index == 2){
+                Constants.setNoFirst()
                 activity?.startActivity(Intent(activity,MainActivity::class.java))
             }else if (index != null){
                 (activity as GuideActivity).vp_guide.currentItem = index + 1
