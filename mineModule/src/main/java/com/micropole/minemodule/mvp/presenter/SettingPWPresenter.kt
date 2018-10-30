@@ -41,8 +41,8 @@ class SettingPWPresenter:SettingPWContract.Presenter() {
             getView()?.dismissLoadingDialog()
             return
         }
-        if (new_user_pwd.isNullOrEmpty()){
-            getView()?.showToast("密码不能为空")
+        if (new_user_pwd.isNullOrEmpty()||new_user_pwd.length<6||new_user_pwd.length>15){
+            getView()?.showToast("请输入6到15位的密码")
             getView()?.dismissLoadingDialog()
             return
         }
