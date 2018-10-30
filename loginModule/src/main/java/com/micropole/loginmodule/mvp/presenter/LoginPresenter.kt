@@ -18,8 +18,8 @@ class LoginPresenter:LoginContract.Presenter() {
             getView()?.dismissLoadingDialog()
             return
         }
-        if (sign.isNullOrEmpty()){
-            getView()?.showToast("密码不能为空")
+        if (sign.isNullOrEmpty()||sign.length<6||sign.length>15){
+            getView()?.showToast("请填入6到15位的密码")
             getView()?.dismissLoadingDialog()
             return
         }
