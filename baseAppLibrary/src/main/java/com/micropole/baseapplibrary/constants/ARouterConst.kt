@@ -24,7 +24,6 @@ object ARouterConst {
         const val MAIN_MAP = "$MAIN/map_activity"
         const val MAIN_SHARE = "$MAIN/share_activity"
         const val MAIN_MAIN = "$MAIN/main_activity"
-        const val MAIN_AUTHO = "$MAIN/main_autho_activity"
     }
 
     const val HOME = "/home"
