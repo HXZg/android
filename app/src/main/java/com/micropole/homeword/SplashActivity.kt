@@ -2,9 +2,10 @@ package com.micropole.homeword
 
 import android.Manifest
 import com.blankj.utilcode.util.PermissionUtils
-import com.micropole.baseapplibrary.constants.ARouterConst
 import com.micropole.baseapplibrary.constants.Constants
+import com.micropole.baseapplibrary.util.LocationUtils
 import com.micropole.homeword.util.LocationManagerUtil
+import com.weibiaogan.bangbang.common.getAddress
 import com.xx.baseuilibrary.mvp.BaseMvpViewActivity
 import java.util.*
 
@@ -22,7 +23,6 @@ class SplashActivity : BaseMvpViewActivity(){
     override fun initData() {
         PermissionUtils.permission(Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.READ_PHONE_STATE,
                 Manifest.permission.CHANGE_WIFI_STATE).callback(object : PermissionUtils.SimpleCallback {
             override fun onGranted() {
                 startMain()
@@ -32,13 +32,12 @@ class SplashActivity : BaseMvpViewActivity(){
                 startMain()
             }
 
-        }).rationale { it.again(false) }.request()
+        }).rationale { it.again(true) }.request()
 
     }
 
     fun startMain(){
-        LocationManagerUtil.getInstance().getLocation()
-        //LocationManagerUtil.getInstance().startLocation()
+        LocationManagerUtil.getInstance().startLocation()
         Timer().schedule(object : TimerTask() {
             override fun run() {
                 if (Constants.isFirst()) startActivity(GuideActivity::class.java)

@@ -59,6 +59,7 @@
             app:stroke_color="@color/put_stroke_color"
             app:stroke_width="1dp"
             android:padding="@dimen/dp_10"
+            android:maxLines="1"
             app:corner="5dp"
             />
         <com.coorchice.library.SuperTextView

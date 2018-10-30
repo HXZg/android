@@ -18,7 +18,7 @@ import com.xx.baseutilslibrary.extensions.ui
  */
 class SearchStylePresent : SearchStyleConstract.Present() {
     override fun getStyleData() {
-        getModel().getStyleData(Constants.getLocation()[0],Constants.getLocation()[1]).ui({
+        getModel().getStyleData(Constants.lat,Constants.lng).ui({
             getView()?.getStyleData(it.data)
         },{
             getView()?.showToast(it)

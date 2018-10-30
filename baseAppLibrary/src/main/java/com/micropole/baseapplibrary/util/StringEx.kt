@@ -1,7 +1,13 @@
 package com.weibiaogan.bangbang.common
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
-import com.blankj.utilcode.util.EncryptUtils
+import android.location.*
+import android.os.Bundle
+import android.util.Log
+import com.blankj.utilcode.util.*
+import com.micropole.baseapplibrary.constants.Constants
 import java.util.regex.Pattern
 
 fun String.md5Salt():String = EncryptUtils.encryptMD5ToString(EncryptUtils.encryptMD5ToString(this + "mcjp")
@@ -19,4 +25,15 @@ fun String.isPhone():Boolean{
     var p = Pattern.compile(regExp)
     var m = p.matcher(this)
     return m.matches()
+}
+
+fun getAddress(context: Context,location : Location,action : (s : String)-> Unit){
+    val fromLocation = Geocoder(context).getFromLocation(location.latitude, location.longitude, 3)
+    if (fromLocation.isNotEmpty()) {
+        action.invoke(fromLocation[0].locality)
+        Log.i("address_home_word",fromLocation[0].toString())
+        Constants.putLocation(fromLocation[0].latitude,fromLocation[0].longitude,fromLocation[0].locality)
+    }else{
+        action.invoke("无法定位")
+    }
 }

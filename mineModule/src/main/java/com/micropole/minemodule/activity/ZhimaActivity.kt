@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import com.blankj.utilcode.util.ToastUtils
 import com.micropole.baseapplibrary.constants.ARouterConst
 import com.micropole.minemodule.R
 import kotlinx.android.synthetic.main.activity_zhima.*
@@ -24,7 +25,8 @@ class ZhimaActivity : AppCompatActivity() {
         iv_back.setOnClickListener { finish() }
         tv_title.text="芝麻信用授权"
         tv_credit.setOnClickListener {
-            ARouter.getInstance().build(ARouterConst.Main.MAIN_AUTHO).navigation(this,0x10)
+            ToastUtils.showShort("功能暂未开放")
+            //ARouter.getInstance().build(ARouterConst.Main.MAIN_AUTHO).navigation(this,0x10)
         }
     }
     companion object {

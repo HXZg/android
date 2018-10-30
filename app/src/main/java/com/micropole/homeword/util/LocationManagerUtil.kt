@@ -22,7 +22,7 @@ import com.micropole.baseapplibrary.constants.Constants
  */
 class LocationManagerUtil {
     private var mContext: Context? = null
-    private var locationClient: AMapLocationClient? = null
+    var locationClient: AMapLocationClient? = null
     private var locationOption: AMapLocationClientOption? = null
     /**
      * 定位监听
@@ -57,7 +57,7 @@ class LocationManagerUtil {
                             location.getLatitude()+"",location.getCity());
                 }*/
 
-                Constants.putLocation(location.getLatitude(),location.getLongitude(),location.getPoiName())
+                Constants.putLocation(location.getLatitude(),location.getLongitude(),location.city)
                 //惠州定位
                 //                    Constants.putLocation(114.454801,22.790551
                 //                            ,location.getCity());
@@ -192,37 +192,4 @@ class LocationManagerUtil {
     public void setOnLocationResultListener(OnLocationResultListener listener){
         this.mOnLocationResultListener=listener;
     }*/
-
-    @SuppressLint("HardwareIds", "MissingPermission")
-    fun getLocation() : String?{
-        if (!PermissionUtils.isGranted(Manifest.permission.ACCESS_COARSE_LOCATION,
-                        Manifest.permission.ACCESS_FINE_LOCATION)){
-            return null
-        }
-        var locationManager = Utils.getApp().getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        val providerEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-        if (!providerEnabled){
-            ToastUtils.showShort("未开启GPS,无法定位")
-            return null
-        }
-        val providers = locationManager.getProviders(true)
-        var provider = ""
-        for (i in providers.indices) {
-            if (providers.contains(LocationManager.GPS_PROVIDER)) {
-                provider = LocationManager.GPS_PROVIDER
-            } else if (providers.contains(LocationManager.NETWORK_PROVIDER)) {
-                provider = LocationManager.NETWORK_PROVIDER
-            } else {
-            }
-        }
-        var lastKnownLocation = locationManager.getLastKnownLocation(provider)
-        if (lastKnownLocation != null){
-            var latitude = lastKnownLocation.latitude
-            var longitude = lastKnownLocation.longitude
-            Log.i("update_init","$longitude,$latitude")
-            Constants.putLocation(latitude,longitude,"广州")
-            return "$longitude,$latitude"
-        }
-        return null
-    }
 }

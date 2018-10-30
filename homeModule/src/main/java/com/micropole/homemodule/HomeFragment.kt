@@ -1,31 +1,35 @@
 package com.micropole.homemodule
 
+import android.location.Geocoder
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.View
 import cn.qqtheme.framework.entity.City
 import cn.qqtheme.framework.entity.County
 import cn.qqtheme.framework.entity.Province
-import cn.qqtheme.framework.picker.AddressPicker
 import cn.qqtheme.framework.picker.DatePicker
 import cn.qqtheme.framework.picker.DateTimePicker
+import cn.qqtheme.framework.picker.OptionPicker
+import cn.qqtheme.framework.util.DateUtils
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.bigkoo.convenientbanner.ConvenientBanner
 import com.micropole.baseapplibrary.constants.ARouterConst
+import com.micropole.baseapplibrary.constants.Constants
+import com.micropole.baseapplibrary.util.LocationUtils
 import com.micropole.homemodule.adapter.HomeHouseAdapter
 import com.micropole.homemodule.entity.HomeBean
+import com.micropole.homemodule.mine.NoticeDetailActivity
 import com.micropole.homemodule.mvp.constract.HomeConstract
 import com.micropole.homemodule.mvp.present.HomePresent
+import com.micropole.homemodule.util.AddressPickTask
+import com.micropole.homemodule.util.TimerUtil
+import com.micropole.homemodule.util.setRanger
+import com.micropole.homemodule.util.setTurnImage
+import com.weibiaogan.bangbang.common.getAddress
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.view_home.*
 import kotlinx.android.synthetic.main.view_home_yd.*
 import java.util.*
-import cn.qqtheme.framework.picker.OptionPicker
-import cn.qqtheme.framework.util.DateUtils
-import com.blankj.utilcode.util.TimeUtils.getDate
-import com.micropole.baseapplibrary.constants.Constants
-import com.micropole.homemodule.mine.NoticeDetailActivity
-import com.micropole.homemodule.util.*
 
 
 /**
@@ -55,7 +59,17 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
             HouseDetailActivity.startHouseDetail(mContext,homeHouseAdapter.data[position].h_id)
         }
 
-        stv_location.setOnClickListener { stv_location_txt.text = Constants.getLocation()[2] }
+        stv_location.setOnClickListener {
+            /*//showLoadingDialog("正在定位")
+            LocationUtils.locate(mContext)
+            if (LocationUtils.mLocation != null){
+                getAddress(mContext,LocationUtils.mLocation!!,{
+                    stv_location_txt.text = it
+                    dismissLoadingDialog()
+                })
+            }*/
+            stv_location_txt.text = Constants.getLocation()[2]
+        }
         stv_location_txt.setOnClickListener {
             var addressPickTask = AddressPickTask(activity)
             addressPickTask.setCallback(object : AddressPickTask.Callback {
@@ -64,7 +78,19 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
                 }
 
                 override fun onAddressPicked(province: Province?, city: City?, county: County?) {
-                    stv_location_txt.text = province?.areaName + city?.areaName + county?.areaName
+                    val s = province?.areaName + city?.areaName + county?.areaName
+                    stv_location_txt.text = s
+                    showLoadingDialog("正在定位")
+                    Thread{
+                        val fromLocation = Geocoder(mContext).getFromLocationName(s, 3)
+                        if (fromLocation.isNotEmpty()){
+                            Log.i("address_home_word",fromLocation[0].toString())
+                            //Constants.putLocation(fromLocation[0].latitude,fromLocation[0].longitude,fromLocation[0].locality)
+                            Constants.lat = fromLocation[0].latitude.toString()
+                            Constants.lng = fromLocation[0].longitude.toString()
+                            dismissLoadingDialog()
+                        }
+                    }.start()
                 }
 
             })
@@ -81,7 +107,7 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
         stv_settled_num.setOnClickListener { getPNum(mPeopleNum) } //入驻人数
 
         stv_home_search.setOnClickListener {
-            SearchActivity.startSearch(mContext,"23,113",
+            SearchActivity.startSearch(mContext,"${Constants.lat},${Constants.lng}",
                     stv_settled_date.text.toString().replace("/",""),
                     stv_settled_num.text.toString().replace("/",""),
                     stv_settled_num.text.toString())

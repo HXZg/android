@@ -13,6 +13,8 @@ import com.blankj.utilcode.util.SPUtils
 object Constants {
 
     var SHORT_TOKEN = ""
+    var lat =""
+    var lng =""
 
     const val MAIN_INDEX_ARG = "main_index"
 
