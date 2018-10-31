@@ -20,6 +20,10 @@ class EvaluationPresent : EvaluationConstract.Present() {
     }
 
     override fun evaOrder(orderId: String, hId: String, score: String, content: String, pic: String) {
+        if (content.isEmpty()){
+            getView()?.showToast("评价内容不能为空")
+            return
+        }
         getModel().evaOrder(Constants.SHORT_TOKEN,Constants.getLocation()[0],Constants.getLocation()[1],orderId, hId, score, content, pic)
                 .ui({
                     getView()?.showToast(it.msg)
