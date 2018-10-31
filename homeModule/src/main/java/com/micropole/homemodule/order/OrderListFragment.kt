@@ -77,7 +77,7 @@ class OrderListFragment : BaseMvpFragment<OrderListConstract.Model,OrderListCons
 
     override fun onResume() {
         super.onResume()
-        if (userVisibleHint && Constants.isLogin()){
+        if (parentFragment != null && !parentFragment!!.isHidden && !isHidden && userVisibleHint && Constants.isLogin()){
             refreshLoad()
         }
     }

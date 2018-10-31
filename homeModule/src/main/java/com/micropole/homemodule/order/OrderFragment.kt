@@ -106,6 +106,8 @@ class OrderFragment  : BaseMvpViewFragment(){
                 fl_order_login.visibility = View.VISIBLE
             }else{
                 fl_order_login.visibility = View.GONE
+                if ((mfragments[vp_order_list.currentItem] as OrderListFragment).isResumed)
+                (mfragments[vp_order_list.currentItem] as OrderListFragment).refreshLoad()
             }
         }
     }

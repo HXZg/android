@@ -50,6 +50,7 @@ class SearchActivity : BaseRecyclerActivity<SearchBean.ProjectBean,SearchStyleCo
     }
 
     override fun clickItem(position: Int) {
+        HouseDetailActivity.startHouseDetail(mContext,mAdapter!!.data[position].h_id)
     }
 
     override fun createPresenter(): SearchStyleConstract.Present = SearchStylePresent()
