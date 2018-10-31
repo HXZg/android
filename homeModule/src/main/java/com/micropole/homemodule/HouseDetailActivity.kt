@@ -86,7 +86,7 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
 
             val price = StringBuilder()
             for (i in data.other_price_arr.indices){
-                price.append(data.other_price_arr[i][0] + "："+data.other_price_arr[i][1] + "\n")
+                price.append(data.other_price_arr[i][0] + "："+data.other_price_arr[i][1] + "元" + "\n")
             }
             price.append("额外房客：${data.additional_tip}\n")
             price.append("入驻押金：线下支付押金${data.cash_pledge}元(实际以到店为准)")
