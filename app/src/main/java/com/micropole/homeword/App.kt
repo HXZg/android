@@ -3,6 +3,7 @@ package com.micropole.homeword
 import com.alibaba.android.arouter.launcher.ARouter
 import com.micropole.baseapplibrary.BaseApplication
 import com.micropole.baseapplibrary.BuildConfig
+import com.micropole.homeword.util.CrashException
 import com.micropole.homeword.util.LocationManagerUtil
 import com.umeng.commonsdk.UMConfigure
 import com.umeng.socialize.PlatformConfig
@@ -29,6 +30,7 @@ class App : BaseApplication() {
         ARouter.init(this) // 尽可能早，推荐在Application中初始化
         LocationManagerUtil.getInstance().init(this)
         UMInit()
+        CrashException().initException(this)
         XxAnyPay.intance.init(this)
         XxAnyPay.intance.wxAppIDProvider = object : WxAppIDProvider {
             override val weChatAppID: String

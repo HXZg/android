@@ -19,7 +19,7 @@ import com.xx.baseutilslibrary.network.exception.ApiFaileException
  */
 class HomePresent : HomeConstract.Present() {
     override fun getHomeData() {
-        if (Constants.isLogin()) AppApi.Api<AppService>().refreshToken(Constants.getLongToken()).ui({Constants.SHORT_TOKEN = it?.data?.short_token!!})
+        if (Constants.isLogin() && Constants.SHORT_TOKEN.isEmpty()) Constants.SHORT_TOKEN = Constants.getShotToken()
         getModel().getHomeData(Constants.getLocation()[0],Constants.getLocation()[1])
                 .ui({getView()?.setData(it.data)},{
                     getView()?.showError(ApiFaileException(it),true)
