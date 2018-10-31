@@ -1,6 +1,7 @@
 package com.micropole.homemodule.mvp.present
 
 import com.blankj.utilcode.util.DeviceUtils.getModel
+import com.blankj.utilcode.util.RegexUtils
 import com.blankj.utilcode.util.SnackbarUtils.getView
 import com.micropole.baseapplibrary.constants.Constants
 import com.micropole.homemodule.mvp.constract.FillOrderConstract
@@ -18,6 +19,13 @@ import com.xx.baseutilslibrary.extensions.ui
  */
 class FillOrderPresent : FillOrderConstract.Present(){
     override fun commitOrder(h_id: String, startTime: String, endTime: String, num: Int, balance: Int, nickName: String, idCard: String, phone: String) {
+        if (!RegexUtils.isIDCard18(idCard) && !RegexUtils.isIDCard15(idCard)){
+            getView()?.showToast("请输入正确的验证码")
+            return
+        }else if (!RegexUtils.isMobileSimple(phone)){
+            getView()?.showToast("请输入正确的手机号")
+            return
+        }
         getView()?.showLoadingDialog("正在提交")
         getModel()?.commitOrder(Constants.SHORT_TOKEN, Constants.getLocation()[0], Constants.getLocation()[1],h_id,startTime, endTime, num, balance,nickName, idCard, phone)
                 .ui({
