@@ -76,7 +76,6 @@ class MineFragment : BaseMvpFragment<MineContract.Model,MineContract.View,MineCo
         ll_invite.setOnClickListener(this)
         ll_exit.setOnClickListener(this)
         iv_setting.setOnClickListener(this)
-
         iv_other.setOnClickListener(this)
         tv_login.setOnClickListener {
             ARouter.getInstance().build(ARouterConst.Login.LOGIN_ACTIVITY).navigation()
@@ -140,17 +139,17 @@ class MineFragment : BaseMvpFragment<MineContract.Model,MineContract.View,MineCo
         }
     }
 
-//    override fun onHiddenChanged(hidden: Boolean) {
-//        super.onHiddenChanged(hidden)
-//        if (!isHidden){
-//            if (Constants.isLogin()){
-//                loading.visibility=View.GONE
-//                getPresenter().getInfo()
-//            }else{
-//                view_login.visibility=View.VISIBLE
-//            }
-//        }
-//    }
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!isHidden){
+            if (Constants.isLogin()){
+                loading.visibility=View.GONE
+                getPresenter().getInfo()
+            }else{
+                view_login.visibility=View.VISIBLE
+            }
+        }
+    }
     fun showDailog(){
             var normalDialog= NormalDialog(context)
             normalDialog.isTitleShow(false).content("您是否确定退出登录？")
