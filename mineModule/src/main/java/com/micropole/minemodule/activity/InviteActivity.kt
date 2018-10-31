@@ -50,7 +50,7 @@ class InviteActivity : BaseMvpActivity<InvitePresenter>(),InviteContract.View{
         iv_back.setOnClickListener { finish() }
         iv_share.setOnClickListener {
             ARouter.getInstance().build(ARouterConst.Main.MAIN_SHARE).withString("share_title",share?.nickname)
-                    .withString("share_img",share?.user_img).withString("share_content",share?.url).navigation()
+                    .withString("share_img",share?.user_img).withString("share_url",share?.url).navigation()
         }
     }
     var share:Share?=null

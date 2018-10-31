@@ -88,7 +88,7 @@ abstract class BaseMvpViewFragment : BaseFragment() {
             }
         }
 
-        if (!TextUtils.isEmpty(msg)) {
+        if (!TextUtils.isEmpty(msg) && !alertDialog!!.isShowing) {
             activity?.runOnUiThread {
                 dialogMsgTextView.text = msg
                 alertDialog?.show()

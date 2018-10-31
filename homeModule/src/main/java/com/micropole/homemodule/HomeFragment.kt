@@ -12,8 +12,11 @@ import cn.qqtheme.framework.picker.DateTimePicker
 import cn.qqtheme.framework.picker.OptionPicker
 import cn.qqtheme.framework.util.DateUtils
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.blankj.utilcode.util.TimeUtils.getDate
+import com.micropole.baseapplibrary.activity.BaseNavigationActivity
 import com.micropole.baseapplibrary.constants.ARouterConst
 import com.micropole.baseapplibrary.constants.Constants
+import com.micropole.baseapplibrary.constants.Constants.lat
 import com.micropole.baseapplibrary.util.LocationUtils
 import com.micropole.homemodule.adapter.HomeHouseAdapter
 import com.micropole.homemodule.entity.HomeBean
@@ -30,6 +33,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.view_home.*
 import kotlinx.android.synthetic.main.view_home_yd.*
 import java.util.*
+import kotlin.math.ln
 
 
 /**
@@ -68,7 +72,11 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
                     dismissLoadingDialog()
                 })
             }*/
-            stv_location_txt.text = Constants.getLocation()[2]
+            showLoadingDialog("正在定位")
+            (activity as BaseNavigationActivity).startLocation {
+                dismissLoadingDialog()
+                stv_location_txt.text = it
+            }
         }
         stv_location_txt.setOnClickListener {
             var addressPickTask = AddressPickTask(activity)
@@ -81,16 +89,18 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
                     val s = province?.areaName + city?.areaName + county?.areaName
                     stv_location_txt.text = s
                     showLoadingDialog("正在定位")
-                    Thread{
-                        val fromLocation = Geocoder(mContext).getFromLocationName(s, 3)
-                        if (fromLocation.isNotEmpty()){
-                            Log.i("address_home_word",fromLocation[0].toString())
-                            //Constants.putLocation(fromLocation[0].latitude,fromLocation[0].longitude,fromLocation[0].locality)
-                            Constants.lat = fromLocation[0].latitude.toString()
-                            Constants.lng = fromLocation[0].longitude.toString()
+                    (activity as BaseNavigationActivity).geocoderSearch(county?.areaName!!,city?.areaName!!){
+                        lat,lng ->
+                        run {
                             dismissLoadingDialog()
+                            if (!lat.isNullOrEmpty() && !lng.isNullOrEmpty()){
+                                Constants.lat = lat
+                                Constants.lng = lng
+                            }else{
+                                showToast("定位失败")
+                            }
                         }
-                    }.start()
+                    }
                 }
 
             })

@@ -1,6 +1,7 @@
 package com.micropole.homeword
 
 import android.Manifest
+import android.util.Log
 import com.blankj.utilcode.util.PermissionUtils
 import com.micropole.baseapplibrary.constants.Constants
 import com.micropole.baseapplibrary.util.LocationUtils
@@ -23,12 +24,15 @@ class SplashActivity : BaseMvpViewActivity(){
     override fun initData() {
         PermissionUtils.permission(Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.READ_PHONE_STATE,
                 Manifest.permission.CHANGE_WIFI_STATE).callback(object : PermissionUtils.SimpleCallback {
             override fun onGranted() {
+                Log.e("location_Tag","权限")
                 startMain()
             }
 
             override fun onDenied() {
+                Log.e("location_Tag","没权限")
                 startMain()
             }
 

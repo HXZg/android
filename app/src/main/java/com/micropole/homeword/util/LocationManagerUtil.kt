@@ -56,7 +56,6 @@ class LocationManagerUtil {
                     mOnLocationResultListener.onLocationResult(location.getLongitude()+"",
                             location.getLatitude()+"",location.getCity());
                 }*/
-
                 Constants.putLocation(location.getLatitude(),location.getLongitude(),location.city)
                 //惠州定位
                 //                    Constants.putLocation(114.454801,22.790551
@@ -69,6 +68,7 @@ class LocationManagerUtil {
                 sb.append("错误码:" + location.errorCode + "\n")
                 sb.append("错误信息:" + location.errorInfo + "\n")
                 sb.append("错误描述:" + location.locationDetail + "\n")
+                Log.e("location_Tag",location.errorCode.toString() + ":111")
                 Constants.putLocation(23.11943, 113.32122, "广州")
             }
             sb.append("***定位质量报告***").append("\n")

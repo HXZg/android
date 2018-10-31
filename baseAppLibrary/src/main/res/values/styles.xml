@@ -22,7 +22,7 @@
     </style>
 
     <style name="GuideTheme" parent="AppTheme">
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowDisablePreview">true</item>
         <item name="android:windowBackground">@color/colorTransparent</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>

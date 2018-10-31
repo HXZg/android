@@ -1,19 +1,12 @@
 package com.micropole.homeword
 
-import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
 import android.view.View
-import android.view.Window
 import android.widget.LinearLayout
-import android.widget.Toast
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.alibaba.android.arouter.launcher.ARouter
-import com.micropole.baseapplibrary.constants.ARouterConst
 import com.micropole.baseapplibrary.constants.ARouterConst.Main.MAIN_SHARE
 import com.micropole.baseapplibrary.constants.Constants
 import com.micropole.baseapplibrary.network.AppApi
-import com.micropole.homemodule.network.AppService
 import com.micropole.homemodule.util.refreshToken
 import com.micropole.homeword.entity.ShareHotlBean
 import com.micropole.homeword.util.network.Appservice
@@ -24,7 +17,6 @@ import com.umeng.socialize.media.UMImage
 import com.umeng.socialize.media.UMWeb
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import com.xx.baseuilibrary.mvp.BaseMvpView
-import com.xx.baseuilibrary.mvp.BaseMvpViewActivity
 import com.xx.baseuilibrary.mvp.presenter.BaseMvpPresenter
 import com.xx.baseutilslibrary.extensions.ui
 import kotlinx.android.synthetic.main.popup_share.*

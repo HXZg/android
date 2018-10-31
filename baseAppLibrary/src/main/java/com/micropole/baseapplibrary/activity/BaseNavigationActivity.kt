@@ -80,6 +80,10 @@ abstract class BaseNavigationActivity : BaseMvpViewActivity() {
 
     abstract fun getFragments() : List<Fragment>
 
+    abstract fun startLocation(action : (s : String) -> Unit)
+
+    abstract fun geocoderSearch(county:String,city:String,action : (lat : String,lng : String) -> Unit)
+
     fun getDefaultPagerTitleView(index : Int) : IPagerTitleView{
         val commonPagerTitleView = CommonPagerTitleView(this)
         // load custom layout
