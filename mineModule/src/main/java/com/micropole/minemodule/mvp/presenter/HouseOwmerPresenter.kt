@@ -20,12 +20,14 @@ import com.xx.baseutilslibrary.extensions.ui
 class HouseOwmerPresenter:HouserOwnerContract.Presenter() {
     override fun setImage(img: String) {
         if (img.isNullOrEmpty()){
+            getView()?.dismissLoadingDialog()
             getView()?.showToast("请上传身份证照片")
             return
         }
         getModel().setImage(img).ui({
             getView()?.setImage(it.data!!.imgUrl)
         },{
+            getView()?.dismissLoadingDialog()
             getView()?.showToast(it)
         })
     }

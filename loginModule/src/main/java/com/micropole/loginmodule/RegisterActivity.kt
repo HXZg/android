@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.bar_title.*
  * describe:注册
  */
 class RegisterActivity : BaseMvpActivity<RegisterPresenter>(),RegisterContract.View {
-    private var time = 60//验证码时间
+    private var time = 10//验证码时间
     private var mHandler : Handler = object : Handler() {
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
@@ -27,7 +27,7 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(),RegisterContract.V
                 sendEmptyMessageDelayed(1,1000)
             } else {
                 tv_code.setText("重新获取")
-                time = 60
+                time = 10
                 tv_code.setEnabled(true)
             }
         }

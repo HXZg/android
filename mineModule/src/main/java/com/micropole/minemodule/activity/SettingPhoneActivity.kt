@@ -20,8 +20,8 @@ import kotlinx.android.synthetic.main.bar_title.*
  * describe:修改手机
  */
 class SettingPhoneActivity : BaseMvpActivity<SettingPhonePresenter>(),SettingPhoneContract.View {
-    private var time = 60//验证码时间
-    private var times = 60//验证码时间
+    private var time = 10//验证码时间
+    private var times = 10//验证码时间
     private var mHandler : Handler = object : Handler() {
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
@@ -34,7 +34,7 @@ class SettingPhoneActivity : BaseMvpActivity<SettingPhonePresenter>(),SettingPho
                     sendEmptyMessageDelayed(1,1000)
                 } else {
                     tv_old_code.setText("重新获取")
-                    time = 60
+                    time = 10
                     tv_old_code.setEnabled(true)
                 }
             }else{
@@ -45,7 +45,7 @@ class SettingPhoneActivity : BaseMvpActivity<SettingPhonePresenter>(),SettingPho
                     sendEmptyMessageDelayed(2,1000)
                 } else {
                     tv_code.setText("重新获取")
-                    times = 60
+                    times = 10
                     tv_code.setEnabled(true)
                 }
             }
