@@ -62,11 +62,11 @@ abstract class BaseRecyclerActivity<DATA,M,V : BaseMvpView,P:BaseMvpPresenter<M,
         }else{
             swipe_refresh.isRefreshing = false
             mAdapter?.setEnableLoadMore(false)
+            mAdapter?.setNewData(data)
             if (data.isNotEmpty()){
                 if (data.size == DEFAULT_SIZE){
                     mAdapter?.setEnableLoadMore(true)
                 }
-                mAdapter?.setNewData(data)
             }else{
                 showToast("该列表没有数据")
             }

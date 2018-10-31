@@ -1,8 +1,6 @@
 package com.micropole.homemodule.mvp.present
 
-import com.blankj.utilcode.util.DeviceUtils.getModel
 import com.blankj.utilcode.util.RegexUtils
-import com.blankj.utilcode.util.SnackbarUtils.getView
 import com.micropole.baseapplibrary.constants.Constants
 import com.micropole.homemodule.mvp.constract.FillOrderConstract
 import com.micropole.homemodule.mvp.model.FillOrderModel

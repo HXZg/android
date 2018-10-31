@@ -74,8 +74,8 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
             }*/
             showLoadingDialog("正在定位")
             (activity as BaseNavigationActivity).startLocation {
-                dismissLoadingDialog()
                 stv_location_txt.text = it
+                dismissLoadingDialog()
             }
         }
         stv_location_txt.setOnClickListener {
@@ -117,6 +117,10 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
         stv_settled_num.setOnClickListener { getPNum(mPeopleNum) } //入驻人数
 
         stv_home_search.setOnClickListener {
+            if (Constants.lat.isEmpty() || Constants.lng.isEmpty()){
+                Constants.lat = Constants.getLocation()[0]
+                Constants.lng = Constants.getLocation()[1]
+            }
             SearchActivity.startSearch(mContext,"${Constants.lat},${Constants.lng}",
                     stv_settled_date.text.toString().replace("/",""),
                     stv_settled_num.text.toString().replace("/",""),
