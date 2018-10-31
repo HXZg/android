@@ -147,6 +147,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_order_settled_num"
             android:layout_marginTop="20dp"
             app:layout_constraintRight_toRightOf="parent"
+            android:gravity="right"
             android:textSize="@dimen/txt_15sp"
             android:textColor="@color/text_three"
             android:background="@null"
@@ -180,6 +181,7 @@
             android:background="@null"
             android:hint="请输入身份证号码"
             android:textColorHint="#DCDCE1"
+            android:gravity="right"
             />
         <View
             android:layout_width="match_parent"
@@ -208,6 +210,7 @@
             android:background="@null"
             android:hint="请输入手机号"
             android:textColorHint="#DCDCE1"
+            android:gravity="right"
             />
         <View
             android:layout_width="match_parent"

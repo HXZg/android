@@ -1,8 +1,6 @@
 package com.micropole.homemodule
 
-import android.location.Geocoder
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.View
 import cn.qqtheme.framework.entity.City
 import cn.qqtheme.framework.entity.County
@@ -12,12 +10,9 @@ import cn.qqtheme.framework.picker.DateTimePicker
 import cn.qqtheme.framework.picker.OptionPicker
 import cn.qqtheme.framework.util.DateUtils
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.blankj.utilcode.util.TimeUtils.getDate
 import com.micropole.baseapplibrary.activity.BaseNavigationActivity
 import com.micropole.baseapplibrary.constants.ARouterConst
 import com.micropole.baseapplibrary.constants.Constants
-import com.micropole.baseapplibrary.constants.Constants.lat
-import com.micropole.baseapplibrary.util.LocationUtils
 import com.micropole.homemodule.adapter.HomeHouseAdapter
 import com.micropole.homemodule.entity.HomeBean
 import com.micropole.homemodule.mine.NoticeDetailActivity
@@ -27,13 +22,11 @@ import com.micropole.homemodule.util.AddressPickTask
 import com.micropole.homemodule.util.TimerUtil
 import com.micropole.homemodule.util.setRanger
 import com.micropole.homemodule.util.setTurnImage
-import com.weibiaogan.bangbang.common.getAddress
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.view_home.*
 import kotlinx.android.synthetic.main.view_home_yd.*
 import java.util.*
-import kotlin.math.ln
 
 
 /**

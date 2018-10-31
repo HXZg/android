@@ -30,8 +30,7 @@
             android:textSize="@dimen/order_txt_size"
             android:textColor="@color/text_one"
             android:text=""
-            android:lineSpacingExtra="@dimen/dp_4"
-            android:paddingBottom="@dimen/dp_10"/>
+            android:lineSpacingExtra="@dimen/dp_4" />
 
     </LinearLayout>
 
