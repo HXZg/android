@@ -83,6 +83,7 @@ class ShareActivity : BaseMvpActivity<ShareConstract.Present>(),ShareConstract.V
     private var clickListener = View.OnClickListener {
         if (mHid.isNullOrEmpty()){
             val bean = ShareHotlBean()
+            bean.share = ShareHotlBean.ShareBean()
             bean.share.share_title = intent.getStringExtra("share_title")
             bean.share.share_img = intent.getStringExtra("share_img")
             bean.share.share_content = intent.getStringExtra("share_content")

@@ -187,6 +187,7 @@ class FillOrderActivity : BaseMvpActivity<FillOrderConstract.Present>(),FillOrde
             override fun onOptionPicked(position: Int, option: String) {
                 tv_order_settled_num.text = "${option}人" //在文本框中显示选择的选项
                 mNum = option.toInt()
+                getPresenter().bookingHouse(mHid,mStartTime,mEndTime,mNum,mBalance)
             }
         })
         picker.show()
