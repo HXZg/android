@@ -56,6 +56,7 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
 
     var mStartTime = ""
     var mEndTime = ""
+    var type = 1
 
     override fun createPresenter(): HouseDetailConstract.Present = HouseDetailPresent()
 
@@ -74,6 +75,7 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
             }
             cb_house_img.setTurnImage(mImgs)
 
+            type = if (data.user_collect == "1") 2 else 1
             iv_detail_follow.isSelected = data.user_collect == "1"
 
             tv_house_detail_name.text = data.h_title
@@ -106,8 +108,9 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
         }
     }
 
-    override fun collectSuc() {
-        iv_detail_follow.isSelected = true
+    override fun collectSuc(isFollow:Boolean) {
+        type = if (isFollow) 2 else 1
+        iv_detail_follow.isSelected = isFollow
     }
 
     var mDeviceAdapter = DetailDeviceAdapter()
@@ -158,8 +161,7 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
         iv_detail_telephone.setOnClickListener { presenter.getUserPhone(mHId) }  //联系房东
 
         iv_detail_follow.setOnClickListener {
-            if (it.isSelected) showToast("已收藏")
-            else presenter.collectHouse(mHId)
+            presenter.collectHouse(mHId,type)
         }  //收藏
 
         iv_detail_share.setOnClickListener { ARouter.getInstance().build(ARouterConst.Main.MAIN_SHARE).withString("h_id",mHId)

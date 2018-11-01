@@ -35,7 +35,9 @@ abstract class BaseRecyclerActivity<DATA,M,V : BaseMvpView,P:BaseMvpPresenter<M,
     }
 
     override fun initEvent() {
-        mAdapter?.setOnLoadMoreListener({loadData(++mCurrentPage)},recycler_view)
+        mAdapter?.setOnLoadMoreListener({
+            loadData(++mCurrentPage)
+        },recycler_view)
         mAdapter?.setOnItemClickListener { adapter, view, position ->
             clickItem(position)
         }
@@ -50,24 +52,16 @@ abstract class BaseRecyclerActivity<DATA,M,V : BaseMvpView,P:BaseMvpPresenter<M,
     fun setData(data : List<DATA>){
         if (mAdapter?.isLoading!!){
             if (data.isNotEmpty()){
+                mAdapter?.loadMoreComplete()
                 mAdapter?.addData(data)
-                if (data.size == DEFAULT_SIZE){
-                    mAdapter?.loadMoreComplete()
-                }else{
-                    mAdapter?.loadMoreEnd(false)
-                }
             }else{
                 mAdapter?.loadMoreEnd(false)
             }
         }else{
             swipe_refresh.isRefreshing = false
-            mAdapter?.setEnableLoadMore(false)
             mAdapter?.setNewData(data)
-            if (data.isNotEmpty()){
-                if (data.size == DEFAULT_SIZE){
-                    mAdapter?.setEnableLoadMore(true)
-                }
-            }else{
+            mAdapter?.disableLoadMoreIfNotFullPage()
+            if (!data.isNotEmpty()){
                 showToast("该列表没有数据")
             }
         }
@@ -75,7 +69,8 @@ abstract class BaseRecyclerActivity<DATA,M,V : BaseMvpView,P:BaseMvpPresenter<M,
 
     fun refreshError(){
         swipe_refresh.isRefreshing = false
-        mAdapter?.loadMoreComplete()
+        mAdapter?.loadMoreEnd(true)
+        mAdapter?.setEnableLoadMore(false)
     }
 
     //刷新

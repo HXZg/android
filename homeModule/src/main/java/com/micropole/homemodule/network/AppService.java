@@ -142,7 +142,7 @@ public interface AppService {
     @FormUrlEncoded
     @POST("Hotel/hotel_collect")
     Observable<BaseResponseEntity<Object>> collectHotel(@Header("token")String token,@Header("lat")String lat, @Header("lng")String lng,
-                                                                      @Field("h_id") String h_id);
+                                                                      @Field("h_id") String h_id,@Field("type") int type);
 
     /**
      * 订单列表
