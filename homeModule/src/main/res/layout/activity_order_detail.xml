@@ -110,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/red_price_color"
                     android:textSize="@dimen/text_first"
-                    android:text="合计 ¥ 365"
+                    android:text="合计 ¥ 0"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/dp_14"/>
                 <com.coorchice.library.SuperTextView

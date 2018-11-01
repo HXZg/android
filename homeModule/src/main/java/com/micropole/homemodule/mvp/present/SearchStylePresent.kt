@@ -30,7 +30,7 @@ class SearchStylePresent : SearchStyleConstract.Present() {
         if (lat.isEmpty() || lng.isEmpty() || styleId.isEmpty() || startTime.isEmpty() || endTime.isEmpty() || num.isEmpty()){
             return
         }
-        getView()?.showLoadingDialog("正在获取")
+        if (page == 1) getView()?.showLoadingDialog("正在获取")
         getModel().getSearchData(lat,lng,styleId, type, page, startTime, endTime, num)
                 .ui({
                     getView()?.dismissLoadingDialog()
