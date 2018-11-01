@@ -79,7 +79,7 @@ public interface AppService {
     @FormUrlEncoded
     @POST("Index/hotel_detail")
     Observable<BaseResponseEntity<HouseDetailBean>> getHouseDetail(@Header("token")String token,@Header("lat")String lat, @Header("lng")String lng,
-                                                                   @Field("h_id") String h_id);
+                                                                   @Field("h_id") String h_id,@Field("start_time") String startTime,@Field("end_time") String endTime);
 
     /**
      * 举报房源

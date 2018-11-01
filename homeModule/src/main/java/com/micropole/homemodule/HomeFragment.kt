@@ -130,6 +130,8 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
         rv_home_house.adapter = homeHouseAdapter
         rv_home_house.isNestedScrollingEnabled = false
 
+        if (Constants.getLocation().isNotEmpty()) stv_location_txt.text = Constants.getLocation()[2]
+
         setDate(Calendar.getInstance()[Calendar.YEAR],Calendar.getInstance()[Calendar.MONTH] + 1,Calendar.getInstance()[Calendar.DATE])
 
         presenter.getHomeData()
@@ -151,7 +153,7 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
                     mAdves.add(data.adve[i].ad_img)
                 }
                 cb_home.setTurnImage(mAdves).setOnItemClickListener {
-                    if (data.adve[it].ad_type.isNullOrEmpty() || data.adve[it].ad_type == "1" ){
+                    if (data.adve[it].ad_type.isNullOrEmpty() || data.adve[it].ad_type == "0" ){
                         HouseDetailActivity.startHouseDetail(mContext,data.adve[it].pro_id)
                     }else if (data.adve[it].ad_type == "3"){
                         NoticeDetailActivity.startNoticeDetail(mContext,data.adve[it].ad_url)

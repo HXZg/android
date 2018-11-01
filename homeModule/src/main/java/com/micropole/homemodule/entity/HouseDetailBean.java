@@ -88,6 +88,13 @@ public class HouseDetailBean {
      */
 
     private String share_url;
+    /**
+     * comment_score : 4.3
+     * other_price_arr : [["清洁费","50"]]
+     * user_collect : 0
+     */
+
+    private String user_collect;
 
     public String getH_id() {
         return h_id;
@@ -359,6 +366,14 @@ public class HouseDetailBean {
 
     public void setShare_url(String share_url) {
         this.share_url = share_url;
+    }
+
+    public String getUser_collect() {
+        return user_collect;
+    }
+
+    public void setUser_collect(String user_collect) {
+        this.user_collect = user_collect;
     }
 
     public static class HotelUserBean {

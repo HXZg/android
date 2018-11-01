@@ -27,7 +27,7 @@ class HouseDetailModel : HouseDetailConstract.Model() {
         return AppApi.Api<AppService>().collectHotel(token, lat, lng, h_id)
     }
 
-    override fun getHouseDetail(token: String, lat: String, lng: String, h_id: String): Observable<BaseResponseEntity<HouseDetailBean>> {
-        return AppApi.Api<AppService>().getHouseDetail(token, lat, lng, h_id)
+    override fun getHouseDetail(token: String, lat: String, lng: String, h_id: String,startTime:String,endTime:String): Observable<BaseResponseEntity<HouseDetailBean>> {
+        return AppApi.Api<AppService>().getHouseDetail(token, lat, lng, h_id,startTime, endTime)
     }
 }

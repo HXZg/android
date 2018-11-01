@@ -20,16 +20,17 @@ class HouseDetailConstract {
 
     interface View:BaseMvpLcecView<HouseDetailBean?>{
         fun userPhone(bean:LandlordBean?)
+        fun collectSuc()
     }
 
     abstract class Model{
-        abstract fun getHouseDetail(token:String,lat:String,lng:String,h_id:String): Observable<BaseResponseEntity<HouseDetailBean>>
+        abstract fun getHouseDetail(token:String,lat:String,lng:String,h_id:String,startTime:String,endTime:String): Observable<BaseResponseEntity<HouseDetailBean>>
         abstract fun collectHouse(token:String,lat:String,lng:String,h_id:String) : Observable<BaseResponseEntity<Any>>
         abstract fun getUserPhone(token:String,lat:String,lng:String,h_id:String) : Observable<BaseResponseEntity<LandlordBean>>
     }
 
     abstract class Present : BaseMvpPresenter<Model,View>(){
-        abstract fun getHouseDetail(h_id: String)
+        abstract fun getHouseDetail(h_id: String,startTime:String,endTime:String)
         abstract fun collectHouse(h_id: String)
         abstract fun getUserPhone(h_id:String)
     }
