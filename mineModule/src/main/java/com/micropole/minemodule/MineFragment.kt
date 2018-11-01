@@ -2,6 +2,7 @@ package com.micropole.minemodule
 
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.flyco.dialog.listener.OnBtnClickL
@@ -45,6 +46,13 @@ class MineFragment : BaseMvpFragment<MineContract.Model,MineContract.View,MineCo
             iv_sex.setImageResource(R.drawable.ic_male)
         }
         iv_hand.loadImag(userInfo.user.user_img)
+        if(userInfo.user.hotel_apply.equals("0")){
+            tv_style.text=""
+        }else if (userInfo.user.hotel_apply.equals("1")){
+            tv_style.text="审核中"
+        }else{
+            tv_style.text="已是房东"
+        }
 
     }
 
@@ -104,7 +112,13 @@ class MineFragment : BaseMvpFragment<MineContract.Model,MineContract.View,MineCo
 
             }
             ll_fandong->{//成为房东
-                HouseOwnerActivity.startHouseOwnerActivity(mContext)
+                if (userInfo?.user?.hotel_apply.equals("0")){
+                    HouseOwnerActivity.startHouseOwnerActivity(mContext)
+                }else if (userInfo?.user?.hotel_apply.equals("1")){
+                    showToast("审核中")
+                }else{
+                    showToast("你已是房东")
+                }
 
             }
             ll_zhima->{//芝麻信用

@@ -37,6 +37,15 @@ public class UserInfo {
         private String balance;
         private String user_sex;
         private String gr_id;
+        private String hotel_apply;
+
+        public String getHotel_apply() {
+            return hotel_apply;
+        }
+
+        public void setHotel_apply(String hotel_apply) {
+            this.hotel_apply = hotel_apply;
+        }
 
         public String getUser_phone() {
             return user_phone;

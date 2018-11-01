@@ -28,7 +28,7 @@
         android:id="@+id/et_nickName"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_40"
-        android:hint="单行输入"
+        android:hint="请输入新的昵称"
         android:textColor="@color/back_707070"
         android:background="@drawable/bg_house"
         android:textSize="15sp"
