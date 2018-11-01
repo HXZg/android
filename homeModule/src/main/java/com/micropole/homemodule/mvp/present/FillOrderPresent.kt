@@ -17,13 +17,13 @@ import com.xx.baseutilslibrary.extensions.ui
  */
 class FillOrderPresent : FillOrderConstract.Present(){
     override fun commitOrder(h_id: String, startTime: String, endTime: String, num: Int, balance: Int, nickName: String, idCard: String, phone: String) {
-        if (!RegexUtils.isIDCard18(idCard) && !RegexUtils.isIDCard15(idCard)){
+        /*if (!RegexUtils.isIDCard18(idCard) && !RegexUtils.isIDCard15(idCard)){
             getView()?.showToast("请输入正确的身份证号")
             return
         }else if (!RegexUtils.isMobileSimple(phone)){
             getView()?.showToast("请输入正确的手机号")
             return
-        }
+        }*/
         getView()?.showLoadingDialog("正在提交")
         getModel()?.commitOrder(Constants.SHORT_TOKEN, Constants.getLocation()[0], Constants.getLocation()[1],h_id,startTime, endTime, num, balance,nickName, idCard, phone)
                 .ui({

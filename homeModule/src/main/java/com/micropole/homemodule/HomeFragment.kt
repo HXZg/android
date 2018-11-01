@@ -116,7 +116,7 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
             }
             SearchActivity.startSearch(mContext,"${Constants.lat},${Constants.lng}",
                     stv_settled_date.text.toString().replace("/",""),
-                    stv_settled_num.text.toString().replace("/",""),
+                    stv_leave_store_date.text.toString().replace("/",""),
                     stv_settled_num.text.toString())
         }
 
