@@ -19,19 +19,19 @@ import com.xx.baseutilslibrary.extensions.ui
 class SearchStylePresent : SearchStyleConstract.Present() {
     override fun getStyleData() {
         getView()?.showLoadingDialog("正在获取")
-        getModel().getStyleData(Constants.lat,Constants.lng).ui({
+        getModel().getStyleData(Constants.getLocation()[0],Constants.getLocation()[1]).ui({
             getView()?.getStyleData(it.data)
         },{
             getView()?.showToast(it)
         })
     }
 
-    override fun getSearchData(lat:String,lng:String,styleId:String,type:Int,page:Int,startTime:String,endTime:String,num:String) {
-        if (lat.isEmpty() || lng.isEmpty() || styleId.isEmpty() || startTime.isEmpty() || endTime.isEmpty() || num.isEmpty()){
+    override fun getSearchData(styleId:String,type:Int,page:Int,startTime:String,endTime:String,num:String) {
+        if (styleId.isEmpty() || startTime.isEmpty() || endTime.isEmpty() || num.isEmpty()){
             return
         }
         if (page == 1) getView()?.showLoadingDialog("正在获取")
-        getModel().getSearchData(lat,lng,styleId, type, page, startTime, endTime, num)
+        getModel().getSearchData(Constants.getLocation()[0],Constants.getLocation()[1],styleId, type, page, startTime, endTime, num)
                 .ui({
                     getView()?.dismissLoadingDialog()
                     getView()?.getSearchData(it.data!!)

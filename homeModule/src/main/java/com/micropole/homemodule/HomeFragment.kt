@@ -86,10 +86,7 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
                         lat,lng ->
                         run {
                             dismissLoadingDialog()
-                            if (!lat.isNullOrEmpty() && !lng.isNullOrEmpty()){
-                                Constants.lat = lat
-                                Constants.lng = lng
-                            }else{
+                            if (lat.isNullOrEmpty() || lng.isNullOrEmpty()){
                                 showToast("定位失败")
                             }
                         }
@@ -110,11 +107,7 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
         stv_settled_num.setOnClickListener { getPNum(mPeopleNum) } //入驻人数
 
         stv_home_search.setOnClickListener {
-            if (Constants.lat.isEmpty() || Constants.lng.isEmpty()){
-                Constants.lat = Constants.getLocation()[0]
-                Constants.lng = Constants.getLocation()[1]
-            }
-            SearchActivity.startSearch(mContext,"${Constants.lat},${Constants.lng}",
+            SearchActivity.startSearch(mContext,
                     stv_settled_date.text.toString().replace("/",""),
                     stv_leave_store_date.text.toString().replace("/",""),
                     stv_settled_num.text.toString())

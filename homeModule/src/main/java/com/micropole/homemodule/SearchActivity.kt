@@ -26,9 +26,8 @@ import kotlinx.android.synthetic.main.activity_search.*
 class SearchActivity : BaseRecyclerActivity<SearchBean.ProjectBean, SearchStyleConstract.Model, SearchStyleConstract.View, SearchStyleConstract.Present>(), SearchStyleConstract.View {
 
     companion object {
-        fun startSearch(context: Context, location: String, startTime: String, endTime: String, num: String) {
+        fun startSearch(context: Context, startTime: String, endTime: String, num: String) {
             val intent = Intent(context, SearchActivity::class.java)
-            intent.putExtra("search_location", location)
             intent.putExtra("search_startTime", startTime)
             intent.putExtra("search_endTime", endTime)
             intent.putExtra("search_num", num)
@@ -36,8 +35,6 @@ class SearchActivity : BaseRecyclerActivity<SearchBean.ProjectBean, SearchStyleC
         }
     }
 
-    var lat = ""
-    var lng = ""
     var startTime = ""
     var endTime = ""
     var num = ""
@@ -47,7 +44,7 @@ class SearchActivity : BaseRecyclerActivity<SearchBean.ProjectBean, SearchStyleC
     var mData = arrayListOf<SearchStyleBean>()
 
     override fun loadData(page: Int) {
-        getPresenter().getSearchData(lat, lng, mstyleId, mOldType, page, startTime, endTime, num)
+        getPresenter().getSearchData(mstyleId, mOldType, page, startTime, endTime, num)
     }
 
     override fun clickItem(position: Int) {
@@ -62,8 +59,6 @@ class SearchActivity : BaseRecyclerActivity<SearchBean.ProjectBean, SearchStyleC
 
     override fun initData() {
         clickSort(1)
-        lat = intent.getStringExtra("search_location").split(",")[0]
-        lng = intent.getStringExtra("search_location").split(",")[1]
         startTime = intent.getStringExtra("search_startTime")
         endTime = intent.getStringExtra("search_endTime")
         num = intent.getStringExtra("search_num")
