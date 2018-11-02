@@ -60,10 +60,15 @@ class OrderDetailActivity : BaseMvpLcecActivity<View,OrderDetailBean?,OrderDetai
         iv_open_time.visibility = View.INVISIBLE
         iv_leave_time.visibility = View.INVISIBLE
         iv_settled_num.visibility = View.INVISIBLE
+        tv_order_detail_phone.visibility = View.GONE
+        et_order_phone.visibility = View.GONE
+        view_order_detail_line.visibility = View.GONE
 
         et_order_settled_name.isEnabled = false
         et_order_id_card.isEnabled = false
         et_order_phone.isEnabled = false
+
+        tv_order_detail_idcard.text = "订单号"
         super.initData()
 
         rv_order_price.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
@@ -117,8 +122,8 @@ class OrderDetailActivity : BaseMvpLcecActivity<View,OrderDetailBean?,OrderDetai
             tv_order_leave_time.text = data.end_time
             tv_order_settled_num.text = "${data.people_number}人"
             et_order_settled_name.setText(data.or_nickname)
-            et_order_id_card.setText(data.or_idcard)
-            et_order_phone.setText(data.or_phone)                      //订单信息
+            et_order_id_card.setText(data.or_number)                         //订单号
+            //et_order_phone.setText(data.or_phone)                      //订单信息
 
             val arr = data.or_other_price_arr
             if (!data.balance_pay.isEmpty()) arr.add(arrayListOf("使用旅行基金","-${data.balance_pay}"))

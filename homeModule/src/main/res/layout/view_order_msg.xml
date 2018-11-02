@@ -162,6 +162,7 @@
             android:layout_marginTop="@dimen/dp_10"/>
 
         <TextView
+            android:id="@+id/tv_order_detail_idcard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/et_order_settled_name"
@@ -191,13 +192,15 @@
             android:layout_marginTop="@dimen/dp_10"/>
 
         <TextView
+            android:id="@+id/tv_order_detail_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/et_order_id_card"
             android:layout_marginTop="20dp"
             android:textSize="@dimen/txt_15sp"
             android:textColor="@color/text_three"
-            android:text="手机号"/>
+            android:text="手机号"
+            android:visibility="visible"/>
         <EditText
             android:id="@+id/et_order_phone"
             android:layout_width="wrap_content"
@@ -211,13 +214,16 @@
             android:hint="请输入手机号"
             android:textColorHint="#DCDCE1"
             android:gravity="right"
+            android:visibility="visible"
             />
         <View
+            android:id="@+id/view_order_detail_line"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/line_color"
             app:layout_constraintTop_toBottomOf="@id/et_order_phone"
-            android:layout_marginTop="@dimen/dp_10"/>
+            android:layout_marginTop="@dimen/dp_10"
+            android:visibility="visible"/>
 
     </android.support.constraint.ConstraintLayout>
 
