@@ -1,10 +1,7 @@
 package com.weibiaogan.bangbang.common
 
-import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Context
 import android.location.*
-import android.os.Bundle
 import android.util.Log
 import com.blankj.utilcode.util.*
 import com.micropole.baseapplibrary.constants.Constants
@@ -25,6 +22,15 @@ fun String.isPhone():Boolean{
     var p = Pattern.compile(regExp)
     var m = p.matcher(this)
     return m.matches()
+}
+ fun String.isIDCard():Boolean{
+     if (this.length!=18){
+         return  false
+     }
+     if (!Pattern.matches("^\\d{15}$|^\\d{17}[0-9Xx]$",this)){
+         return false
+     }
+    return true
 }
 
 fun getAddress(context: Context,location : Location,action : (s : String)-> Unit){

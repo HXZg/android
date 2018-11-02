@@ -10,6 +10,7 @@ import com.micropole.minemodule.mvp.model.HouseOwnerModel
 import com.micropole.minemodule.mvp.model.MineModel
 import com.micropole.minemodule.mvp.model.SettingModel
 import com.micropole.minemodule.util.refreshToken
+import com.weibiaogan.bangbang.common.isIDCard
 import com.xx.baseutilslibrary.extensions.ui
 
 /**
@@ -41,6 +42,11 @@ class HouseOwmerPresenter:HouserOwnerContract.Presenter() {
         }
         if (a_idcard.isNullOrEmpty()){
             getView()?.showToast("身份证号码不能为空")
+            getView()?.dismissLoadingDialog()
+            return
+        }
+        if (!a_idcard.isIDCard()){
+            getView()?.showToast("身份证号码不正确")
             getView()?.dismissLoadingDialog()
             return
         }

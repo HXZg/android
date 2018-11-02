@@ -55,7 +55,7 @@ class SettingPhoneActivity : BaseMvpActivity<SettingPhonePresenter>(),SettingPho
 
     override fun getCode(code: Code) {
         showToast("发送成功"+code.code)
-              if (index==1){
+        if (index==1){
         mHandler.sendEmptyMessage(1)
     }else{
         mHandler.sendEmptyMessage(2)
