@@ -110,7 +110,7 @@ fun showLoginDialog(){
 
 fun String.changeKm() : String{
     if (this.toInt() >= 1000){
-        var d = this.toInt() / 100.00
+        var d = this.toInt() / 1000.00
         return d.format(2)+"km"
     }else{
         return this + "m"
