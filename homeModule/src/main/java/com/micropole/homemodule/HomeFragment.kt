@@ -130,7 +130,7 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
         rv_home_house.adapter = homeHouseAdapter
         rv_home_house.isNestedScrollingEnabled = false
 
-        if (Constants.getLocation().isNotEmpty()) stv_location_txt.text = Constants.getLocation()[2]
+        if (Constants.getLocation().size == 3) stv_location_txt.text = Constants.getLocation()[2]
 
         setDate(Calendar.getInstance()[Calendar.YEAR],Calendar.getInstance()[Calendar.MONTH] + 1,Calendar.getInstance()[Calendar.DATE])
 

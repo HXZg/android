@@ -61,8 +61,8 @@ class HouseDetailPresent : HouseDetailConstract.Present() {
                 getView()?.showToast("请重新登录")
                 getHouseDetail(h_id,startTime, endTime)
             }else{
+                getView()?.showToast(it)
                 if (startTime.isNotEmpty() && endTime.isNotEmpty()) getView()?.showError(ApiFaileException(it),true)
-                else getView()?.showToast(it)
             }
         })
     }

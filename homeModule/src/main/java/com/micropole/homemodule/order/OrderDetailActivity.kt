@@ -5,7 +5,10 @@ import android.content.Intent
 import android.os.Build.VERSION_CODES.O
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import com.alibaba.android.arouter.launcher.ARouter
+import com.micropole.baseapplibrary.constants.ARouterConst
 import com.micropole.homemodule.EvaluationActivity
+import com.micropole.homemodule.HouseDetailActivity
 import com.micropole.homemodule.R
 import com.micropole.homemodule.R.id.*
 import com.micropole.homemodule.adapter.OrderPriceAdapter
@@ -76,6 +79,15 @@ class OrderDetailActivity : BaseMvpLcecActivity<View,OrderDetailBean?,OrderDetai
             }else if (mStat == "2" || mStat == "1"){
                 presenter.refundOrder(mOrderId)
             }
+        }
+
+        cl_order_detail_house.setOnClickListener {
+            ARouter.getInstance().build(ARouterConst.Main.MAIN_MAP).withInt("type_location",1)
+                    .withString("address_location",bean?.h_address)
+                    .withString("lat_location",bean?.lat_long!!.split(",")[1])
+                    .withString("lng_location",bean?.lat_long!!.split(",")[0])
+                    .navigation()
+//            HouseDetailActivity.startHouseDetail(mContext,bean?.h_id!!)
         }
     }
 
