@@ -116,7 +116,7 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
             }
             SearchActivity.startSearch(mContext,"${Constants.lat},${Constants.lng}",
                     stv_settled_date.text.toString().replace("/",""),
-                    stv_settled_num.text.toString().replace("/",""),
+                    stv_leave_store_date.text.toString().replace("/",""),
                     stv_settled_num.text.toString())
         }
 
@@ -129,6 +129,8 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
         rv_home_house.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
         rv_home_house.adapter = homeHouseAdapter
         rv_home_house.isNestedScrollingEnabled = false
+
+        if (Constants.getLocation().size == 3) stv_location_txt.text = Constants.getLocation()[2]
 
         setDate(Calendar.getInstance()[Calendar.YEAR],Calendar.getInstance()[Calendar.MONTH] + 1,Calendar.getInstance()[Calendar.DATE])
 
@@ -151,7 +153,7 @@ class HomeFragment  : BaseMvpLcecFragment<View,HomeBean,HomeConstract.Model,Home
                     mAdves.add(data.adve[i].ad_img)
                 }
                 cb_home.setTurnImage(mAdves).setOnItemClickListener {
-                    if (data.adve[it].ad_type.isNullOrEmpty() || data.adve[it].ad_type == "1" ){
+                    if (data.adve[it].ad_type.isNullOrEmpty() || data.adve[it].ad_type == "0" ){
                         HouseDetailActivity.startHouseDetail(mContext,data.adve[it].pro_id)
                     }else if (data.adve[it].ad_type == "3"){
                         NoticeDetailActivity.startNoticeDetail(mContext,data.adve[it].ad_url)

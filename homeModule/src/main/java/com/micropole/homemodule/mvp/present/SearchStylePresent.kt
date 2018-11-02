@@ -27,7 +27,10 @@ class SearchStylePresent : SearchStyleConstract.Present() {
     }
 
     override fun getSearchData(lat:String,lng:String,styleId:String,type:Int,page:Int,startTime:String,endTime:String,num:String) {
-        getView()?.showLoadingDialog("正在获取")
+        if (lat.isEmpty() || lng.isEmpty() || styleId.isEmpty() || startTime.isEmpty() || endTime.isEmpty() || num.isEmpty()){
+            return
+        }
+        if (page == 1) getView()?.showLoadingDialog("正在获取")
         getModel().getSearchData(lat,lng,styleId, type, page, startTime, endTime, num)
                 .ui({
                     getView()?.dismissLoadingDialog()

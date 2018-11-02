@@ -71,7 +71,7 @@ class MapActivity : BaseMvpViewActivity(), AMap.OnMyLocationChangeListener {
             lng = intent.getStringExtra("lng_location")
             Log.i("map_location", "lat::$lat::lng:$lng")
             var address = intent.getStringExtra("address_location")
-            tv_store_list_title.text = "店铺详情-导航"
+            tv_store_list_title.text = "详情-导航"
             tv__my_location.text = "目的地"
             tv_location.text = address
             btn_location_sure.text = "导航"

@@ -37,6 +37,7 @@ public class OrderDetailBean {
      * pay_json :
      * balance_pay : 427
      * order_cancel :
+     * lat_long
      * or_other_price_arr : [["清洁费",100],["房费","200.00"],["押金",27],["额外房客费用","100.00"]]
      */
 
@@ -63,13 +64,25 @@ public class OrderDetailBean {
     private String pay_json;
     private String balance_pay;
     private String order_cancel;
+    private String lat_long;
     private List<List<String>> or_other_price_arr;
+
+    public void setLat_long(String mLat_long) {
+        lat_long = mLat_long;
+    }
+
+    public String getLat_long() {
+        return lat_long;
+    }
+
     /**
      * h_title : 泰丰牧马湖
      * h_address : 大亚湾大道与龙海二路交汇处
      * h_imgs : /uploads/20181019/c5dd77ec51a3eb0f488bade2e19fac41.jpg
      * or_other_price_arr : [["清洁费",100],["房费","200.00"],["押金",27],["额外房客费用","100.00"]]
      */
+
+
 
     private String h_title;
     private String h_address;

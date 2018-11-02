@@ -40,6 +40,7 @@ class PayCenterActivity : BaseMvpActivity<PayCenterContract.Present>(),PayCenter
     }
 
     override fun initData() {
+        XxAnyPay.intance.init(this)
         mOid = intent.getStringExtra("or_id")
     }
 

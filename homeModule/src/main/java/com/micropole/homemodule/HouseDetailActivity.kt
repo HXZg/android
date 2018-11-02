@@ -54,10 +54,14 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
         }
     }
 
+    var mStartTime = ""
+    var mEndTime = ""
+    var type = 1
+
     override fun createPresenter(): HouseDetailConstract.Present = HouseDetailPresent()
 
     override fun loadData(refresh: Boolean) {
-        presenter.getHouseDetail(mHId)
+        presenter.getHouseDetail(mHId,mStartTime,mEndTime)
     }
 
     override fun setData(data: HouseDetailBean?) {
@@ -70,6 +74,9 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
                 mImgs.add(data.h_imgs[i])
             }
             cb_house_img.setTurnImage(mImgs)
+
+            type = if (data.user_collect == "1") 2 else 1
+            iv_detail_follow.isSelected = data.user_collect == "1"
 
             tv_house_detail_name.text = data.h_title
             tv_house_detail_address.text = data.h_address
@@ -101,6 +108,11 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
         }
     }
 
+    override fun collectSuc(isFollow:Boolean) {
+        type = if (isFollow) 2 else 1
+        iv_detail_follow.isSelected = isFollow
+    }
+
     var mDeviceAdapter = DetailDeviceAdapter()
     var mHId = ""
     var mBean : HouseDetailBean? = null
@@ -115,8 +127,7 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
 
         setDate(Calendar.getInstance()[Calendar.YEAR], Calendar.getInstance()[Calendar.MONTH] + 1, Calendar.getInstance()[Calendar.DATE])
 
-
-        presenter.getHouseDetail(mHId)
+        loadData(true)
     }
 
 
@@ -149,7 +160,9 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
 
         iv_detail_telephone.setOnClickListener { presenter.getUserPhone(mHId) }  //联系房东
 
-        iv_detail_follow.setOnClickListener { presenter.collectHouse(mHId) }  //收藏
+        iv_detail_follow.setOnClickListener {
+            presenter.collectHouse(mHId,type)
+        }  //收藏
 
         iv_detail_share.setOnClickListener { ARouter.getInstance().build(ARouterConst.Main.MAIN_SHARE).withString("h_id",mHId)
                 .withString("share_url",mBean?.share_url).navigation() }  //分享
@@ -159,8 +172,10 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
 
     fun setDate(year: Int, month: Int, day: Int){
         stv_settled_time.text = "$year/${DateUtils.fillZero(month)}/${DateUtils.fillZero(day)}"
+        mStartTime = "$year${DateUtils.fillZero(month)}${DateUtils.fillZero(day)}"
         val addDate = TimerUtil.addDate(year, month, day)
         stv_leave_time.text = "${addDate[0]}/${DateUtils.fillZero(addDate[1])}/${DateUtils.fillZero(addDate[2])}"
+        mEndTime = "${addDate[0]}${DateUtils.fillZero(addDate[1])}${DateUtils.fillZero(addDate[2])}"
     }
 
     override fun userPhone(bean: LandlordBean?) {
@@ -193,7 +208,9 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
                 setDate(year.toInt(),month.toInt(),day.toInt())
             }else{
                 stv_leave_time.text = "$year/$month/$day"
+                mEndTime = "$year$month$day"
             }
+            loadData(true)
         })
         datePicker.show()
     }

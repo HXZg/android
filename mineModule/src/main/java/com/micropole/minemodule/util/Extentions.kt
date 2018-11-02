@@ -23,6 +23,11 @@ fun BaseMvpView.refreshToken(msg:String, action:()->Unit = {}){
             Constants.SHORT_TOKEN = it?.data?.short_token!!
             action.invoke()},{refreshToken(it,action)})
     }else if (msg == "444"){
+        if (Constants.SHORT_TOKEN.isEmpty()){
+            Constants.SHORT_TOKEN = Constants.getShotToken()
+            action.invoke()
+            return
+        }
         Constants.loginOut()  //退出登录
         showLoginDialog()
         showToast("请重新登录")

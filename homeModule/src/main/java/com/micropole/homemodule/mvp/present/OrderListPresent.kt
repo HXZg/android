@@ -27,7 +27,7 @@ class OrderListPresent : OrderListConstract.Present() {
                     getView()?.dismissLoadingDialog()
                     getView()?.setData(it.data)},{
                     getView()?.dismissLoadingDialog()
-                    if (it == "444") getView()?.loginOut()
+                    if (it == "444" && !Constants.SHORT_TOKEN.isEmpty()) getView()?.loginOut()
                     else if (it != "333") {
                         getView()?.refreshError()
                         getView()?.refreshToken(it,{orderList(staut,page)})

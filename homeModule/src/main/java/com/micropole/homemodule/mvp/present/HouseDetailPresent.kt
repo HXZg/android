@@ -34,33 +34,35 @@ class HouseDetailPresent : HouseDetailConstract.Present() {
         }
     }
 
-    override fun collectHouse(h_id: String) {
+    override fun collectHouse(h_id: String,type:Int) {
         if (Constants.isLogin()){
             getView()?.showLoadingDialog("正在收藏")
-            getModel().collectHouse(Constants.SHORT_TOKEN,Constants.getLocation()[0],Constants.getLocation()[1],h_id)
+            getModel().collectHouse(Constants.SHORT_TOKEN,Constants.getLocation()[0],Constants.getLocation()[1],h_id,type)
                     .ui({
+                        getView()?.collectSuc(type == 1)
                         getView()?.dismissLoadingDialog()
                         getView()?.showToast(it.msg)},{
                         getView()?.dismissLoadingDialog()
-                        getView()?.refreshToken(it,{collectHouse(h_id)})
+                        getView()?.refreshToken(it,{collectHouse(h_id,type)})
                     })
         }else{
             getView()?.showToast("请先登录")
         }
     }
 
-    override fun getHouseDetail(h_id: String) {
+    override fun getHouseDetail(h_id: String,startTime:String,endTime:String) {
         val token = if (Constants.isLogin()) Constants.SHORT_TOKEN else ""
-        getModel().getHouseDetail(token,Constants.getLocation()[0],Constants.getLocation()[1],h_id).ui({getView()?.setData(it.data)},{
+        getModel().getHouseDetail(token,Constants.getLocation()[0],Constants.getLocation()[1],h_id,startTime, endTime).ui({getView()?.setData(it.data)},{
             if (it == "333"){
-                getView()?.refreshToken(it,{getHouseDetail(h_id)})
+                getView()?.refreshToken(it,{getHouseDetail(h_id,startTime,endTime)})
             } else if (it == "444"){
                 Constants.loginOut()
                 Constants.SHORT_TOKEN = ""
                 getView()?.showToast("请重新登录")
-                getHouseDetail(h_id)
+                getHouseDetail(h_id,startTime, endTime)
             }else{
-                getView()?.showError(ApiFaileException(it),true)
+                getView()?.showToast(it)
+                if (startTime.isNotEmpty() && endTime.isNotEmpty()) getView()?.showError(ApiFaileException(it),true)
             }
         })
     }
