@@ -19,10 +19,7 @@ import com.micropole.homemodule.entity.LandlordBean
 import com.micropole.homemodule.mvp.constract.HouseDetailConstract
 import com.micropole.homemodule.mvp.present.HouseDetailPresent
 import com.micropole.homemodule.order.FillOrderActivity
-import com.micropole.homemodule.util.TimerUtil
-import com.micropole.homemodule.util.setCheckLoginListener
-import com.micropole.homemodule.util.setRanger
-import com.micropole.homemodule.util.setTurnImage
+import com.micropole.homemodule.util.*
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecActivity
 import com.xx.baseutilslibrary.extensions.loadImag
 import com.xx.baseutilslibrary.extensions.setHtmlText
@@ -80,7 +77,7 @@ class HouseDetailActivity : BaseMvpLcecActivity<View,HouseDetailBean?,HouseDetai
 
             tv_house_detail_name.text = data.h_title
             tv_house_detail_address.text = data.h_address
-            tv_house_detail_des.text = "距离${data.distance}米"   //名字，地址，距离
+            tv_house_detail_des.text = "距离${data.distance.changeKm()}"   //名字，地址，距离
 
             tv_detail_ev_num.text = "${data.comment_num}条评论"
             tv_detail_ev_score.text = data.comment_score             //评论分数，条数
