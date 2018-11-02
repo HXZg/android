@@ -113,6 +113,7 @@ class MainActivity : BaseNavigationActivity() {
                     val geocodeAddressList = result?.geocodeAddressList
                     if (geocodeAddressList != null && geocodeAddressList.isNotEmpty()){
                         Log.e("location_Tag","${geocodeAddressList[0].latLonPoint.latitude},${geocodeAddressList[0].latLonPoint.longitude}")
+                        Constants.putLocation(geocodeAddressList[0].latLonPoint.latitude, geocodeAddressList[0].latLonPoint.longitude, county)
                         action.invoke(geocodeAddressList[0].latLonPoint.latitude.toString(),geocodeAddressList[0].latLonPoint.longitude.toString())
                     }else{
                         action.invoke("","")

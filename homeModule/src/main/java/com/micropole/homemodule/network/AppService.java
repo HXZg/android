@@ -69,8 +69,7 @@ public interface AppService {
     @POST("Index/hotel_search")
     Observable<BaseResponseEntity<SearchBean>> getSearchData(@Header("lat")String lat, @Header("lng")String lng,
                                                              @Field("area_id") String styleId, @Field("type_deac") int type, @Field("page") int page,
-                                                             @Field("start_time") String startTime, @Field("end_time") String endTime, @Field("people_number") String num,
-                                                             @Field("lat")String lat1, @Field("lng")String lng1);
+                                                             @Field("start_time") String startTime, @Field("end_time") String endTime, @Field("people_number") String num);
 
     /**
      * 旅馆详情

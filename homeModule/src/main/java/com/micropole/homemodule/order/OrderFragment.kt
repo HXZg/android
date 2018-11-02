@@ -32,7 +32,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.Simple
 class OrderFragment  : BaseMvpViewFragment(){
 
     val mfragments = arrayListOf(OrderListFragment.startOrderList(7),OrderListFragment.startOrderList(1),OrderListFragment.startOrderList(2)
-    ,OrderListFragment.startOrderList(8),OrderListFragment.startOrderList(4),OrderListFragment.startOrderList(5),OrderListFragment.startOrderList(3))
+    ,OrderListFragment.startOrderList(8),OrderListFragment.startOrderList(5),OrderListFragment.startOrderList(4),OrderListFragment.startOrderList(3))
 
     var mData : Array<String>? = null
 

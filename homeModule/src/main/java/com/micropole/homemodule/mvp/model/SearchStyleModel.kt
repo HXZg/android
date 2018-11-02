@@ -17,5 +17,5 @@ class SearchStyleModel : SearchStyleConstract.Model() {
     override fun getStyleData(lat: String, lng: String) = AppApi.Api<AppService>().getStyleData(lat, lng)
 
     override fun getSearchData(lat:String,lng:String,styleId:String,type:Int,page:Int,startTime:String,endTime:String,num:String) =
-            AppApi.Api<AppService>().getSearchData(Constants.getLocation()[0], Constants.getLocation()[1],styleId, type, page, startTime, endTime, num,lat,lng)
+            AppApi.Api<AppService>().getSearchData(Constants.getLocation()[0], Constants.getLocation()[1],styleId, type, page, startTime, endTime, num)
 }

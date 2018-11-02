@@ -29,6 +29,6 @@ class SearchStyleConstract {
 
     abstract class Present : BaseMvpPresenter<Model,View>(){
         abstract fun getStyleData()
-        abstract fun getSearchData(lat:String,lng:String,styleId:String,type:Int,page:Int,startTime:String,endTime:String,num:String)
+        abstract fun getSearchData(styleId:String,type:Int,page:Int,startTime:String,endTime:String,num:String)
     }
 }

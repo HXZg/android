@@ -6,8 +6,8 @@
         <item>@string/order_confirm_txt</item>
         <item>@string/order_reservation_txt</item>
         <item>@string/order_evaluation_txt</item>
-        <item>@string/order_cancel_txt</item>
         <item>@string/order_refund_txt</item>
+        <item>@string/order_cancel_txt</item>
         <item>@string/order_complete_txt</item>
     </string-array>
 </resources>

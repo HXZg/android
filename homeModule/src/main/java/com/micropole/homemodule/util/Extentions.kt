@@ -17,8 +17,10 @@ import com.micropole.baseapplibrary.network.AppApi
 import com.micropole.homemodule.R
 import com.micropole.homemodule.network.AppService
 import com.xx.baseuilibrary.mvp.BaseMvpView
+import com.xx.baseutilslibrary.extensions.format
 import com.xx.baseutilslibrary.extensions.loadImag
 import com.xx.baseutilslibrary.extensions.ui
+import java.math.BigDecimal
 import java.util.*
 
 /**
@@ -104,6 +106,15 @@ fun showLoginDialog(){
         dialog.dismiss()
         ARouter.getInstance().build(ARouterConst.Login.LOGIN_ACTIVITY).navigation()
     })
+}
+
+fun String.changeKm() : String{
+    if (this.toInt() >= 1000){
+        var d = this.toInt() / 100.00
+        return d.format(2)+"km"
+    }else{
+        return this + "m"
+    }
 }
 
 
