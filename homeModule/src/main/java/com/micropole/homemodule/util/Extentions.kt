@@ -67,10 +67,10 @@ fun ConvenientBanner<*>.setTurnImage(mImgs:List<String>,isturn : Long = 2000) : 
     setPages( { ImageHolderView() } , mImgs)
             setPageIndicator(intArrayOf(R.drawable.shape_indicator_gray, R.drawable.shape_indicator_red))
             setPointViewVisible(true)
-            setOnItemClickListener {
-                /*activity?.bannerStart(data[position])*/
+            /*setOnItemClickListener {
+                *//*activity?.bannerStart(data[position])*//*
                 ToastUtils.showShort(it.toString())
-            }
+            }*/
     if (isturn != 0L) startTurning(isturn)
     return this
 }
