@@ -126,7 +126,7 @@ class OrderDetailActivity : BaseMvpLcecActivity<View,OrderDetailBean?,OrderDetai
             //et_order_phone.setText(data.or_phone)                      //订单信息
 
             val arr = data.or_other_price_arr
-            if (!data.balance_pay.isEmpty()) arr.add(arrayListOf("使用旅行基金","-${data.balance_pay}"))
+            if (!data.balance_pay.isEmpty() && data.balance_pay != "0") arr.add(arrayListOf("使用旅行基金","-${data.balance_pay}"))
             mPriceAdapter.setNewData(arr)
         }
     }

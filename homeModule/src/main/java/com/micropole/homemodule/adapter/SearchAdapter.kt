@@ -23,7 +23,7 @@ class SearchAdapter : BaseQuickAdapter<SearchBean.ProjectBean,BaseViewHolder>(R.
             setText(R.id.tv_house_name,item?.h_title)
             setText(R.id.tv_house_address,item?.h_address)
             setText(R.id.tv_house_des,"距离${item?.distance?.changeKm()}  ${item?.room_hall}  ${item?.area_name}")
-            setText(R.id.tv_house_price,"${item?.h_price}元/天")
+            setText(R.id.tv_house_price,"${item?.h_price}元起")
             setText(R.id.tv_house_score,item?.comment_score)
             setVisible(R.id.stv_house_deposit,item?.deposit_free == "1")
         }
